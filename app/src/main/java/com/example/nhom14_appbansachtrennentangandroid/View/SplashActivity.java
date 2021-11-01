@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.nhom14_appbansachtrennentangandroid.MainActivity;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

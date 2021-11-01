@@ -1,8 +1,10 @@
-package com.example.nhom14_appbansachtrennentangandroid;
+package com.example.nhom14_appbansachtrennentangandroid.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.nhom14_appbansachtrennentangandroid.R;
 
 public class MainActivity extends AppCompatActivity {
 
