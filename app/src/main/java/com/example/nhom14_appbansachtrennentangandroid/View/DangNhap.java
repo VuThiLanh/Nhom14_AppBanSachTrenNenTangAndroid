@@ -1,14 +1,23 @@
 package com.example.nhom14_appbansachtrennentangandroid.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
+import android.graphics.Paint;
 import android.os.Bundle;
+
+import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangNhapBinding;
 
 public class DangNhap extends AppCompatActivity {
 
+    ActivityDangNhapBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dang_nhap);
+        binding= DataBindingUtil.setContentView(DangNhap.this,R.layout.activity_dang_nhap );
+
+        binding.tvQuenMKDN.setPaintFlags(binding.tvQuenMKDN.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+        binding.tvDkiDN.setPaintFlags(binding.tvDkiDN.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
     }
 }
