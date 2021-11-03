@@ -4,10 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/border_login.xml" value="0.1" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/ic_baseline_account_balance_wallet_24.xml" value="0.25" />
         <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/ic_baseline_keyboard_backspace_24.xml" value="0.1" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2537037037037037" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/iconchange.xml" value="0.25" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/icongiohang.xml" value="0.1" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/iconhome.xml" value="0.1" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/iconnhantin.xml" value="0.1" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/iconthongbao.xml" value="0.1" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/iconuser.xml" value="0.25" />
         <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_dang_ky.xml" value="0.25416666666666665" />
         <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_dang_nhap.xml" value="0.264" />
-        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_main.xml" value="0.1897810218978102" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/fragment_gio_hang.xml" value="0.25416666666666665" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/fragment_thong_bao.xml" value="0.25416666666666665" />
+        <entry key="..\:/HOCTAP/GitHub/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/menu/menu_chinh.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
