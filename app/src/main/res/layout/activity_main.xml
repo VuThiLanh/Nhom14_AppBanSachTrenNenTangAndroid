@@ -22,11 +22,6 @@
                     android:id="@+id/toolbar_main"
                     app:titleTextColor="@color/mauchu"
                     android:background="@color/toolbar">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/menu_main"
-                        android:src="@drawable/ic_baseline_menu_24"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -46,27 +41,32 @@
                 android:id="@+id/tablayout_main"
                 android:layout_alignParentBottom="true"
                 />
+
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fillViewport="true"
-                android:layout_below="@id/appbarlayout_main"
                 android:layout_above="@id/tablayout_main"
-                android:scrollbars="none"
-                android:fitsSystemWindows="true">
+                android:layout_below="@id/appbarlayout_main"
+                android:fillViewport="true"
+                android:fitsSystemWindows="true"
+                android:scrollbars="none">
+
                 <com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
+                    android:id="@+id/viewpager_main"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/viewpager_main"/>
+                    android:layout_height="match_parent" />
             </androidx.core.widget.NestedScrollView>
         </RelativeLayout>
-<!--        <com.google.android.material.navigation.NavigationView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:id="@+id/navigation_view"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:menu="@menu/menu_chinh"-->
-<!--            android:layout_gravity="start"/>-->
-<!--&lt;!&ndash;            app:headerLayout="@drawable/ic_donhang"/>&ndash;&gt;-->
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:id="@+id/navigation_view"
+            android:layout_height="match_parent"
+            app:menu="@menu/menu_chinh"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header">
+
+        </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>
