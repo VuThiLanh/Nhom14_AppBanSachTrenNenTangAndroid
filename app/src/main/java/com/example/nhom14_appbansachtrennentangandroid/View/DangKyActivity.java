@@ -120,7 +120,5 @@ public class DangKyActivity extends AppCompatActivity {
                 ad.show();
             }
         }
-
-
     }
 }
