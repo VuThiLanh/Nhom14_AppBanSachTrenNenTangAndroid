@@ -5,4 +5,9 @@
     <string name="log_in">Đăng Nhập</string>
     <string name="dang_ki">Đăng Ký</string>
     <string name="quen_MK">Quên mật khẩu?</string>
+
+<!--    DangKy-->
+    <string name="tenDN">Tên đăng nhập</string>
+    <string name="nhaclaiMK">Nhắc lại mật khẩu</string>
+
 </resources>

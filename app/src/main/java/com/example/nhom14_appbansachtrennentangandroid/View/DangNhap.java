@@ -17,7 +17,7 @@ public class DangNhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(DangNhap.this,R.layout.activity_dang_nhap );
 
-        binding.tvQuenMKDN.setPaintFlags(binding.tvQuenMKDN.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+        binding.tvQuenMKDN .setPaintFlags(binding.tvQuenMKDN.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         binding.tvDkiDN.setPaintFlags(binding.tvDkiDN.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
     }
 }
