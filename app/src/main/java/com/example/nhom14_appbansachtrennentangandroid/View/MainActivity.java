@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -21,10 +22,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     ViewPagerAdapTer adapter;
     ActivityMainBinding binding;
+    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
+
+
+
 
         setSupportActionBar(binding.toolbarMain);
         getSupportActionBar().setTitle("");
@@ -59,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         display();
+        Intent intent=getIntent();
+        i=intent.getIntExtra("trang",0);
+        binding.viewpagerMain.setCurrentItem(i);
+        binding.tablayoutMain.setCurrentItem(i);
     }
 
     private void display(){

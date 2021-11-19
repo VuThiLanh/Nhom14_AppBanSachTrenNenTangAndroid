@@ -6,8 +6,18 @@
     <string name="dang_ki">Đăng Ký</string>
     <string name="quen_MK">Quên mật khẩu?</string>
 
-<!--    DangKy-->
+    <!--    DangKy-->
     <string name="tenDN">Tên đăng nhập</string>
     <string name="nhaclaiMK">Nhắc lại mật khẩu</string>
+
+    --ChiTietSP---
+    <string name="them">Thêm vào giỏ hàng</string>
+    <string name="chat">Chat</string>
+    <string name="danh">Đánh giá sản phẩm</string>
+    <string name="xemAll">Xem tất cả &gt;</string>
+    <string name="xemthem">Xem Thêm</string>
+    <string name="sl">1</string>
+    <string name="cong">+</string>
+    <string name="tru">-</string>
 
 </resources>
