@@ -30,9 +30,19 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChangePassFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChinhTriPLFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.DonHangFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GiaoTrinhFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GioHangFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.KHCNKTFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.SanPhamBanChayFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TamLyTLTGFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThieuNhiFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThongTinShopFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TieuThuyetFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.VanHoaXHLSFragment;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.VanHocNTFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -50,7 +60,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int mCurrentFragmet = Fragment_home;
     private static  final  int Fragment_sanphambanchay = 1;
     private static  final  int Fragment_giohang = 2;
-    private static  final  int Fragment_changepass = 3;
+    private static  final  int Fragment_donhang = 3;
+    private static  final  int Fragment_thongtinshop = 4;
+    private static  final  int Fragment_chinhtripl= 5;
+    private static  final  int Fragment_khoahoccnkt = 6;
+    private static  final  int Fragment_vhnt = 7;
+    private static  final  int Fragment_vhxhls = 8;
+    private static  final  int Fragment_giaotrinh = 9;
+    private static  final  int Fragment_tamlytltg = 10;
+    private static  final  int Fragment_ttt = 11;
+    private static  final  int Fragment_thieunhi = 12;
+    private static  final  int Fragment_changepass = 13;
     final private ChangePassFragment mfragmentChangePass = new ChangePassFragment();
     DrawerLayout mdrawerLayout;
     public static  final int MY_REQUEST_CODE=10;
@@ -80,10 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
-
-
-
-
+        mdrawerLayout = findViewById(R.id.drawer_layout);
         setSupportActionBar(binding.toolbarMain);
         getSupportActionBar().setTitle("");
         initUI();
@@ -156,23 +173,84 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mCurrentFragmet = Fragment_sanphambanchay;
             }
         }
-        else if(id==R.id.nav_taikhoan){
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(this, DangNhap.class);
-            startActivity(intent);
-            finish();
-        }
         else if(id==R.id.navgiohang){
             if(mCurrentFragmet!=Fragment_giohang){
                 replaceFragment(new GioHangFragment());
                 mCurrentFragmet = Fragment_giohang;
             }
         }
+        else if(id==R.id.navdonhang){
+            if(mCurrentFragmet!=Fragment_donhang){
+                replaceFragment(new DonHangFragment());
+                mCurrentFragmet = Fragment_donhang;
+            }
+        }
+        else if(id==R.id.navthongtin){
+            if(mCurrentFragmet!=Fragment_thongtinshop){
+                replaceFragment(new ThongTinShopFragment());
+                mCurrentFragmet = Fragment_thongtinshop;
+            }
+        }
+        else if(id==R.id.nav_loai1){
+            if(mCurrentFragmet!=Fragment_chinhtripl){
+                replaceFragment(new ChinhTriPLFragment());
+                mCurrentFragmet = Fragment_chinhtripl;
+            }
+        }
+        else if(id==R.id.nav_loai2){
+            if(mCurrentFragmet!=Fragment_khoahoccnkt){
+                replaceFragment(new KHCNKTFragment());
+                mCurrentFragmet = Fragment_khoahoccnkt;
+            }
+        }
+        else if(id==R.id.nav_loai3){
+            if(mCurrentFragmet!=Fragment_vhnt){
+                replaceFragment(new VanHocNTFragment());
+                mCurrentFragmet = Fragment_vhnt;
+            }
+        }
+        else if(id==R.id.nav_loai4){
+            if(mCurrentFragmet!=Fragment_vhxhls){
+                replaceFragment(new VanHoaXHLSFragment());
+                mCurrentFragmet = Fragment_vhxhls;
+            }
+        }
+        else if(id==R.id.nav_loai5){
+            if(mCurrentFragmet!=Fragment_giaotrinh){
+                replaceFragment(new GiaoTrinhFragment());
+                mCurrentFragmet = Fragment_giaotrinh;
+            }
+        }
+        else if(id==R.id.nav_loai6){
+            if(mCurrentFragmet!=Fragment_tamlytltg){
+                replaceFragment(new TamLyTLTGFragment());
+                mCurrentFragmet = Fragment_tamlytltg;
+            }
+        }
+        else if(id==R.id.nav_loai7){
+            if(mCurrentFragmet!=Fragment_ttt){
+                replaceFragment(new TieuThuyetFragment());
+                mCurrentFragmet = Fragment_ttt;
+            }
+        }
+        else if(id==R.id.nav_loai8){
+            if(mCurrentFragmet!=Fragment_thieunhi){
+                replaceFragment(new ThieuNhiFragment());
+                mCurrentFragmet = Fragment_thieunhi;
+            }
+        }
+
         else if(id==R.id.nav_changepassword){
             if(mCurrentFragmet!=Fragment_changepass){
                 replaceFragment(new ChangePassFragment());
-                mCurrentFragmet = Fragment_giohang;
+                mCurrentFragmet = Fragment_changepass;
             }
+        }
+        else if(id==R.id.nav_taikhoan){
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(this, DangNhap.class);
+            startActivity(intent);
+            finish();
         }
         mdrawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -188,8 +266,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         }
-        else
-        super.onBackPressed();
+        else{
+            super.onBackPressed();
+        }
+
     }
     private void replaceFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
