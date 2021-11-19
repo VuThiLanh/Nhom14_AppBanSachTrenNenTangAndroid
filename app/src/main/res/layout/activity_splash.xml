@@ -19,15 +19,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:textAlignment="center"
-        android:gravity="center|top"
         android:text="Chào mừng bạn tới với muasachonline !"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/leduoi"
         app:layout_constraintEnd_toEndOf="@id/lephai"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/letrai"
         app:layout_constraintTop_toTopOf="@id/lengan" />
     <androidx.constraintlayout.widget.Guideline

@@ -29,6 +29,7 @@ public class DangKyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
         binding= DataBindingUtil.setContentView(DangKyActivity.this, R.layout.activity_dang_ky);
+        progressDialog = new ProgressDialog(this);
         initListener();
         binding.toolbarLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +67,8 @@ public class DangKyActivity extends AppCompatActivity {
         }
         else{
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            progressDialog.show();
             if(nhaclai.equals(password)){
+                progressDialog.show();
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
