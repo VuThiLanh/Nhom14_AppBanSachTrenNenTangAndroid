@@ -12,7 +12,14 @@ import androidx.annotation.Nullable;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 
 public class HomeFragment extends Fragment {
-
+    public static HomeFragment newInstance() {
+        HomeFragment fragment = new HomeFragment();
+        return fragment;
+    }
+    public  static  HomeFragment getInstance(){
+        HomeFragment fragment = new HomeFragment();
+        return  fragment;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,

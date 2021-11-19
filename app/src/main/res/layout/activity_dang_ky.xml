@@ -42,6 +42,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
                     android:id="@+id/ed_email_dangky"
+                    android:textColor="@color/black"
                     android:hint="@string/email"
                     android:paddingLeft="20dp"
                     android:inputType="textEmailAddress"
@@ -56,6 +57,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/item_boder_bgwhite"
                     android:hint="@string/tenDN"
+                    android:textColor="@color/black"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp" />
 
@@ -65,6 +67,7 @@
                     android:layout_marginTop="20dp"
                     android:paddingLeft="20dp"
                     android:hint="@string/pass"
+                    android:textColor="@color/black"
                     android:inputType="textPassword"
                     android:id="@+id/ed_pass_dangky"
                     android:background="@drawable/item_boder_bgwhite"
@@ -75,6 +78,7 @@
                     android:layout_marginTop="20dp"
                     android:paddingLeft="20dp"
                     android:hint="@string/nhaclaiMK"
+                    android:textColor="@color/black"
                     android:inputType="textPassword"
                     android:id="@+id/ed_nhaclaiMK"
                     android:layout_marginBottom="20dp"
