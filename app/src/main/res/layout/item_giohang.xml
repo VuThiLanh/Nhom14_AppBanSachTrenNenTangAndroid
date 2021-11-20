@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="#F4F4F4">
+    android:background="#F3F0F0">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,3 +82,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+
