@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid">
+        <activity android:name=".View.GioHangActivity"></activity>
         <activity android:name=".View.DonHangActivity" />
         <activity
             android:name=".View.MainActivity"

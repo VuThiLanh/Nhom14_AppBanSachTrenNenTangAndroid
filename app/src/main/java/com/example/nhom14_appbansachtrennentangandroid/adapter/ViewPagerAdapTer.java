@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChangePassFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChatFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GioHangFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThongBaoFragment;
 
@@ -20,7 +19,6 @@ public class ViewPagerAdapTer extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-
             case 0: return new HomeFragment();
             case 1: return new ChangePassFragment();
             case 2: return new ChatFragment();
