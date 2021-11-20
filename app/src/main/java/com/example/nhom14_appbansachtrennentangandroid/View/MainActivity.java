@@ -32,7 +32,6 @@ import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChangePassFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChinhTriPLFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GiaoTrinhFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GioHangFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.KHCNKTFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.SanPhamBanChayFragment;
@@ -173,13 +172,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         else if(id==R.id.navgiohang){
-            if(mCurrentFragmet!=Fragment_giohang){
-                replaceFragment(new GioHangFragment());
-                mCurrentFragmet = Fragment_giohang;
-            }
+            Intent intent = new Intent(this,DonHangActivity.class);
+            startActivity(intent);
         }
         else if(id==R.id.navdonhang){
-            Intent intent = new Intent(this,DonHangActivity.class);
+            Intent intent = new Intent(this,GioHangActivity.class);
             startActivity(intent);
         }
         else if(id==R.id.navthongtin){
