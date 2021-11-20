@@ -39,21 +39,29 @@
                     android:textStyle="bold"/>
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginTop="40dp"
                     android:id="@+id/ed_email_login"
+                    android:textColor="@color/black"
                     android:hint="@string/email"
+                    android:paddingLeft="20dp"
                     android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    android:background="@drawable/item_boder_bgwhite"
                     android:layout_marginHorizontal="10dp"/>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginTop="40dp"
+                    android:paddingLeft="20dp"
                     android:hint="@string/pass"
+                    android:textColor="@color/black"
                     android:inputType="textPassword"
                     android:id="@+id/ed_pass_login"
                     android:layout_marginBottom="20dp"
+                    android:imeOptions="actionDone"
+                    android:background="@drawable/item_boder_bgwhite"
                     android:layout_marginHorizontal="10dp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
