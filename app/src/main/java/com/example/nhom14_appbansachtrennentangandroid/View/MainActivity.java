@@ -31,7 +31,6 @@ import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChangePassFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChinhTriPLFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.DonHangFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GiaoTrinhFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GioHangFragment;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
@@ -149,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding.viewpagerMain.setAdapter(adapter);
         binding.viewpagerMain.setPagingEnabled(true);
         AHBottomNavigationItem item1= new AHBottomNavigationItem("Home",R.drawable.iconhome, R.color.red);
-        AHBottomNavigationItem item2= new AHBottomNavigationItem("Giỏ hàng",R.drawable.icongiohang, R.color.red );
+        AHBottomNavigationItem item2= new AHBottomNavigationItem("Tài khoản",R.drawable.iconuser, R.color.red );
         AHBottomNavigationItem item3= new AHBottomNavigationItem("Chat", R.drawable.iconnhantin, R.color.red);
         AHBottomNavigationItem item4= new AHBottomNavigationItem("Thông báo", R.drawable.iconthongbao, R.color.red);
         binding.tablayoutMain.addItem(item1);
@@ -180,10 +179,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         else if(id==R.id.navdonhang){
-            if(mCurrentFragmet!=Fragment_donhang){
-                replaceFragment(new DonHangFragment());
-                mCurrentFragmet = Fragment_donhang;
-            }
+            Intent intent = new Intent(this,DonHangActivity.class);
+            startActivity(intent);
         }
         else if(id==R.id.navthongtin){
             if(mCurrentFragmet!=Fragment_thongtinshop){
@@ -240,12 +237,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        else if(id==R.id.nav_changepassword){
-            if(mCurrentFragmet!=Fragment_changepass){
-                replaceFragment(new ChangePassFragment());
-                mCurrentFragmet = Fragment_changepass;
-            }
-        }
         else if(id==R.id.nav_taikhoan){
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(this, DangNhap.class);
