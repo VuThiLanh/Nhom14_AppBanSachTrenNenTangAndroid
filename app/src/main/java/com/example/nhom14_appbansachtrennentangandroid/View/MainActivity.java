@@ -46,6 +46,7 @@ import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainB
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.IOException;
 
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ViewPagerAdapTer adapter;
     ActivityMainBinding binding;
     int i=0;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     private static  final  int Fragment_home = 0;
     private int mCurrentFragmet = Fragment_home;
     private static  final  int Fragment_sanphambanchay = 1;
