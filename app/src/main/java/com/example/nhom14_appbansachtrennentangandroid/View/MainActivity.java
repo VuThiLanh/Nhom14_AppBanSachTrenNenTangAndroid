@@ -18,12 +18,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-<<<<<<< HEAD
-
     int i=0;
     public static  final int MY_REQUEST_CODE=10;
-=======
->>>>>>> nga
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +67,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> nga
