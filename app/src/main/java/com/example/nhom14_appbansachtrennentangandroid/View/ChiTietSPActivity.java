@@ -91,23 +91,6 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-
-        reference.child("sanpham").child("sp001").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                SanPham sanPham=snapshot.getValue(SanPham.class);
-                binding.tvGiaBan.setText(sanPham.getDonGia()*10/100 +"");
-                binding.tvGiaGoc.setText(sanPham.getDonGia()+"");
-                binding.tvMota.setText(sanPham.getMoTa());
-                binding.tvTenSP.setText(sanPham.getTenSP());
-                Glide.with(getApplicationContext()).load(sanPham.getImg()).error(R.drawable.anhnen).into(binding.imgAnhHang);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
         display();
     }
 
@@ -127,6 +110,21 @@ public class ChiTietSPActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     private void display(){
+        reference.child("sanpham").child(maSP).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                SanPham sanPham=snapshot.getValue(SanPham.class);
+                binding.tvGiaBan.setText(sanPham.getDonGia()*10/100 +"");
+                binding.tvGiaGoc.setText(sanPham.getDonGia()+"");
+                binding.tvMota.setText(sanPham.getMoTa());
+                binding.tvTenSP.setText(sanPham.getTenSP());
+                Glide.with(getApplicationContext()).load(sanPham.getImg()).error(R.drawable.anhnen).into(binding.imgAnhHang);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
     }
 }
