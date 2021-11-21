@@ -9,7 +9,6 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpagerMain"
             android:layout_width="match_parent"
-<<<<<<< Updated upstream
             android:layout_above="@+id/bottom_navigation"
             android:layout_height="match_parent"/>
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,71 +21,5 @@
             app:menu="@menu/menu_bottom_navigation"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
-=======
-            android:layout_height="wrap_content">
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:id="@+id/appbarlayout_main"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/toolbar_main"
-                    app:titleTextColor="@color/mauchu"
-                    android:background="@color/toolbar">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="MuaSachOnline"
-                        android:id="@+id/tv_ten"
-                        android:layout_marginLeft="20dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/mauchu"
-                        android:textStyle="bold"/>
-
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.AppBarLayout>
-            <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tablayout_main"
-                android:layout_alignParentBottom="true"
-                />
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/tablayout_main"
-                android:layout_below="@id/appbarlayout_main"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="-2dp"
-                android:fillViewport="true"
-                android:fitsSystemWindows="true"
-                android:scrollbars="none">
-
-                <com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
-                    android:id="@+id/viewpager_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-                <FrameLayout
-                    android:id="@+id/content_frame"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </androidx.core.widget.NestedScrollView>
-        </RelativeLayout>
-        <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
-            android:id="@+id/navigation_view"
-            android:layout_height="match_parent"
-            app:menu="@menu/menu_chinh"
-            android:fitsSystemWindows="true"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/header">
-
-        </com.google.android.material.navigation.NavigationView>
-    </androidx.drawerlayout.widget.DrawerLayout>
->>>>>>> Stashed changes
 
 </layout>
