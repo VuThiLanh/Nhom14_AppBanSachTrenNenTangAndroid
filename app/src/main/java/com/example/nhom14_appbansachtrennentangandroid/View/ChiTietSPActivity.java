@@ -41,6 +41,8 @@ public class ChiTietSPActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
 
+
+
         sl=Integer.parseInt(binding.edSl.getText().toString());
         binding.btnCong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +51,9 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 binding.edSl.setText(sl+"");
             }
         });
+
+
+
         binding.btnTru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +64,8 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 binding.edSl.setText(sl+"");
             }
         });
+
+
         binding.imgGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +74,8 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         binding.btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +92,25 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
+
+        reference.child("sanpham").child("sp001").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                SanPham sanPham=snapshot.getValue(SanPham.class);
+                binding.tvGiaBan.setText(sanPham.getDonGia()*10/100 +"");
+                binding.tvGiaGoc.setText(sanPham.getDonGia()+"");
+                binding.tvMota.setText(sanPham.getMoTa());
+                binding.tvTenSP.setText(sanPham.getTenSP());
+                Glide.with(getApplicationContext()).load(sanPham.getImg()).error(R.drawable.anhnen).into(binding.imgAnhHang);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+>>>>>>> main
         display();
     }
 

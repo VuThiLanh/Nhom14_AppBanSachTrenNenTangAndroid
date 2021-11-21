@@ -21,5 +21,14 @@
     <string name="sl">1</string>
     <string name="cong">+</string>
     <string name="tru">-</string>
+    <string name="nhaxb">-</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
+
+<!--    TaiKhoan-->
+    <string name="capnhat">Cập nhật tài khoản</string>
+    <string name="thongtindonhang">Thông tin đơn hàng</string>
+    <string name="thongtinshop">Thông tin shop</string>
+    <string name="trogiup">Trợ giúp và phản hồi</string>
+    <string name="dangxuat">Đăng xuất</string>
 </resources>

@@ -1,66 +1,30 @@
 package com.example.nhom14_appbansachtrennentangandroid.View;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChangePassFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ChinhTriPLFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.DonHangFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GiaoTrinhFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.GioHangFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.KHCNKTFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.SanPhamBanChayFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TamLyTLTGFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThieuNhiFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThongTinShopFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TieuThuyetFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.VanHoaXHLSFragment;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.VanHocNTFragment;
+
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.material.navigation.NavigationBarView;
 
-import java.io.IOException;
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    ViewPagerAdapTer adapter;
+public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+
     int i=0;
+<<<<<<< Updated upstream
+=======
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     private static  final  int Fragment_home = 0;
     private int mCurrentFragmet = Fragment_home;
     private static  final  int Fragment_sanphambanchay = 1;
-    private static  final  int Fragment_giohang = 2;
-    private static  final  int Fragment_donhang = 3;
     private static  final  int Fragment_thongtinshop = 4;
     private static  final  int Fragment_chinhtripl= 5;
     private static  final  int Fragment_khoahoccnkt = 6;
@@ -70,86 +34,66 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static  final  int Fragment_tamlytltg = 10;
     private static  final  int Fragment_ttt = 11;
     private static  final  int Fragment_thieunhi = 12;
-    private static  final  int Fragment_changepass = 13;
+
     final private ChangePassFragment mfragmentChangePass = new ChangePassFragment();
     DrawerLayout mdrawerLayout;
+>>>>>>> Stashed changes
     public static  final int MY_REQUEST_CODE=10;
-    private ImageView imgAvatar;
-    private TextView tv_name,tv_email;
-    private NavigationView mNavigationView;
-    final private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if(result.getResultCode()==RESULT_OK){
-                Intent intent = result.getData();
-                if(intent==null){
-                    return;
-                }
-                Uri uri = intent.getData();
-                mfragmentChangePass.setmUri(uri);
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                    mfragmentChangePass.setBitMapImageView(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
-        mdrawerLayout = findViewById(R.id.drawer_layout);
-        setSupportActionBar(binding.toolbarMain);
-        getSupportActionBar().setTitle("");
-        initUI();
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbarMain, 0,0);
-        binding.drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        binding.navigationView.setNavigationItemSelectedListener(this);
-        replaceFragment(new HomeFragment());
-        mNavigationView.getMenu().findItem(R.id.nav_home).setChecked(true);
-
-        showInformation();
-
-        binding.tablayoutMain.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+        ViewPagerAdapTer viewPagerAdapTer = new ViewPagerAdapTer(this);
+        binding.viewpagerMain.setAdapter(viewPagerAdapTer);
+        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
-                binding.viewpagerMain.setCurrentItem(position);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if(id==R.id.nav_home){
+                    binding.viewpagerMain.setCurrentItem(0);
+                }
+                else if(id==R.id.nav_chat){
+                    binding.viewpagerMain.setCurrentItem(1);
+                }
+                else if(id==R.id.navthongbao){
+                    binding.viewpagerMain.setCurrentItem(2);
+                }
+                else if(id==R.id.nav_taikhoan){
+                    binding.viewpagerMain.setCurrentItem(3);
+                }
                 return true;
             }
         });
-        binding.viewpagerMain.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+        binding.viewpagerMain.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-
-                binding.tablayoutMain.setCurrentItem(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
+                super.onPageSelected(position);
+                switch (position){
+                    case 0:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
+                        break;
+                    case 1:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_chat).setChecked(true);
+                        break;
+                    case 2:
+                        binding.bottomNavigation.getMenu().findItem(R.id.navthongbao).setChecked(true);
+                        break;
+                    case 3:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_taikhoan).setChecked(true);
+                        break;
+                }
             }
         });
-        display();
-        Intent intent=getIntent();
-        i=intent.getIntExtra("trang",0);
-        binding.viewpagerMain.setCurrentItem(i);
-        binding.tablayoutMain.setCurrentItem(i);
     }
 
+<<<<<<< Updated upstream
+=======
     private void display(){
         adapter=new ViewPagerAdapTer(getSupportFragmentManager());
         binding.viewpagerMain.setAdapter(adapter);
         binding.viewpagerMain.setPagingEnabled(true);
         AHBottomNavigationItem item1= new AHBottomNavigationItem("Home",R.drawable.iconhome, R.color.red);
-        AHBottomNavigationItem item2= new AHBottomNavigationItem("Giỏ hàng",R.drawable.icongiohang, R.color.red );
+        AHBottomNavigationItem item2= new AHBottomNavigationItem("Tài khoản",R.drawable.iconuser, R.color.red );
         AHBottomNavigationItem item3= new AHBottomNavigationItem("Chat", R.drawable.iconnhantin, R.color.red);
         AHBottomNavigationItem item4= new AHBottomNavigationItem("Thông báo", R.drawable.iconthongbao, R.color.red);
         binding.tablayoutMain.addItem(item1);
@@ -174,16 +118,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         else if(id==R.id.navgiohang){
-            if(mCurrentFragmet!=Fragment_giohang){
-                replaceFragment(new GioHangFragment());
-                mCurrentFragmet = Fragment_giohang;
-            }
+            Intent intent = new Intent(this,DonHangActivity.class);
+            startActivity(intent);
         }
         else if(id==R.id.navdonhang){
-            if(mCurrentFragmet!=Fragment_donhang){
-                replaceFragment(new DonHangFragment());
-                mCurrentFragmet = Fragment_donhang;
-            }
+            Intent intent = new Intent(this,GioHangActivity.class);
+            startActivity(intent);
         }
         else if(id==R.id.navthongtin){
             if(mCurrentFragmet!=Fragment_thongtinshop){
@@ -240,12 +180,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        else if(id==R.id.nav_changepassword){
-            if(mCurrentFragmet!=Fragment_changepass){
-                replaceFragment(new ChangePassFragment());
-                mCurrentFragmet = Fragment_changepass;
-            }
-        }
         else if(id==R.id.nav_taikhoan){
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(this, DangNhap.class);
@@ -273,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     private void replaceFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.viewpager_main,fragment);
+        transaction.replace(R.id.content_frame,fragment);
         transaction.commit();
     }
     public   void showInformation(){
@@ -312,4 +246,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.setAction(Intent.ACTION_GET_CONTENT);
         mActivityResultLauncher.launch(Intent.createChooser(intent,"Chọn ảnh"));
     }
+>>>>>>> Stashed changes
 }

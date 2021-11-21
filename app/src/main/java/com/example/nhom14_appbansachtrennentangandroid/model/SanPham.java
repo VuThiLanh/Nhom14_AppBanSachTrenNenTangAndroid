@@ -12,9 +12,26 @@ public class SanPham {
     String tenSP;
     String tenTacGia;
 
+<<<<<<< HEAD
     public SanPham(String idSp, String nxb, int donGia, String img, String maDanhMuc, String moTa, float saoDangGia, int slCon, String tenSP, String tenTacGia) {
         this.idSp = idSp;
         this.nxb = nxb;
+=======
+    String idSp;
+    String NgayXB;
+    int donGia;
+    String img;
+    String maDanhMuc;
+    String moTa;
+    float saoDangGia;
+    int slCon;
+    String tenSP;
+    String tenTacGia;
+
+    public SanPham(String idSp, String ngayXB, int donGia, String img, String maDanhMuc, String moTa, float saoDangGia, int slCon, String tenSP, String tenTacGia) {
+        this.idSp = idSp;
+        NgayXB = ngayXB;
+>>>>>>> main
         this.donGia = donGia;
         this.img = img;
         this.maDanhMuc = maDanhMuc;
@@ -36,12 +53,21 @@ public class SanPham {
         this.idSp = idSp;
     }
 
+<<<<<<< HEAD
     public String getNxb() {
         return nxb;
     }
 
     public void setNxb(String nxb) {
         this.nxb = nxb;
+=======
+    public String getNgayXB() {
+        return NgayXB;
+    }
+
+    public void setNgayXB(String ngayXB) {
+        NgayXB = ngayXB;
+>>>>>>> main
     }
 
     public int getDonGia() {
