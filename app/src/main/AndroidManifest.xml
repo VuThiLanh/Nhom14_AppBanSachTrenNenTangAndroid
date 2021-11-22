@@ -31,7 +31,7 @@
         <activity
             android:name=".View.DangKyActivity"
             android:exported="true" />
-        <activity android:name=".View.ChiTietSPActivity"
+        <activity android:name=".View.DangNhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,10 +39,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SplashActivity">
+        <activity android:name=".View.ChiTietSPActivity">
 
         </activity>
-        <activity android:name=".View.DangNhap"></activity>
+        <activity android:name=".View.SplashActivity"></activity>
     </application>
 
 </manifest>

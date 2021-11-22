@@ -7,9 +7,10 @@ import androidx.databinding.ViewDataBinding;
 import android.os.Bundle;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityCapNhatTkactivityBinding;
 
 public class CapNhatTKActivity extends AppCompatActivity {
-    ViewDataBinding binding;
+    ActivityCapNhatTkactivityBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
