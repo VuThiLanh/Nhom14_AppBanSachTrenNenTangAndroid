@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/tv_capnhattaikhoan"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
@@ -80,6 +81,7 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/tv_thongtindonhang"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -110,6 +112,7 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/tv_thongtinshop"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -140,6 +143,7 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/tv_trogiup"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -170,6 +174,7 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/tv_dangxuat"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"

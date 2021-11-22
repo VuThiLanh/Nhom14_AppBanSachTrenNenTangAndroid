@@ -17,6 +17,7 @@
         android:largeHeap="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid">
+        <activity android:name=".View.CapNhatTKActivity"></activity>
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />

@@ -25,10 +25,18 @@
     <string name="title_activity_maps">MapsActivity</string>
 
 
-<!--    TaiKhoan-->
+    <!--    TaiKhoan-->
     <string name="capnhat">Cập nhật tài khoản</string>
     <string name="thongtindonhang">Thông tin đơn hàng</string>
     <string name="thongtinshop">Thông tin shop</string>
     <string name="trogiup">Trợ giúp và phản hồi</string>
     <string name="dangxuat">Đăng xuất</string>
+
+<!--    CapNhatTaiKhoan-->
+    <string name="mkcu">Mật khẩu cũ</string>
+    <string name="mkmoi">Mật khẩu mới</string>
+    <string name="diachi">Địa chỉ</string>
+    <string name="sdt">Số điện thoại</string>
+    <string name="ngaysinh">Ngày sinh</string>
+    <string name="gioitinh">Giới tính</string>
 </resources>
