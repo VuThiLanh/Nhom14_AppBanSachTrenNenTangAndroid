@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/tv_gia_ban"
+                            android:id="@+id/tv_gia_goc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -121,55 +121,88 @@
                         </LinearLayout>
 
                     </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/tv_gia_goc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/ll"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="giá gốc"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_below="@id/ll"
+                        android:id="@+id/nn"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal"
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/nhaxb"/>
-                    </LinearLayout>
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:text="@string/tacgia"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_tacgia"
+                            android:textSize="18sp"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/black"/>
 
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/nn"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:text="@string/nhaxb"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_nxb"
+                            android:textSize="18sp"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:id="@+id/ln_mta"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_below="@id/relativelayout">
                     <TextView
                         android:id="@+id/tv_mota"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_gia_goc"
-                        android:layout_margin="10dp"
-                        android:text="mô tảssssssssssssssssssssssssssssss
-                        sssssssssssssssssssssssssssssssssssssssssssssssss
-                        sssssssssssssssssssssssssssssssssssssssssssssssss
-                        sssssssssssssssssssssssssssssssssssssssssssssssss
-                        sssssssssssssssssssssssssssssssssssssssssssssssss"
+                        android:layout_height="100dp"
+                        android:text="mota"
                         android:textColor="@color/black"
-                        android:textSize="15sp" />
-
-                </RelativeLayout>
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/red"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:id="@+id/tv_xemthem"
+                        android:text="@string/xemthem"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical"
-                    android:layout_below="@id/relativelayout"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/ln_mta"
                     android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="10dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="wrap_content"

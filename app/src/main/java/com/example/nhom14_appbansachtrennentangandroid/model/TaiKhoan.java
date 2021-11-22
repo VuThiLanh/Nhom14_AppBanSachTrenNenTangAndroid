@@ -8,11 +8,11 @@ public class TaiKhoan {
     String email;
     String gioitinh;
     String id_User;
-    Date ngaysinh;
+    String ngaysinh;
     String sdt;
     String username;
 
-    public TaiKhoan(String avt, String diachi, String email, String gioitinh, String id_User, Date ngaysinh, String sdt, String username) {
+    public TaiKhoan(String avt, String diachi, String email, String gioitinh, String id_User, String ngaysinh, String sdt, String username) {
         this.avt = avt;
         this.diachi = diachi;
         this.email = email;
@@ -66,11 +66,11 @@ public class TaiKhoan {
         this.id_User = id_User;
     }
 
-    public Date getNgaysinh() {
+    public String getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(Date ngaysinh) {
+    public void setNgaysinh(String ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 

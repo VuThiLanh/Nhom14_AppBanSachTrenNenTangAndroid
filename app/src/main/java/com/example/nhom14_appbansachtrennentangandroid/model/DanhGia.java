@@ -6,16 +6,26 @@ public class DanhGia {
     String idSp;
     int sao;
     String id_User;
+    String ngay;
 
-    public DanhGia(String iddanggia, String noidung, String idSp, int sao, String id_User) {
+    public DanhGia(String iddanggia, String noidung, String idSp, int sao, String id_User, String ngay) {
         this.iddanggia = iddanggia;
         this.noidung = noidung;
         this.idSp = idSp;
         this.sao = sao;
         this.id_User = id_User;
+        this.ngay = ngay;
     }
 
     public DanhGia() {
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
     }
 
     public String getIddanggia() {
