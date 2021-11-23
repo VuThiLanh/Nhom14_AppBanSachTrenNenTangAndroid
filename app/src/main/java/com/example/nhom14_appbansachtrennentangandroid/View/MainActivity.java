@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.viewpager2.widget.ViewPager2;
 
 
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -64,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        chuyenTrang();
+    }
+
+    private void chuyenTrang(){
+        Intent intent=getIntent();
+        i=intent.getIntExtra("trang",0);
+        binding.viewpagerMain.setCurrentItem(i);
+        binding.bottomNavigation.getMenu().findItem(R.id.nav_chat).setChecked(true);
     }
 
 }

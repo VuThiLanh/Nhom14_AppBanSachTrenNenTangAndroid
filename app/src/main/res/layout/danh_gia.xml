@@ -8,11 +8,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avt"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/img_avt"
-            android:src="@drawable/avatardefault"/>
+            android:src="@drawable/avatardefault" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,6 +108,11 @@
         </LinearLayout>
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/tv_ngay"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
