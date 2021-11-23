@@ -13,7 +13,7 @@ public class ChangePassActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(ChangePassActivity.this, R.layout.activity_change_pass);
+        setContentView(R.layout.activity_change_pass);
 
     }
 }
