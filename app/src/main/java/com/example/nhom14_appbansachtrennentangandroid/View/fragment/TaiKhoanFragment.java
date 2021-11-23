@@ -19,13 +19,14 @@ import android.widget.LinearLayout;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.CapNhatTKActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChangePassActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
 ;
 
 public class TaiKhoanFragment extends Fragment {
 
     private  View mView;
-    LinearLayout tv_capnhattk,tv_thongtindonhang,tv_thongtinshop,tv_trogiup,tv_dangxuat;
+    LinearLayout tv_capnhattk,tv_thongtindonhang,tv_thongtinshop,tv_trogiup,tv_dangxuat,tv_thaydoimk;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,10 +39,18 @@ public class TaiKhoanFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        tv_thaydoimk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ChangePassActivity.class);
+                startActivity(intent);
+            }
+        });
         return  mView;
     }
     private void anhxa(){
         tv_capnhattk=mView.findViewById(R.id.tv_capnhattaikhoan);
+        tv_thaydoimk=mView.findViewById(R.id.tv_thaydoimk);
         tv_thongtindonhang=mView.findViewById(R.id.tv_thongtindonhang);
         tv_thongtinshop=mView.findViewById(R.id.tv_thongtinshop);
         tv_trogiup=mView.findViewById(R.id.tv_trogiup);

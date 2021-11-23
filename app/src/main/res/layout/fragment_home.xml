@@ -3,11 +3,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.fragment.HomeFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="Home" />
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativelayout"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/img_anhHang"
+                android:layout_width="match_parent"
+                android:layout_height="600px"
+                android:scaleType="fitXY"
+                android:layout_below="@+id/appbarlayout_main"
+                android:src="@drawable/anhnen" />
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:id="@+id/appbarlayout_main"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:id="@+id/editTextSearch"
+                            android:layout_width="0dp"
+                            android:layout_weight="9"
+                            android:layout_height="40dp"
+                            android:background="@drawable/search_bg"
+                            android:drawableLeft="@drawable/ic_search_black_24dp"
+                            android:drawablePadding="8dp"
+                            android:ems="10"
+                            android:paddingLeft="5dp"
+                            android:gravity="center"
+                            android:hint="Tìm kiếm sách trong musachonline"
+                            app:layout_constraintStart_toStartOf="parent"/>
+                        <ImageView
+                            android:id="@+id/img_gioHang"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="40dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:src="@drawable/icon_giohanghome" />
+                    </LinearLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/ln_mta"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_below="@id/relativelayout">
+            <TextView
+                android:id="@+id/tv_mota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/banchay"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Đánh Giá"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_below="@id/ln_mta">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/danhmuc"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
