@@ -23,43 +23,49 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:id="@+id/tv_username"/>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_username"
             android:layout_marginLeft="10dp"
-            android:orientation="horizontal"
             android:layout_toRightOf="@id/img_avt"
-            android:layout_below="@id/tv_username">
+            android:orientation="horizontal">
+
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
                 android:id="@+id/img_sao1"
-                android:layout_marginHorizontal="5dp"
-                android:src="@drawable/saoden"/>
-            <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/saoden" />
+
+            <ImageView
                 android:id="@+id/img_sao2"
-                android:layout_marginHorizontal="5dp"
-                android:src="@drawable/saoden"/>
-            <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/saoden" />
+
+            <ImageView
                 android:id="@+id/img_sao3"
-                android:layout_marginHorizontal="5dp"
-                android:src="@drawable/saoden"/>
-            <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/saoden" />
+
+            <ImageView
                 android:id="@+id/img_sao4"
-                android:layout_marginHorizontal="5dp"
-                android:src="@drawable/saoden"/>
-            <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:id="@+id/img_sao5"
                 android:layout_marginHorizontal="5dp"
-                android:src="@drawable/saoden"/>
+                android:src="@drawable/saoden" />
+
+            <ImageView
+                android:id="@+id/img_sao5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/saoden" />
 
         </LinearLayout>
         <LinearLayout

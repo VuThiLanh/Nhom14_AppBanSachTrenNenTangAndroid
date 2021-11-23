@@ -19,6 +19,8 @@ import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietSpactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,9 +46,17 @@ public class ChiTietSPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(ChiTietSPActivity.this, R.layout.activity_chi_tiet_spactivity);
 
+//        SanPham sanPham=new SanPham(idSp, nxb, donGia, img, maDanhMuc, moTa, saoDanhGia, slCon, tenSP, tenTacGia);
+//        reference.child("sanpham").child(idSp).setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//
+//            }
+//        });
+
         Intent intent=getIntent();
         maSP=intent.getStringExtra("maSP");
-        maSP="sp001";
+        maSP="sp011";
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
@@ -137,9 +147,11 @@ public class ChiTietSPActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SanPham sanPham=snapshot.getValue(SanPham.class);
-                binding.tvGiaGoc.setText(sanPham.getDonGia()+"");
+                binding.tvGiaGoc.setText(sanPham.getDonGia()+"đ");
                 binding.tvMota.setText(sanPham.getMoTa());
                 binding.tvTenSP.setText(sanPham.getTenSP());
+                binding.tvTacgia.setText(sanPham.getTenTacGia());
+                binding.tvNxb.setText(sanPham.getNxb());
                 Glide.with(getApplicationContext()).load(sanPham.getImg()).error(R.drawable.anhnen).into(binding.imgAnhHang);
             }
 
