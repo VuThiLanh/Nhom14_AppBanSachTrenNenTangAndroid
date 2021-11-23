@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,22 +32,16 @@ public class HomeFragment extends Fragment {
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
     View view;
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
-    }
-    public  static  HomeFragment getInstance(){
-        HomeFragment fragment = new HomeFragment();
-        return  fragment;
-    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        takeInf();
-        initRecyclerView(view);
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+        view =  inflater.inflate(R.layout.fragment_home, container, false);
+        takeInf(40);
+        return view;
+
     }
     private void initRecyclerView(View view){
         RecyclerView recycleviewTatCa = view.findViewById(R.id.rcTopBanChay);
@@ -54,20 +50,32 @@ public class HomeFragment extends Fragment {
         adapter = new SanPhamAdapter(list,getActivity());
         recycleviewTatCa.setAdapter(adapter);
     }
-    private void takeInf(){
-        for(int i=1;i<=40;i++){
-            String maSP= "sp00";
-            reference.child("sanpham").child(maSP+i).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    SanPham sanPham=snapshot.getValue(SanPham.class);
-                    list.add(sanPham);
+    private void takeInf( int n){
+        int i =0;
+        String sp = "sp00" + i+"";
+        reference.child("sanpham").child(sp).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                int i=1;
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    SanPham sanPham= dataSnapshot.getValue(SanPham.class);
+                        list.add(sanPham);
+                        i++;
+                    if(i==n){
+                        break;
+                    }
                 }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-        }
+                adapter=new SanPhamAdapter(list, getContext());
+                RecyclerView rcTopBanChay = view.findViewById(R.id.rcTopBanChay);
+                rcTopBanChay.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
