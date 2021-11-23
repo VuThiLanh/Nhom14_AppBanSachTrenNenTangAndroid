@@ -19,7 +19,9 @@ import android.widget.LinearLayout;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.CapNhatTKActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.DangNhap;
 import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 ;
 
 public class TaiKhoanFragment extends Fragment {
@@ -38,6 +40,13 @@ public class TaiKhoanFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        tv_dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), DangNhap.class));
+                FirebaseAuth.getInstance().signOut();
+            }
+        });
         return  mView;
     }
     private void anhxa(){
@@ -47,4 +56,5 @@ public class TaiKhoanFragment extends Fragment {
         tv_trogiup=mView.findViewById(R.id.tv_trogiup);
         tv_dangxuat=mView.findViewById(R.id.tv_dangxuat);
     }
+
 }

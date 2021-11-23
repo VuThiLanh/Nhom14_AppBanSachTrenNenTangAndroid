@@ -96,15 +96,8 @@ public class DangKyActivity extends AppCompatActivity {
                                             String email= user.getEmail()+"";
                                             String id = user.getUid()+"";
                                             String tenDN= binding.edTenDNDangky.getText().toString();
-                                            TaiKhoan t = new TaiKhoan("","",email,"",id,"01/01/2001","","");
-                                            databaseReference.child("taikhoan").child(id).child("avt").setValue(t.getAvt());
-                                            databaseReference.child("taikhoan").child(id).child("diachi").setValue(t.getDiachi());
-                                            databaseReference.child("taikhoan").child(id).child("email").setValue(t.getEmail());
-                                            databaseReference.child("taikhoan").child(id).child("gioitinh").setValue(t.getGioitinh());
-                                            databaseReference.child("taikhoan").child(id).child("id_User").setValue(t.getId_User());
-                                            databaseReference.child("taikhoan").child(id).child("ngaysinh").setValue(t.getNgaysinh());
-                                            databaseReference.child("taikhoan").child(id).child("sdt").setValue(t.getSdt());
-                                            databaseReference.child("taikhoan").child(id).child("username").setValue(t.getUsername());
+                                            TaiKhoan t = new TaiKhoan("","",email,"",id,"01/01/2001","",tenDN);
+                                            databaseReference.child("taikhoan").child(id).setValue(t);
                                             Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
                                             startActivity(intent);
                                         }
