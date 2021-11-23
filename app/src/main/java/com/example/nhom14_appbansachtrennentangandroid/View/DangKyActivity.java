@@ -90,8 +90,9 @@ public class DangKyActivity extends AppCompatActivity {
                                     ad.setButton("OK", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which)
                                         {
-                                            Intent intent = new Intent(DangKyActivity.this, DangNhap.class);
                                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                            firebaseDatabase=FirebaseDatabase.getInstance();
+                                            databaseReference=firebaseDatabase.getReference();
                                             String email= user.getEmail()+"";
                                             String id = user.getUid()+"";
                                             String tenDN= binding.edTenDNDangky.getText().toString();
@@ -104,6 +105,7 @@ public class DangKyActivity extends AppCompatActivity {
                                             databaseReference.child("taikhoan").child(id).child("ngaysinh").setValue(t.getNgaysinh());
                                             databaseReference.child("taikhoan").child(id).child("sdt").setValue(t.getSdt());
                                             databaseReference.child("taikhoan").child(id).child("username").setValue(t.getUsername());
+                                            Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
                                             startActivity(intent);
                                         }
                                     });

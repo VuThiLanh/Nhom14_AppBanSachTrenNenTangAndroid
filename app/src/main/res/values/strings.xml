@@ -31,8 +31,9 @@
     <string name="thongtinshop">Thông tin shop</string>
     <string name="trogiup">Trợ giúp và phản hồi</string>
     <string name="dangxuat">Đăng xuất</string>
+    <string name="thaydoimk">Thay đổi mật khẩu</string>
 
-<!--    CapNhatTaiKhoan-->
+    <!--    CapNhatTaiKhoan-->
     <string name="mkcu">Mật khẩu cũ</string>
     <string name="mkmoi">Mật khẩu mới</string>
     <string name="diachi">Địa chỉ</string>

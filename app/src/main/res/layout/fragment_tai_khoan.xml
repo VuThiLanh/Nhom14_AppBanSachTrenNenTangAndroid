@@ -50,6 +50,37 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/tv_thaydoimk"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/guide03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide02">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:src="@drawable/icthaydoimk"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="10"
+                android:text="@string/thaydoimk"
+                android:textSize="20dp"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/icon_next"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/tv_capnhattaikhoan"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -80,6 +111,7 @@
                 android:src="@drawable/icon_next"
                 android:layout_height="match_parent"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/tv_thongtindonhang"
             android:layout_width="0dp"
@@ -87,10 +119,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/guide03"
+            app:layout_constraintBottom_toBottomOf="@id/guide04"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide02">
+            app:layout_constraintTop_toTopOf="@id/guide03">
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -118,10 +150,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/guide04"
+            app:layout_constraintBottom_toBottomOf="@id/guide05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide03">
+            app:layout_constraintTop_toTopOf="@id/guide04">
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -149,10 +181,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/guide05"
+            app:layout_constraintBottom_toBottomOf="@id/guide06"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide04">
+            app:layout_constraintTop_toTopOf="@id/guide05">
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -183,7 +215,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide05">
+            app:layout_constraintTop_toTopOf="@id/guide06">
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -215,24 +247,30 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0.375" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide03"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.5" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide04"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7" />
+            app:layout_constraintGuide_percent="0.625" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide05"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
+            app:layout_constraintGuide_percent="0.75" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide06"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.875" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

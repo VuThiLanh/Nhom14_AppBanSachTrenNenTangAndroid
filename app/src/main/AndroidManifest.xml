@@ -9,15 +9,16 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/logobansach"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid">
-        <activity android:name=".View.CapNhatTKActivity"></activity>
+        android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".View.ChangePassActivity"></activity>
+        <activity android:name=".View.CapNhatTKActivity" />
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
@@ -25,13 +26,12 @@
         <activity android:name=".View.DonHangActivity" />
         <activity
             android:name=".View.MainActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".View.DangKyActivity"
             android:exported="true" />
-        <activity android:name=".View.DangNhap"
+        <activity
+            android:name=".View.DangNhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,10 +39,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.ChiTietSPActivity">
-
-        </activity>
-        <activity android:name=".View.SplashActivity"></activity>
+        <activity android:name=".View.ChiTietSPActivity"></activity>
+        <activity android:name=".View.SplashActivity" />
     </application>
 
 </manifest>
