@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void chuyenTrang(){
+        int i =0;
         Intent intent=getIntent();
         i=intent.getIntExtra("trang",0);
         binding.viewpagerMain.setCurrentItem(i);

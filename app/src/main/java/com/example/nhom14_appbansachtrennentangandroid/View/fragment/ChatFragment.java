@@ -1,5 +1,6 @@
 package com.example.nhom14_appbansachtrennentangandroid.View.fragment;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,28 +10,42 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nhom14_appbansachtrennentangandroid.Product.Message;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ChatAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.model.Chat;
+import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ChatFragment extends Fragment {
 
-    EditText etMessage;
+    EditText etNoiDung;
     Button btnSend;
-    private RecyclerView rcvMessage;
+    private RecyclerView rcvChat;
     ChatAdapter chatAdapter;
-    List<Message> messageList;
+    List<Chat> chatList;
     View view;
+    DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     public static ChatFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -45,25 +60,21 @@ public class ChatFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_chat, container, false);
-        etMessage = view.findViewById(R.id.et_message);
+        etNoiDung = view.findViewById(R.id.et_noidung);
         btnSend = view.findViewById(R.id.btn_send);
-        rcvMessage = view.findViewById(R.id.rcv_message);
+        rcvChat = view.findViewById(R.id.rcv_chat);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rcvMessage.setLayoutManager(linearLayoutManager);
+        rcvChat.setLayoutManager(linearLayoutManager);
 
-        messageList = new ArrayList<>();
-        chatAdapter = new ChatAdapter();
-        chatAdapter.setData(messageList);
-
-        rcvMessage.setAdapter(chatAdapter);
-
+        chatList = new ArrayList<>();
+        displayChat();
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendMessage();
             }
         });
-        etMessage.setOnClickListener(new View.OnClickListener() {
+        etNoiDung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkKeyboard();
@@ -72,15 +83,43 @@ public class ChatFragment extends Fragment {
         return view;
     }
     private void sendMessage(){
-        String strMessage = etMessage.getText().toString().trim();
-        if(TextUtils.isEmpty(strMessage)){
+        String strNoiDung = etNoiDung.getText().toString().trim();
+        DateFormat df = new SimpleDateFormat("dd-MM-yyy 'at' HH:mm");
+        String thoiGian = df.format(Calendar.getInstance().getTime());
+
+        if(TextUtils.isEmpty(strNoiDung)){
             return;
         }
-        messageList.add(new Message(strMessage));
+        Chat chat = new Chat(user.getUid(), "chat3", strNoiDung, thoiGian);
+        chatList.add(chat);
+        reference.child("chat").child(chat.getId_chat()).setValue(chat);
         chatAdapter.notifyDataSetChanged();
-        rcvMessage.scrollToPosition(messageList.size()-1);
+        rcvChat.scrollToPosition(chatList.size()-1);
 
-        etMessage.setText("");
+        etNoiDung.setText("");
+
+    }
+    private void displayChat(){
+        reference.child("chat").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //chatList.clear();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Chat chat= dataSnapshot.getValue(Chat.class);
+                    if(chat.getId_User().equals(user.getUid())) {
+                        chatList.add(chat);
+                    }
+                }
+                chatAdapter = new ChatAdapter();
+                chatAdapter.setData(chatList, getContext());
+                rcvChat.setAdapter(chatAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void checkKeyboard(){
@@ -93,8 +132,8 @@ public class ChatFragment extends Fragment {
 
                 int heightDiff = activityRootView.getRootView().getHeight() - r.height();
                 if(heightDiff > 0.25*activityRootView.getRootView().getHeight()){
-                    if(messageList.size() > 0){
-                        rcvMessage.scrollToPosition(messageList.size() - 1);
+                    if(chatList.size() > 0){
+                        rcvChat.scrollToPosition(chatList.size() - 1);
                         activityRootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                     }
                 }
