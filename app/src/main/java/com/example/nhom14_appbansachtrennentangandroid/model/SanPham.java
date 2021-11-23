@@ -3,24 +3,24 @@ package com.example.nhom14_appbansachtrennentangandroid.model;
 public class SanPham {
     String idSp;
     String nxb;
-    int donGia;
+    int dongia;
     String img;
     String maDanhMuc;
     String moTa;
-    float saoDangGia;
+    float saoDanhGia;
     int slCon;
     String tenSP;
     String tenTacGia;
 
 
-    public SanPham(String idSp, String nxb, int donGia, String img, String maDanhMuc, String moTa, float saoDangGia, int slCon, String tenSP, String tenTacGia) {
+    public SanPham(String idSp, String nxb, int donGia, String img, String maDanhMuc, String moTa, float saoDanhGia, int slCon, String tenSP, String tenTacGia) {
         this.idSp = idSp;
         this.nxb = nxb;
-        this.donGia = donGia;
+        this.dongia = donGia;
         this.img = img;
         this.maDanhMuc = maDanhMuc;
         this.moTa = moTa;
-        this.saoDangGia = saoDangGia;
+        this.saoDanhGia = saoDanhGia;
         this.slCon = slCon;
         this.tenSP = tenSP;
         this.tenTacGia = tenTacGia;
@@ -46,11 +46,11 @@ public class SanPham {
         this.nxb = nxb;
     }
     public int getDonGia() {
-        return donGia;
+        return dongia;
     }
 
     public void setDonGia(int donGia) {
-        this.donGia = donGia;
+        this.dongia = donGia;
     }
 
     public String getImg() {
@@ -77,12 +77,12 @@ public class SanPham {
         this.moTa = moTa;
     }
 
-    public float getSaoDangGia() {
-        return saoDangGia;
+    public float getSaoDanhGia() {
+        return saoDanhGia;
     }
 
-    public void setSaoDangGia(float saoDangGia) {
-        this.saoDangGia = saoDangGia;
+    public void setSaoDanhGia(float saoDangGia) {
+        this.saoDanhGia = saoDangGia;
     }
 
     public int getSlCon() {

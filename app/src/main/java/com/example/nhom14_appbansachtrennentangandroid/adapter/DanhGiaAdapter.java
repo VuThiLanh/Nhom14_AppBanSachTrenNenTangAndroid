@@ -103,11 +103,11 @@ public class DanhGiaAdapter extends RecyclerView.Adapter<DanhGiaAdapter.ViewHowe
         public ViewHower(@NonNull View itemView) {
             super(itemView);
             img_avt=itemView.findViewById(R.id.img_avt);
-            img_sao1=itemView.findViewById(R.id.img_sao1);
-            img_sao2=itemView.findViewById(R.id.img_sao2);
-            img_sao3=itemView.findViewById(R.id.img_sao3);
-            img_sao4=itemView.findViewById(R.id.img_sao4);
-            img_sao5=itemView.findViewById(R.id.img_sao5);
+            img_sao1=itemView.findViewById(R.id.img_saovang1);
+            img_sao2=itemView.findViewById(R.id.img_saovang2);
+            img_sao3=itemView.findViewById(R.id.img_saovang3);
+            img_sao4=itemView.findViewById(R.id.img_saovang4);
+            img_sao5=itemView.findViewById(R.id.img_saovang5);
             tv_noidung=itemView.findViewById(R.id.tv_noidung);
             tv_username=itemView.findViewById(R.id.tv_username);
             tv_ngay=itemView.findViewById(R.id.tv_ngay);
