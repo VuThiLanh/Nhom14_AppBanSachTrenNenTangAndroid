@@ -1,9 +1,8 @@
 package com.example.nhom14_appbansachtrennentangandroid.model;
 
 public class SanPham {
-
     String idSp;
-    String NgayXB;
+    String nxb;
     int donGia;
     String img;
     String maDanhMuc;
@@ -13,9 +12,10 @@ public class SanPham {
     String tenSP;
     String tenTacGia;
 
-    public SanPham(String idSp, String ngayXB, int donGia, String img, String maDanhMuc, String moTa, float saoDangGia, int slCon, String tenSP, String tenTacGia) {
+
+    public SanPham(String idSp, String nxb, int donGia, String img, String maDanhMuc, String moTa, float saoDangGia, int slCon, String tenSP, String tenTacGia) {
         this.idSp = idSp;
-        NgayXB = ngayXB;
+        this.nxb = nxb;
         this.donGia = donGia;
         this.img = img;
         this.maDanhMuc = maDanhMuc;
@@ -37,14 +37,14 @@ public class SanPham {
         this.idSp = idSp;
     }
 
-    public String getNgayXB() {
-        return NgayXB;
+
+    public String getNxb() {
+        return nxb;
     }
 
-    public void setNgayXB(String ngayXB) {
-        NgayXB = ngayXB;
+    public void setNxb(String nxb) {
+        this.nxb = nxb;
     }
-
     public int getDonGia() {
         return donGia;
     }
