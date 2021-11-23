@@ -37,7 +37,7 @@ public class SanPhamAdapter  extends  RecyclerView.Adapter<SanPhamAdapter.SanPha
     @Override
     public void onBindViewHolder(@NonNull @NotNull SanPhamAdapter.SanPhamViewHolder holder, int position) {
         holder.item_ten.setText(list.get(position).getTenSP());
-        holder.item_gia.setText(list.get(position).getDonGia()+"");
+        holder.item_gia.setText(list.get(position).getDonGia()+"đ");
         holder.item_sao.setText(list.get(position).getSaoDanhGia()+"");
         Glide.with(context).load(list.get(position).getImg()).into(holder.item_anh);
     }

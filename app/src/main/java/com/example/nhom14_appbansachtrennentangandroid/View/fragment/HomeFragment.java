@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
     }
     private void takeInf( int n){
         int i =0;
-        String sp = "sp00" + i+"";
+        String sp = "sp00" +i+"";
         reference.child("sanpham").child(sp).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -68,6 +68,8 @@ public class HomeFragment extends Fragment {
                 }
                 adapter=new SanPhamAdapter(list, getContext());
                 RecyclerView rcTopBanChay = view.findViewById(R.id.rcTopBanChay);
+                LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
+                rcTopBanChay.setLayoutManager(layoutManager);
                 rcTopBanChay.setAdapter(adapter);
             }
 
