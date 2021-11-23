@@ -17,13 +17,13 @@
 
 
         <ImageView
-            android:id="@+id/anhsach"
+            android:id="@+id/item_anhsach"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:srcCompat="@drawable/pl" />
 
         <TextView
-            android:id="@+id/tensach"
+            android:id="@+id/item_tensach"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/tv_sao"
+                android:id="@+id/item_sao"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center|left"
@@ -50,7 +50,7 @@
                 android:textColor="@color/black"
                 android:textSize="12dp" />
             <TextView
-                android:id="@+id/gia"
+                android:id="@+id/item_gia"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:gravity="center|left"
