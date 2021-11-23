@@ -65,9 +65,25 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         danhGiaList=new ArrayList<>();
-        displayDanhGia();
+        displayDanhGia(3);
 
 
+        binding.btnXemThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayDanhGia(5);
+            }
+        });
+
+
+        binding.tvXemAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(ChiTietSPActivity.this, DanhGiaActivity.class);
+                intent1.putExtra("maSp", maSP);
+                startActivity(intent1);
+            }
+        });
 
 
         sl=Integer.parseInt(binding.edSl.getText().toString());
@@ -122,7 +138,19 @@ public class ChiTietSPActivity extends AppCompatActivity {
         binding.tvXemthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                binding.tvMota.setHeight(TextView.WRAP_CONTENT);
+                LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                binding.tvMota.setLayoutParams(lp);
+                binding.tvAnbot.setVisibility(View.VISIBLE);
+                binding.tvXemthem.setVisibility(View.GONE);
+            }
+        });
+        binding.tvAnbot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+                binding.tvMota.setLayoutParams(lp);
+                binding.tvAnbot.setVisibility(View.GONE);
+                binding.tvXemthem.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -160,7 +188,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
     }
-    private void displayDanhGia(){
+    private void displayDanhGia( int n){
         reference.child("danhgia").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -172,7 +200,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                         danhGiaList.add(danhGia);
                         i++;
                     }
-                    if(i==3){
+                    if(i==n){
                         break;
                     }
                 }

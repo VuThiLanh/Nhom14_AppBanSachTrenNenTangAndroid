@@ -29,7 +29,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scaleType="centerInside"
-                        android:src="@drawable/anhnen" />
+                        android:src="@drawable/ic_baseline_hide_image_24" />
                     <com.google.android.material.appbar.AppBarLayout
                         android:layout_width="match_parent"
                         android:id="@+id/appbarlayout_main"
@@ -191,6 +191,17 @@
                         android:textSize="18sp"
                         android:id="@+id/tv_xemthem"
                         android:text="@string/xemthem"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/red"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:visibility="gone"
+                        android:id="@+id/tv_anbot"
+                        android:text="@string/anbot"/>
                 </LinearLayout>
 
                 <LinearLayout
