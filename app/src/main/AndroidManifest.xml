@@ -17,34 +17,49 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
+        //danh gia
         <activity
             android:name=".View.DanhGiaActivity"
             android:exported="true"
             android:parentActivityName=".View.ChiTietSPActivity"/>
+        //thanh toan
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
+        //gio hang
         <activity android:name=".View.GioHangActivity" />
+        //don hang
         <activity android:name=".View.DonHangActivity" />
+        //main
         <activity
             android:name=".View.MainActivity"
             android:exported="true"></activity>
+        //dang ky
         <activity
             android:name=".View.DangKyActivity"
             android:exported="true" />
+        //chi tiet
         <activity
             android:name=".View.ChiTietSPActivity"
-            android:exported="true">
+            android:exported="true"> </activity>
+        //slash
+        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SplashActivity">
-
-        </activity>
+        //dag nhap
         <activity android:name=".View.DangNhap" />
+        //change pass
+        <activity
+            android:name=".View.ChangePassActivity"
+            android:exported="true"/>
+        //cap nhat
+        <activity
+            android:name=".View.CapNhatTKActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
