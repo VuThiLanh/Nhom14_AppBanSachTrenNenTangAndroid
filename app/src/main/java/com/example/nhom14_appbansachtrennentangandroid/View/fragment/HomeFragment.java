@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.model.Anh;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,7 @@ public class HomeFragment extends Fragment {
 
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
-
+    private ArrayList<Anh> listAnh;
     SanPhamAdapter sanPhamAdapter,sanPhamBanChayAdapter ;
     RecyclerView rcTopBanChay,rcGoiY;
     View view;
@@ -101,16 +102,34 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     SanPham sanPham = dataSnapshot.getValue(SanPham.class);
-                    if(sanPham.getSaoDanhGia()>4){
+                    if(sanPham.getSaoDanhGia()>4.0){
                         listSanPhamBanChay.add(sanPham);
                     }
                 }
-                sanPhamAdapter.notifyDataSetChanged();
+                sanPhamBanChayAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getActivity(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getListAnh( ){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("viewanh");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                   Anh anh = dataSnapshot.getValue(Anh.class);
+                        listAnh.add(anh);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(),"Get Link Fail!",Toast.LENGTH_SHORT).show();
             }
         });
     }
