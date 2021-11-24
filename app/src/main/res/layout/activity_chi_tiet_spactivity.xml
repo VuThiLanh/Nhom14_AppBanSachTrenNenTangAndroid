@@ -23,13 +23,6 @@
                     android:id="@+id/relativelayout"
                     android:layout_marginBottom="10dp"
                     android:background="@color/white">
-
-                    <ImageView
-                        android:id="@+id/img_anhHang"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_baseline_hide_image_24" />
                     <com.google.android.material.appbar.AppBarLayout
                         android:layout_width="match_parent"
                         android:id="@+id/appbarlayout_main"
@@ -63,6 +56,12 @@
                             </RelativeLayout>
                         </androidx.appcompat.widget.Toolbar>
                     </com.google.android.material.appbar.AppBarLayout>
+                    <ImageView
+                        android:id="@+id/img_anhHang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_baseline_hide_image_24" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -97,11 +96,11 @@
                             <Button
                                 android:layout_width="100px"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cong"
+                                android:text="@string/tru"
                                 android:textSize="30sp"
                                 android:textColor="@color/white"
                                 android:background="@color/gray"
-                                android:id="@+id/btn_cong"/>
+                                android:id="@+id/btn_tru"/>
                             <EditText
                                 android:background="@drawable/border"
                                 android:layout_width="100dp"
@@ -114,11 +113,11 @@
                             <Button
                                 android:layout_width="100px"
                                 android:layout_height="wrap_content"
-                                android:text="@string/tru"
+                                android:text="@string/cong"
                                 android:textSize="30sp"
                                 android:textColor="@color/white"
                                 android:background="@color/gray"
-                                android:id="@+id/btn_tru"/>
+                                android:id="@+id/btn_cong"/>
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -254,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/rec_danh_gia"
                         android:background="@color/red"
-                        android:text="@string/xemthem"
+                        android:text="@string/xemAll"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"/>

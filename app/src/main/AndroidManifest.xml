@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".View.DanhGiaActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".View.ChiTietSPActivity"/>
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
@@ -34,14 +35,14 @@
         <activity
             android:name=".View.ChiTietSPActivity"
             android:exported="true">
-
-        </activity>
-        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".View.SplashActivity">
+
         </activity>
         <activity android:name=".View.DangNhap" />
     </application>
