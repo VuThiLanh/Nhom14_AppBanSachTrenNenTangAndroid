@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <RelativeLayout
-        android:layout_margin="10dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -20,13 +20,15 @@
             android:layout_marginBottom="10dp"
             android:background="@color/white">
 
-            <ImageView
-                android:id="@+id/img_anhSlide"
+            <ViewFlipper
+                android:id="@+id/anhquangcao"
                 android:layout_width="match_parent"
                 android:layout_height="600px"
-                android:scaleType="fitXY"
                 android:layout_below="@+id/appbarlayout_main"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/anhnen" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/appbarlayout_main"

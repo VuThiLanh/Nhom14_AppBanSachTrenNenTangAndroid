@@ -4,8 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -34,9 +38,9 @@ public class HomeFragment extends Fragment {
 
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
-    private ArrayList<Anh> listAnh;
     SanPhamAdapter sanPhamAdapter,sanPhamBanChayAdapter ;
     RecyclerView rcTopBanChay,rcGoiY;
+    ViewFlipper anhquangcao;
     View view;
 
     @Nullable
@@ -73,6 +77,11 @@ public class HomeFragment extends Fragment {
 
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
         rcGoiY.setAdapter(sanPhamAdapter);
+
+        int img[] = {R.drawable.poster1, R.drawable.poster2, R.drawable.poster3, R.drawable.poster4,R.drawable.poster5};
+        for (int i = 0; i < img.length; i++) {
+            flipperImage(img[i]);
+        }
     }
 
     private void getSanPham( ){
@@ -115,23 +124,17 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-    private void getListAnh( ){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("viewanh");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                   Anh anh = dataSnapshot.getValue(Anh.class);
-                        listAnh.add(anh);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(),"Get Link Fail!",Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void flipperImage(int image) {
+        anhquangcao=view.findViewById(R.id.anhquangcao);
+        ImageView imageView = new ImageView(getContext());
+        imageView.setBackgroundResource(image);
+        anhquangcao.addView(imageView);
+        anhquangcao.setFlipInterval(3000);
+        anhquangcao.setAutoStart(true);
+        Animation animation_slide_in= AnimationUtils.loadAnimation(getContext().getApplicationContext(),android.R.anim.slide_in_left);
+        Animation animation_slide_out= AnimationUtils.loadAnimation(getContext().getApplicationContext(),android.R.anim.slide_out_right);
+        anhquangcao.setInAnimation(animation_slide_in);
+        anhquangcao.setOutAnimation(animation_slide_out);
     }
 
 
