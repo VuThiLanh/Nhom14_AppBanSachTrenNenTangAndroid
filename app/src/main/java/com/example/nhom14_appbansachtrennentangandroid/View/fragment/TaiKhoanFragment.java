@@ -27,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class TaiKhoanFragment extends Fragment {
 
-    private  View mView;
+    View mView;
     LinearLayout tv_capnhattk,tv_thongtindonhang,tv_thongtinshop,tv_trogiup,tv_dangxuat,tv_thaydoimk;
     @Nullable
     @Override
@@ -37,22 +37,25 @@ public class TaiKhoanFragment extends Fragment {
         tv_capnhattk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CapNhatTKActivity.class);
+                Intent intent = new Intent(getActivity(), CapNhatTKActivity.class);
                 startActivity(intent);
             }
         });
         tv_thaydoimk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ChangePassActivity.class);
+                Intent intent = new Intent(getActivity(), ChangePassActivity.class);
                 startActivity(intent);
             }
         });
         tv_dangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), DangNhap.class));
+//                startActivity(new Intent(getActivity(), DangNhap.class));
+//                FirebaseAuth.getInstance().signOut();
                 FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), DangNhap.class);
+                startActivity(intent);
             }
         });
         return  mView;
