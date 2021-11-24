@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,9 +31,11 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private ArrayList<SanPham> list= new ArrayList<>();
-    SanPhamAdapter adapter ;
-    DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+    private ArrayList<SanPham> listSanPham;
+    private ArrayList<SanPham> listSanPhamBanChay;
+
+    SanPhamAdapter sanPhamAdapter,sanPhamBanChayAdapter ;
+    RecyclerView rcTopBanChay,rcGoiY;
     View view;
 
     @Nullable
@@ -39,46 +45,76 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         view =  inflater.inflate(R.layout.fragment_home, container, false);
-        takeInf(40);
+        init();
+        getSanPham();
+        getSanPhamBanChay();
         return view;
 
     }
-    private void initRecyclerView(View view){
-        RecyclerView recycleviewTatCa = view.findViewById(R.id.rcTopBanChay);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-        recycleviewTatCa.setLayoutManager(layoutManager);
-        adapter = new SanPhamAdapter(list,getActivity());
-        recycleviewTatCa.setAdapter(adapter);
+    private void init(){
+        rcTopBanChay = view.findViewById(R.id.rcTopBanChay);
+        rcGoiY= view.findViewById(R.id.rcGoiY);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+        rcTopBanChay.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL );
+        rcTopBanChay.addItemDecoration(dividerItemDecoration);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+        rcGoiY.setLayoutManager(gridLayoutManager);
+
+        listSanPham = new ArrayList<>();
+        listSanPhamBanChay= new ArrayList<>();
+
+        sanPhamAdapter = new SanPhamAdapter(listSanPham,getActivity());
+        sanPhamBanChayAdapter = new SanPhamAdapter(listSanPhamBanChay,getActivity());
+
+        rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
+        rcGoiY.setAdapter(sanPhamAdapter);
     }
-    private void takeInf( int n){
-        int i =0;
-        String sp = "sp00" +i+"";
-        reference.child("sanpham").child(sp).addValueEventListener(new ValueEventListener() {
+
+    private void getSanPham( ){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("sanpham");
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                int i=1;
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    SanPham sanPham= dataSnapshot.getValue(SanPham.class);
-                        list.add(sanPham);
-                        i++;
-                    if(i==n){
-                        break;
-                    }
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    SanPham sanPham = dataSnapshot.getValue(SanPham.class);
+                    listSanPham.add(sanPham);
                 }
-                adapter=new SanPhamAdapter(list, getContext());
-                RecyclerView rcTopBanChay = view.findViewById(R.id.rcTopBanChay);
-                LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-                rcTopBanChay.setLayoutManager(layoutManager);
-                rcTopBanChay.setAdapter(adapter);
+                sanPhamAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getActivity(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
             }
         });
     }
+    private void getSanPhamBanChay( ){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("sanpham");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    SanPham sanPham = dataSnapshot.getValue(SanPham.class);
+                    if(sanPham.getSaoDanhGia()>4){
+                        listSanPhamBanChay.add(sanPham);
+                    }
+                }
+                sanPhamAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
 }

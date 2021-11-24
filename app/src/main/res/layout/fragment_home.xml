@@ -293,6 +293,7 @@
                 android:textSize="20sp" />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
+                android:id="@+id/rcGoiY"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
