@@ -42,7 +42,7 @@
     <string name="ngaysinh">Ngày sinh</string>
     <string name="gioitinh">Giới tính</string>
 
-<!--    Home-->
+    <!--    Home-->
     <string name="danhmuc">Danh mục sách</string>
     <string name="banchay">Top bán chạy</string>
     <string name="goiy">Gợi ý</string>
