@@ -17,30 +17,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.ChangePassActivity"></activity>
-        <activity android:name=".View.CapNhatTKActivity" />
+        <activity
+            android:name=".View.DanhGiaActivity"
+            android:exported="true" />
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
         <activity android:name=".View.GioHangActivity" />
         <activity android:name=".View.DonHangActivity" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".View.SplashActivity"
             android:exported="true"></activity>
         <activity
             android:name=".View.DangKyActivity"
             android:exported="true" />
         <activity
-            android:name=".View.DangNhap"
+            android:name=".View.ChiTietSPActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".View.ChangePassActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".View.CapNhatTKActivity"
             android:exported="true">
+        </activity>
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.ChiTietSPActivity"></activity>
-        <activity android:name=".View.SplashActivity" />
+        <activity android:name=".View.DangNhap" />
     </application>
 
 </manifest>

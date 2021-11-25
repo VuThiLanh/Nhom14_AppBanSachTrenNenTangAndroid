@@ -19,13 +19,16 @@ import android.widget.LinearLayout;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.CapNhatTKActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChangePassActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.DangNhap;
 import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 ;
 
 public class TaiKhoanFragment extends Fragment {
 
-    private  View mView;
-    LinearLayout tv_capnhattk,tv_thongtindonhang,tv_thongtinshop,tv_trogiup,tv_dangxuat;
+    View mView;
+    LinearLayout tv_capnhattk,tv_thongtindonhang,tv_thongtinshop,tv_trogiup,tv_dangxuat,tv_thaydoimk;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,7 +37,24 @@ public class TaiKhoanFragment extends Fragment {
         tv_capnhattk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CapNhatTKActivity.class);
+                Intent intent = new Intent(getActivity(), CapNhatTKActivity.class);
+                startActivity(intent);
+            }
+        });
+        tv_thaydoimk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangePassActivity.class);
+                startActivity(intent);
+            }
+        });
+        tv_dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), DangNhap.class));
+//                FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), DangNhap.class);
                 startActivity(intent);
             }
         });
@@ -42,6 +62,7 @@ public class TaiKhoanFragment extends Fragment {
     }
     private void anhxa(){
         tv_capnhattk=mView.findViewById(R.id.tv_capnhattaikhoan);
+        tv_thaydoimk=mView.findViewById(R.id.tv_thaydoimk);
         tv_thongtindonhang=mView.findViewById(R.id.tv_thongtindonhang);
         tv_thongtinshop=mView.findViewById(R.id.tv_thongtinshop);
         tv_trogiup=mView.findViewById(R.id.tv_trogiup);

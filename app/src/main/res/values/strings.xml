@@ -18,6 +18,7 @@
     <string name="danh">Đánh giá sản phẩm</string>
     <string name="xemAll">Xem tất cả &gt;</string>
     <string name="xemthem">Xem Thêm</string>
+    <string name="anbot">Ẩn bớt</string>
     <string name="sl">1</string>
     <string name="cong">+</string>
     <string name="tru">-</string>
@@ -40,4 +41,17 @@
     <string name="sdt">Số điện thoại</string>
     <string name="ngaysinh">Ngày sinh</string>
     <string name="gioitinh">Giới tính</string>
+
+<!--    Home-->
+    <string name="danhmuc">Danh mục sách</string>
+    <string name="banchay">Top bán chạy</string>
+    <string name="goiy">Gợi ý</string>
+    <string name="chinhtri">Chính trị-Pháp luật</string>
+    <string name="khcnkt">Khoa học-Công nghệ-Kinh tế</string>
+    <string name="vhnt">Văn học-Nghệ thuật</string>
+    <string name="vhxhls">Văn hóa-Xã hội-Lịch sử</string>
+    <string name="giaotrinh">Giáo trình</string>
+    <string name="ttt">Truyện-Tiểu thuyết</string>
+    <string name="tamly">Tâm lý-Tâm linh-Tôn giáo</string>
+    <string name="thieunhi">Thiếu nhi</string>
 </resources>

@@ -19,6 +19,8 @@ import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietSpactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,9 +46,17 @@ public class ChiTietSPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(ChiTietSPActivity.this, R.layout.activity_chi_tiet_spactivity);
 
+//        SanPham sanPham=new SanPham(idSp, nxb, donGia, img, maDanhMuc, moTa, saoDanhGia, slCon, tenSP, tenTacGia);
+//        reference.child("sanpham").child(idSp).setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//
+//            }
+//        });
+
         Intent intent=getIntent();
         maSP=intent.getStringExtra("maSP");
-        maSP="sp001";
+        maSP="sp011";
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
@@ -55,9 +65,25 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         danhGiaList=new ArrayList<>();
-        displayDanhGia();
+        displayDanhGia(3);
 
 
+        binding.btnXemThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayDanhGia(5);
+            }
+        });
+
+
+        binding.tvXemAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(ChiTietSPActivity.this, DanhGiaActivity.class);
+                intent1.putExtra("maSp", maSP);
+                startActivity(intent1);
+            }
+        });
 
 
         sl=Integer.parseInt(binding.edSl.getText().toString());
@@ -112,7 +138,19 @@ public class ChiTietSPActivity extends AppCompatActivity {
         binding.tvXemthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                binding.tvMota.setHeight(TextView.WRAP_CONTENT);
+                LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                binding.tvMota.setLayoutParams(lp);
+                binding.tvAnbot.setVisibility(View.VISIBLE);
+                binding.tvXemthem.setVisibility(View.GONE);
+            }
+        });
+        binding.tvAnbot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+                binding.tvMota.setLayoutParams(lp);
+                binding.tvAnbot.setVisibility(View.GONE);
+                binding.tvXemthem.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -137,9 +175,11 @@ public class ChiTietSPActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SanPham sanPham=snapshot.getValue(SanPham.class);
-                binding.tvGiaGoc.setText(sanPham.getDonGia()+"");
+                binding.tvGiaGoc.setText(sanPham.getDonGia()+"đ");
                 binding.tvMota.setText(sanPham.getMoTa());
                 binding.tvTenSP.setText(sanPham.getTenSP());
+                binding.tvTacgia.setText(sanPham.getTenTacGia());
+                binding.tvNxb.setText(sanPham.getNxb());
                 Glide.with(getApplicationContext()).load(sanPham.getImg()).error(R.drawable.anhnen).into(binding.imgAnhHang);
             }
 
@@ -148,7 +188,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
     }
-    private void displayDanhGia(){
+    private void displayDanhGia( int n){
         reference.child("danhgia").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -160,7 +200,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                         danhGiaList.add(danhGia);
                         i++;
                     }
-                    if(i==3){
+                    if(i==n){
                         break;
                     }
                 }
