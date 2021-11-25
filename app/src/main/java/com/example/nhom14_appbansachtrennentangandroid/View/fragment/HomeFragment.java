@@ -1,5 +1,6 @@
 package com.example.nhom14_appbansachtrennentangandroid.View.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.ViewFlipper;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,10 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.Anh;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
+import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,7 +47,7 @@ public class HomeFragment extends Fragment {
     RecyclerView rcTopBanChay,rcGoiY;
     ViewFlipper anhquangcao;
     View view;
-
+    ImageView img_GioHang;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,12 +58,14 @@ public class HomeFragment extends Fragment {
         init();
         getSanPham();
         getSanPhamBanChay();
+        ChuyenDenGioHang();
         return view;
 
     }
     private void init(){
         rcTopBanChay = view.findViewById(R.id.rcTopBanChay);
         rcGoiY= view.findViewById(R.id.rcGoiY);
+        img_GioHang= view.findViewById(R.id.img_gioHang);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
@@ -136,7 +143,15 @@ public class HomeFragment extends Fragment {
         anhquangcao.setInAnimation(animation_slide_in);
         anhquangcao.setOutAnimation(animation_slide_out);
     }
-
+    private void ChuyenDenGioHang(){
+        img_GioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GioHangActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 
 }
