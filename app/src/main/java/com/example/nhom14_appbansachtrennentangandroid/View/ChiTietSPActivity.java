@@ -13,14 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietSpactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
-import com.example.nhom14_appbansachtrennentangandroid.model.DongGioHang;
+import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -60,7 +59,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
-        maSP = "sp011";
+        maSP = "sp010";
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
@@ -100,15 +99,15 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
 
-        List<DongGioHang> dongGioHangList = new ArrayList<>();
-        reference.child("donggiohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        List<GioHang> gioHangList = new ArrayList<>();
+        reference.child("giohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                dongGioHangList.clear();
+                gioHangList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    DongGioHang dongGioHang = dataSnapshot.getValue(DongGioHang.class);
-                    if (dongGioHang.getId().equals(maSP)) {
-                        dongGioHangList.add(dongGioHang);
+                    GioHang gioHang = dataSnapshot.getValue(GioHang.class);
+                    if (gioHang.getId().equals(maSP)) {
+                        gioHangList.add(gioHang);
                         break;
                     }
                 }
@@ -125,9 +124,9 @@ public class ChiTietSPActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (sl > 0) {
-                    if (dongGioHangList.size() > 0) {
-                        DongGioHang dongGioHang1 = new DongGioHang(sl + dongGioHangList.get(0).getSl(), maSP);
-                        reference.child("donggiohang").child(user.getUid()).child(dongGioHang1.getId()).setValue(dongGioHang1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    if (gioHangList.size() > 0) {
+                        GioHang gioHang1 = new GioHang(sl + gioHangList.get(0).getSl(), maSP);
+                        reference.child("giohang").child(user.getUid()).child(gioHang1.getId()).setValue(gioHang1).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
@@ -143,8 +142,8 @@ public class ChiTietSPActivity extends AppCompatActivity {
                             }
                         });
                     } else {
-                        DongGioHang dongGioHang = new DongGioHang(sl, maSP);
-                        reference.child("donggiohang").child(user.getUid()).child(dongGioHang.getId()).setValue(dongGioHang);
+                        GioHang gioHang = new GioHang(sl, maSP);
+                        reference.child("giohang").child(user.getUid()).child(gioHang.getId()).setValue(gioHang);
                     }
                 } else {
                     AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
@@ -216,7 +215,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
         binding.tvAnbot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 300);
                 binding.tvMota.setLayoutParams(lp);
                 binding.tvAnbot.setVisibility(View.GONE);
                 binding.tvXemthem.setVisibility(View.VISIBLE);

@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangKyBinding;
-import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangNhapBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -101,10 +100,6 @@ public class DangKyActivity extends AppCompatActivity {
                                             databaseReference.child("taikhoan").child(id).setValue(t).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                    if(task.isSuccessful()){
-                                                        GioHang gioHang=new GioHang(id, 0);
-                                                        databaseReference.child("giohang").child(id).setValue(gioHang);
-                                                    }
                                                 }
                                             });
                                             Intent intent = new Intent(DangKyActivity.this, MainActivity.class);

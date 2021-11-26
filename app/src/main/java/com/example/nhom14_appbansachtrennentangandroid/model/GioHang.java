@@ -1,15 +1,23 @@
 package com.example.nhom14_appbansachtrennentangandroid.model;
 
 public class GioHang {
+    int sl;
     String id;
-    int tong;
 
-    public GioHang(String id, int tong) {
+    public GioHang(int sl, String id) {
+        this.sl = sl;
         this.id = id;
-        this.tong = tong;
     }
 
     public GioHang() {
+    }
+
+    public int getSl() {
+        return sl;
+    }
+
+    public void setSl(int sl) {
+        this.sl = sl;
     }
 
     public String getId() {
@@ -18,13 +26,5 @@ public class GioHang {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public int getTong() {
-        return tong;
-    }
-
-    public void setTong(int tong) {
-        this.tong = tong;
     }
 }
