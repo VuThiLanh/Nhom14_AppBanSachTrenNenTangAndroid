@@ -168,9 +168,7 @@ public class HomeFragment extends Fragment {
         ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentMain, ChinhTriPhapLuatFragment.newInstance()).commit();
+                
             }
         });
         ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {
