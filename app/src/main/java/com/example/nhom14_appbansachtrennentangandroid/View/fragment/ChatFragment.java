@@ -43,6 +43,7 @@ public class ChatFragment extends Fragment {
     private RecyclerView rcvChat;
     ChatAdapter chatAdapter;
     List<Chat> chatList;
+    String id_chat = "";
     View view;
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
@@ -90,7 +91,8 @@ public class ChatFragment extends Fragment {
         if(TextUtils.isEmpty(strNoiDung)){
             return;
         }
-        Chat chat = new Chat(user.getUid(), "chat3", strNoiDung, thoiGian);
+        id_chat = reference.child("chat").push().getKey();
+        Chat chat = new Chat(user.getUid(), id_chat, strNoiDung, thoiGian);
         chatList.add(chat);
         reference.child("chat").child(chat.getId_chat()).setValue(chat);
         chatAdapter.notifyDataSetChanged();
@@ -103,7 +105,7 @@ public class ChatFragment extends Fragment {
         reference.child("chat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //chatList.clear();
+                chatList.clear();
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Chat chat= dataSnapshot.getValue(Chat.class);
                     if(chat.getId_User().equals(user.getUid())) {
@@ -117,7 +119,7 @@ public class ChatFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getContext(),"Get Message Fail!",Toast.LENGTH_SHORT).show();
             }
         });
     }
