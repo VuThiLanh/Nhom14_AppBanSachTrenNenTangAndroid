@@ -48,6 +48,7 @@ public class GioHangActivity extends AppCompatActivity {
                 //Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
                 //startActivity(intent);
                 //Toast.makeText(getApplication(),MainActivity.listSanPham.size()+"",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplication(),MainActivity.listGioHang.get(1).getTenSP()+"",Toast.LENGTH_SHORT).show();
                 //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 //db.child("giohang").child(user.getUid()).child("sp001").child("img").setValue(MainActivity.listSanPham.get(0).getImg());
             }

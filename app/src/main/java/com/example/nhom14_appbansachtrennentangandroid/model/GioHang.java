@@ -4,24 +4,24 @@ public class GioHang {
     String idsp;
     String tenSP;
     String img;
-    int dongia;
+    int donGia;
     int soluong;
 
-    public GioHang(String idsp, String tenSP, String img, int dongia, int soluong) {
+    public GioHang(String idsp, String tenSP, String img, int donGia, int soluong) {
         this.idsp = idsp;
         this.tenSP = tenSP;
         this.img = img;
-        this.dongia = dongia;
+        this.donGia = donGia;
         this.soluong = soluong;
     }
     public GioHang() {
     }
     public int getDongia() {
-        return dongia;
+        return donGia;
     }
 
-    public void setDongia(int dongia) {
-        this.dongia = dongia;
+    public void setDongia(int donGia) {
+        this.donGia = donGia;
     }
 
     public String getImg() {
