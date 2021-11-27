@@ -80,8 +80,6 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL );
-        rcTopBanChay.addItemDecoration(dividerItemDecoration);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);

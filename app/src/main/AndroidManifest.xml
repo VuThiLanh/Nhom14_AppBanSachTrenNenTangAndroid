@@ -43,7 +43,7 @@
             android:name=".View.ChiTietSPActivity"
             android:exported="true"> </activity>
         //slash
-        <activity android:name=".View.DangNhap">
+        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +51,7 @@
             </intent-filter>
         </activity>
         //dag nhap
-        <activity android:name=".View.SplashActivity" />
+        <activity android:name=".View.DangNhap" />
         //change pass
         <activity
             android:name=".View.ChangePassActivity"
