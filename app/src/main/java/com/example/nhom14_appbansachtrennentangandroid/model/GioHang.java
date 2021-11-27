@@ -1,30 +1,58 @@
 package com.example.nhom14_appbansachtrennentangandroid.model;
 
 public class GioHang {
-    String id;
-    int tong;
+    String idsp;
+    String tenSP;
+    String img;
+    int dongia;
+    int soluong;
 
-    public GioHang(String id, int tong) {
-        this.id = id;
-        this.tong = tong;
+    public GioHang(String idsp, String tenSP, String img, int dongia, int soluong) {
+        this.idsp = idsp;
+        this.tenSP = tenSP;
+        this.img = img;
+        this.dongia = dongia;
+        this.soluong = soluong;
     }
-
     public GioHang() {
     }
-
-    public String getId() {
-        return id;
+    public int getDongia() {
+        return dongia;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDongia(int dongia) {
+        this.dongia = dongia;
     }
 
-    public int getTong() {
-        return tong;
+    public String getImg() {
+        return img;
     }
 
-    public void setTong(int tong) {
-        this.tong = tong;
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getTenSP() {
+        return tenSP;
+    }
+
+    public void setTenSP(String tenSP) {
+        this.tenSP = tenSP;
+    }
+
+    public String getIdsp() {
+        return idsp;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setIdsp(String idsp) {
+        this.idsp = idsp;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 }

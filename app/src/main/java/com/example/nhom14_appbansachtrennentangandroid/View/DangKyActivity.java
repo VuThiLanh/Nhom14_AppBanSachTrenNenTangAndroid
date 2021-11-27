@@ -102,8 +102,7 @@ public class DangKyActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
-                                                        GioHang gioHang=new GioHang(id, 0);
-                                                        databaseReference.child("giohang").child(id).setValue(gioHang);
+                                                        databaseReference.child("giohang").child(id).setValue("sanpham");
                                                     }
                                                 }
                                             });
