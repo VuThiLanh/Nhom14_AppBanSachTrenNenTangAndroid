@@ -25,7 +25,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChinhTriPhapLuatActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.GiaoTrinhActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.KhoaHocCongNgheKinhTeActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TamLyTamLinhTonGiaoActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.ThieuNhiActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TruyenTieuThuyetActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.VanHoaXaHoiLichSuActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.VanHocNgheThuatActivity;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.Anh;
@@ -168,49 +176,57 @@ public class HomeFragment extends Fragment {
         ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(getContext(), ChinhTriPhapLuatActivity.class);
+                startActivity(intent);
             }
         });
         ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), KhoaHocCongNgheKinhTeActivity.class);
+                startActivity(intent);
             }
         });
         ll_VanHoc_NT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), VanHocNgheThuatActivity.class);
+                startActivity(intent);
             }
         });
         ll_VanHoa_XH_LS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), VanHoaXaHoiLichSuActivity.class);
+                startActivity(intent);
             }
         });
         ll_GiaoTrinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), GiaoTrinhActivity.class);
+                startActivity(intent);
             }
         });
         ll_Truyen_TieuThuyet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), TruyenTieuThuyetActivity.class);
+                startActivity(intent);
             }
         });
         ll_TamLy_TamLinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), TamLyTamLinhTonGiaoActivity.class);
+                startActivity(intent);
             }
         });
         ll_ThieuNhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), ThieuNhiActivity.class);
+                startActivity(intent);
             }
         });
     }
