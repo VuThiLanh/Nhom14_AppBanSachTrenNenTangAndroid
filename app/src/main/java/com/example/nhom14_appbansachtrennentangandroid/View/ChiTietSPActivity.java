@@ -53,14 +53,14 @@ public class ChiTietSPActivity extends AppCompatActivity {
 //        SanPham sanPham=new SanPham(idSp, nxb, donGia, img, maDanhMuc, moTa, saoDanhGia, slCon, tenSP, tenTacGia);
 //        reference.child("sanpham").child(idSp).setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
 //            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
+//            public void o
+//            nComplete(@NonNull Task<Void> task) {
 //
 //            }
 //        });
 
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
-        maSP = "sp011";
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");

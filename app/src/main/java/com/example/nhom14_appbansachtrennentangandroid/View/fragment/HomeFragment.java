@@ -40,7 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickListener{
 
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
@@ -90,8 +90,8 @@ public class HomeFragment extends Fragment {
         listSanPham = new ArrayList<>();
         listSanPhamBanChay= new ArrayList<>();
 
-        sanPhamAdapter = new SanPhamAdapter(listSanPham,getActivity());
-        sanPhamBanChayAdapter = new SanPhamAdapter(listSanPhamBanChay,getActivity());
+        sanPhamAdapter = new SanPhamAdapter(listSanPham,this,getActivity());
+        sanPhamBanChayAdapter = new SanPhamAdapter(listSanPhamBanChay,this,getActivity());
 
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
         rcGoiY.setAdapter(sanPhamAdapter);
@@ -168,9 +168,6 @@ public class HomeFragment extends Fragment {
         ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentMain, ChinhTriPhapLuatFragment.newInstance()).commit();
             }
         });
         ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {
@@ -215,5 +212,12 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onItemClick(SanPham sanPham) {
+        Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
+        intent.putExtra("maSP", sanPham.getIdSp()+"");
+        startActivity(intent);
     }
 }

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.fragment.HomeFragment">
     <FrameLayout
+        android:background="@color/maunen"
         android:id="@+id/fragmentMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,8 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relativelayout"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white">
+            android:layout_marginBottom="10dp">
 
             <ViewFlipper
                 android:id="@+id/anhquangcao"
@@ -28,6 +28,7 @@
                 android:layout_below="@+id/appbarlayout_main"
                 android:layout_marginTop="2dp"
                 android:scaleType="fitXY"
+                android:background="@color/purple_200"
                 android:src="@drawable/anhnen" />
 
             <LinearLayout
@@ -39,6 +40,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:gravity="center"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_height="match_parent">
                         <TextView
@@ -70,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:backgroundTint="@color/purple_200"
             android:id="@+id/ln_topbanchay"
             android:orientation="vertical"
             android:background="@color/white"
@@ -79,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/banchay"
-                android:textColor="@color/black"
+                android:textColor="@color/mauchu"
                 android:textStyle="bold"
                 android:textSize="20sp" />
             <androidx.recyclerview.widget.RecyclerView
@@ -87,11 +90,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
         </LinearLayout>
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:id="@+id/ln_danhmuc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,13 +102,14 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@color/purple_200"
             android:layout_below="@id/ln_topbanchay">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/danhmuc"
-                android:textColor="@color/black"
+                android:textColor="@color/mauchu"
                 android:textStyle="bold"
                 android:textSize="20sp" />
             <LinearLayout
@@ -287,24 +291,28 @@
 
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/ln_goiy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:id="@+id/ln_goiy"
+            android:layout_below="@id/ln_danhmuc"
+            android:layout_marginTop="12dp"
+            android:background="@color/purple_200"
             android:orientation="vertical"
-            android:background="@color/white"
-            android:layout_below="@id/ln_danhmuc">
+            android:padding="10dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/goiy"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:textColor="@color/mauchu"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
                 android:id="@+id/rcGoiY"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"

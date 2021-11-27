@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="@color/maunen"
         android:layout_height="match_parent">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -13,8 +14,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbar_login"
                 app:titleTextColor="@color/white"
-                app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
-                android:background="@color/maunen"/>
+                android:background="@color/toolbar"/>
         </com.google.android.material.appbar.AppBarLayout>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -33,6 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/log_in"
+                    android:textColor="@color/mauchu"
                     android:gravity="center"
                     android:layout_marginTop="20dp"
                     android:textSize="35sp"
