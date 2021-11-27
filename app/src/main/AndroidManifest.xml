@@ -17,32 +17,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
-        //danh gia
+        <activity
+            android:name=".View.ThieuNhiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.TamLyTamLinhTonGiaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.TruyenTieuThuyetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.GiaoTrinhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.VanHoaXaHoiLichSuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.VanHocNgheThuatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.KhoaHocCongNgheKinhTeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.ChinhTriPhapLuatActivity"
+            android:exported="false" />
         <activity
             android:name=".View.DanhGiaActivity"
             android:exported="true"
-            android:parentActivityName=".View.ChiTietSPActivity"/>
-        //thanh toan
+            android:parentActivityName=".View.ChiTietSPActivity" />
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
-        //gio hang
         <activity android:name=".View.GioHangActivity" />
-        //don hang
         <activity android:name=".View.DonHangActivity" />
-        //main
         <activity
             android:name=".View.MainActivity"
-            android:exported="true"></activity>
-        //dang ky
+            android:exported="true" />
         <activity
             android:name=".View.DangKyActivity"
             android:exported="true" />
-        //chi tiet
         <activity
             android:name=".View.ChiTietSPActivity"
-            android:exported="true"> </activity>
-        //slash
+            android:exported="true" />
         <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,16 +66,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        //dag nhap
         <activity android:name=".View.DangNhap" />
-        //change pass
         <activity
             android:name=".View.ChangePassActivity"
-            android:exported="true"/>
-        //cap nhat
+            android:exported="true" />
         <activity
             android:name=".View.CapNhatTKActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
