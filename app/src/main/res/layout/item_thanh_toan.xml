@@ -38,13 +38,15 @@
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:textColor="@color/black"/>
+
                 <TextView
-                    android:layout_marginTop="5dp"
                     android:id="@+id/tvPrice_DH"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:textColor="#D61010"/>
+                    android:layout_marginTop="5dp"
+                    android:textColor="#D61010"
+                    android:textSize="16dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
