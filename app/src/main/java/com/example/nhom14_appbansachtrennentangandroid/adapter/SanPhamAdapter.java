@@ -57,6 +57,7 @@ public class SanPhamAdapter  extends  RecyclerView.Adapter<SanPhamAdapter.SanPha
     public  interface ItemClickListener{
         public void onItemClick(SanPham  sanPham);
     }
+
     @Override
     public int getItemCount() {
         return list.size();
