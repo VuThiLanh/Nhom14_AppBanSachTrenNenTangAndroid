@@ -29,12 +29,7 @@
                 android:layout_marginTop="2dp"
                 android:scaleType="fitXY"
                 android:background="@color/purple_200"
-<<<<<<< HEAD
                 android:src="@drawable/anhnen" />
-=======
-                android:src="@drawable/anhnen" >
-            </ViewFlipper>
->>>>>>> 975d7175ca2735595e14132de590c801109c4d85
 
             <LinearLayout
                 android:layout_width="match_parent"

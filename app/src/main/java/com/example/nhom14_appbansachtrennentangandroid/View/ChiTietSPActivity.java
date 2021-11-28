@@ -20,7 +20,6 @@ import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietSpactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
-import com.example.nhom14_appbansachtrennentangandroid.model.DongGioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -100,7 +99,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
 
-        List<DongGioHang> dongGioHangList = new ArrayList<>();
+        /*List<DongGioHang> dongGioHangList = new ArrayList<>();
         reference.child("donggiohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -160,7 +159,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
 
         binding.btnTru.setOnClickListener(new View.OnClickListener() {

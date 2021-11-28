@@ -4,15 +4,35 @@ import java.util.List;
 
 public class DonHang {
     String id;
-    TaiKhoan ThongTinNhanHang;
+    String diachi;
+    String id_User;
+    String ngaysinh;
+    String sdt;
+    String username;
     List<GioHang> GioHangList;
     long TongTien, TongTienHang;
     String NgayTao;
     String TrangThai;
 
-    public DonHang(String id, TaiKhoan thongTinNhanHang, List<GioHang> gioHangList, long tongTien, long tongTienHang, String ngayTao, String trangThai) {
+    /*public DonHang(String id, String diachi, String id_User, String ngaysinh, String sdt, String username, List<GioHang> gioHangList, long tongTien, long tongTienHang, String ngayTao, String trangThai) {
         this.id = id;
-        ThongTinNhanHang = thongTinNhanHang;
+        this.diachi = diachi;
+        this.id_User = id_User;
+        this.ngaysinh = ngaysinh;
+        this.sdt = sdt;
+        this.username = username;
+        GioHangList = gioHangList;
+        TongTien = tongTien;
+        TongTienHang = tongTienHang;
+        NgayTao = ngayTao;
+        TrangThai = trangThai;
+    }*/
+
+    public DonHang() {
+    }
+
+    public DonHang(String id, List<GioHang> gioHangList, long tongTien, long tongTienHang, String ngayTao, String trangThai) {
+        this.id = id;
         GioHangList = gioHangList;
         TongTien = tongTien;
         TongTienHang = tongTienHang;
@@ -20,15 +40,52 @@ public class DonHang {
         TrangThai = trangThai;
     }
 
-    public DonHang() {
+    public String getId() {
+        return id;
     }
 
-    public TaiKhoan getThongTinNhanHang() {
-        return ThongTinNhanHang;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setThongTinNhanHang(TaiKhoan thongTinNhanHang) {
-        ThongTinNhanHang = thongTinNhanHang;
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getId_User() {
+        return id_User;
+    }
+
+    public void setId_User(String id_User) {
+        this.id_User = id_User;
+    }
+
+    public String getNgaysinh() {
+        return ngaysinh;
+    }
+
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public List<GioHang> getGioHangList() {
@@ -61,14 +118,6 @@ public class DonHang {
 
     public void setNgayTao(String ngayTao) {
         NgayTao = ngayTao;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTrangThai() {

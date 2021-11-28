@@ -1,11 +1,18 @@
 package com.example.nhom14_appbansachtrennentangandroid.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,10 +25,10 @@ public class DonHangAdapter extends BaseAdapter {
     List<GioHang> gioHangList;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    /*public AdapterDatHang(Context context, List<GioHang> gioHangList) {
+    public DonHangAdapter(Context context, List<GioHang> gioHangList) {
         this.context = context;
         this.gioHangList = gioHangList;
-    }*/
+    }
     @Override
     public int getCount() {
         if(gioHangList != null) {
@@ -42,6 +49,19 @@ public class DonHangAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.item_thanh_toan, parent,false);
+        TextView tvName,tvSoLuong, tvDonGia;
+        ImageView imgPicture;
+        tvName = view.findViewById(R.id.tvNameProduct_DH);
+        tvDonGia = view.findViewById(R.id.tvPrice_DH);
+        tvSoLuong = view.findViewById(R.id.tvSoLuong_DH);
+        imgPicture = view.findViewById(R.id.imgPictureProduct_DH);
+        GioHang giohang = gioHangList.get(position);
+        tvName.setText(giohang.getTenSP());
+        tvDonGia.setText(formatPrice.format(giohang.getDongia()) +"");
+        Glide.with(context).load(giohang.getImg()).error(R.drawable.avatardefault).into(imgPicture);
+        tvSoLuong.setText(giohang.getSoluong()+"");
+        return view;
     }
 }
