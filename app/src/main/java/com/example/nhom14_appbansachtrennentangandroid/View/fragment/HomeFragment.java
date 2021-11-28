@@ -8,26 +8,20 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-<<<<<<< HEAD
-=======
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
->>>>>>> main
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
-<<<<<<< HEAD
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
-=======
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChinhTriPhapLuatActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GiaoTrinhActivity;
@@ -39,7 +33,6 @@ import com.example.nhom14_appbansachtrennentangandroid.View.TruyenTieuThuyetActi
 import com.example.nhom14_appbansachtrennentangandroid.View.VanHoaXaHoiLichSuActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.VanHocNgheThuatActivity;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
->>>>>>> main
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;

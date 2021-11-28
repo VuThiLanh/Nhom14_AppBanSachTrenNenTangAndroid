@@ -43,6 +43,8 @@ public class ChiTietSPActivity extends AppCompatActivity {
     List<DanhGia> danhGiaList;
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    List<SanPham> sanPhamList=new ArrayList<>();
+    List<GioHang> gioHangList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,14 +101,14 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
 
-        List<GioHang> gioHangList = new ArrayList<>();
+
         reference.child("giohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 gioHangList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     GioHang gioHang = dataSnapshot.getValue(GioHang.class);
-                    if (gioHang.getId().equals(maSP)) {
+                    if (gioHang.getIdsp().equals(maSP)) {
                         gioHangList.add(gioHang);
                         break;
                     }
@@ -119,32 +121,49 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
 
+        reference.child("sanpham").child(maSP).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanPhamList.clear();
+                SanPham sanPham=snapshot.getValue(SanPham.class);
+                sanPhamList.add(sanPham);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         binding.btnThem.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (sl > 0) {
-                    if (gioHangList.size() > 0) {
-                        GioHang gioHang1 = new GioHang(sl + gioHangList.get(0).getSl(), maSP);
-                        reference.child("giohang").child(user.getUid()).child(gioHang1.getId()).setValue(gioHang1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
-                                ad.setTitle("Thông báo");
-                                String msg = String.format("Thêm giỏ hàng thành công!");
-                                ad.setMessage(msg);
-                                ad.setIcon(android.R.drawable.ic_dialog_info);
-                                ad.setButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                    }
-                                });
-                                ad.show();
+                    if(sanPhamList.size()>0){
+                        SanPham sanPham=sanPhamList.get(0);
+                        if (gioHangList.size() > 0) {
+                            GioHang gioHang1 = new GioHang(maSP,sanPham.getTenSP(), sanPham.getImg(), sanPham.getDonGia(), gioHangList.get(0).getSoluong()+sl );
+                            reference.child("giohang").child(user.getUid()).child(gioHang1.getIdsp()).setValue(gioHang1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                }
+                            });
+                        } else {
+                            GioHang gioHang = new GioHang(maSP,sanPham.getTenSP(), sanPham.getImg(), sanPham.getDonGia(), sl);
+                            reference.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).setValue(gioHang);
+                        }
+                        AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
+                        ad.setTitle("Thông báo");
+                        String msg = String.format("Thêm giỏ hàng thành công!");
+                        ad.setMessage(msg);
+                        ad.setIcon(android.R.drawable.ic_dialog_info);
+                        ad.setButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
                             }
                         });
-                    } else {
-                        GioHang gioHang = new GioHang(sl, maSP);
-                        reference.child("giohang").child(user.getUid()).child(gioHang.getId()).setValue(gioHang);
+                        ad.show();
                     }
+
                 } else {
                     AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
                     ad.setTitle("Thông báo");
