@@ -174,11 +174,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-=======
                 Intent intent = new Intent(getContext(), ChinhTriPhapLuatActivity.class);
                 startActivity(intent);
->>>>>>> main
             }
         });
         ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {

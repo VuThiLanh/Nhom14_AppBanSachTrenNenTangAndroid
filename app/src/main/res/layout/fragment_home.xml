@@ -28,13 +28,9 @@
                 android:layout_below="@+id/appbarlayout_main"
                 android:layout_marginTop="2dp"
                 android:scaleType="fitXY"
-<<<<<<< HEAD
                 android:background="@color/purple_200"
-                android:src="@drawable/anhnen" />
-=======
                 android:src="@drawable/anhnen" >
             </ViewFlipper>
->>>>>>> main
 
             <LinearLayout
                 android:layout_width="match_parent"

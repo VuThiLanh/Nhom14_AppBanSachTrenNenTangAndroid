@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,7 +40,7 @@ public class ChinhTriPhapLuatActivity extends AppCompatActivity {
         rcChinhTri_PhapLuat.setLayoutManager(gridLayoutManager);
 
         listChinhTriPhapLuat = new ArrayList<>();
-        sanPhamDanhMucAdapter = new SanPhamDanhMucAdapter(listChinhTriPhapLuat, getApplication());
+        sanPhamDanhMucAdapter = new SanPhamDanhMucAdapter(listChinhTriPhapLuat, this::onItemClick, getApplication());
         rcChinhTri_PhapLuat.setAdapter(sanPhamDanhMucAdapter);
         getChinhTriPhapLuat();
 
@@ -69,5 +70,12 @@ public class ChinhTriPhapLuatActivity extends AppCompatActivity {
                 Toast.makeText(getApplication(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @NonNull
+    public void onItemClick(SanPham sanPham) {
+        Intent intent = new Intent(getApplication(), ChiTietSPActivity.class);
+        intent.putExtra("maSP", sanPham.getIdSp()+"");
+        startActivity(intent);
     }
 }

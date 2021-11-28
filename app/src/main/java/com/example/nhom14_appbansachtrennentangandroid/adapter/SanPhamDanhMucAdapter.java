@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,11 +20,12 @@ import java.util.List;
 
 public class SanPhamDanhMucAdapter extends  RecyclerView.Adapter<SanPhamDanhMucAdapter.SanPhamDanhMucViewHolder>{
     List<SanPham> list;
-
+    private ItemClickListener clickListener;
     Context context;
-    public SanPhamDanhMucAdapter(List<SanPham> list, Context context){
+    public SanPhamDanhMucAdapter(List<SanPham> list, ItemClickListener clickListener, Context context){
         this.list=list;
         this.context=context;
+        this.clickListener= clickListener;
     }
     @NonNull
     @NotNull
@@ -43,6 +45,12 @@ public class SanPhamDanhMucAdapter extends  RecyclerView.Adapter<SanPhamDanhMucA
         holder.item_gia.setText(sanPham.getDonGia()+"đ");
         holder.item_sao.setText(sanPham.getSaoDanhGia()+"");
         Glide.with(context).load(sanPham.getImg()).error(R.drawable.avatardefault).into(holder.item_anh);
+        holder.item_sach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onItemClick(list.get(position));
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -54,6 +62,7 @@ public class SanPhamDanhMucAdapter extends  RecyclerView.Adapter<SanPhamDanhMucA
     class SanPhamDanhMucViewHolder extends RecyclerView.ViewHolder{
         TextView item_ten,item_gia,item_sao;
         ImageView item_anh;
+        LinearLayout item_sach;
 
         public SanPhamDanhMucViewHolder(View view){
             super(view);
@@ -61,7 +70,12 @@ public class SanPhamDanhMucAdapter extends  RecyclerView.Adapter<SanPhamDanhMucA
             item_gia=view.findViewById(R.id.item_gia);
             item_sao=view.findViewById(R.id.item_sao);
             item_anh=view.findViewById(R.id.item_anhsach);
+            item_sach = view.findViewById(R.id.id_ln_item_sach);
         }
+    }
+
+    public  interface ItemClickListener{
+        public void onItemClick(SanPham  sanPham);
     }
 
 }

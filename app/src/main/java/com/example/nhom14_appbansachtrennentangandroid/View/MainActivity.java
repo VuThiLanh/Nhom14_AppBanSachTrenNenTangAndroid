@@ -18,22 +18,16 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-<<<<<<< HEAD
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-=======
 import android.widget.Toast;
->>>>>>> main
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 
-<<<<<<< HEAD
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TaiKhoanFragment;
-=======
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
->>>>>>> main
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
@@ -41,10 +35,8 @@ import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-<<<<<<< HEAD
 
 import java.io.IOException;
-=======
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +44,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
->>>>>>> main
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -138,9 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-<<<<<<< HEAD
-
-=======
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplication(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
@@ -171,5 +159,4 @@ public class MainActivity extends AppCompatActivity {
             listGioHang.clear(); ;
         }
     }
->>>>>>> main
 }
