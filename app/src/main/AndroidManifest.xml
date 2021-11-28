@@ -18,8 +18,34 @@
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
         <activity
+<<<<<<< HEAD
             android:name=".View.fragment.TimKiemDonActivity"
             android:exported="true" />
+=======
+            android:name=".View.ThieuNhiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.TamLyTamLinhTonGiaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.TruyenTieuThuyetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.GiaoTrinhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.VanHoaXaHoiLichSuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.VanHocNgheThuatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.KhoaHocCongNgheKinhTeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.ChinhTriPhapLuatActivity"
+            android:exported="false" />
+>>>>>>> main
         <activity
             android:name=".View.DanhGiaActivity"
             android:exported="true"
@@ -28,11 +54,15 @@
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
         <activity android:name=".View.GioHangActivity" />
+<<<<<<< HEAD
         <activity
             android:name=".View.DonHangActivity"
             android:parentActivityName=".View.MainActivity">
 
         </activity>
+=======
+        <activity android:name=".View.DonHangActivity" />
+>>>>>>> main
         <activity
             android:name=".View.MainActivity"
             android:exported="true" />
@@ -41,7 +71,11 @@
             android:exported="true" />
         <activity
             android:name=".View.ChiTietSPActivity"
+<<<<<<< HEAD
             android:exported="true"/>
+=======
+            android:exported="true" />
+>>>>>>> main
         <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
