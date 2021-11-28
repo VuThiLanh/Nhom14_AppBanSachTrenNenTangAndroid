@@ -203,12 +203,25 @@
                         android:text="@string/anbot"/>
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:text="@string/chuaco"
+                    android:id="@+id/tv_chuaco"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/ln_mta"
+                    android:textSize="18sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical"
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/ln_mta"
+                    android:id="@+id/ln_danhgia"
                     android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -250,6 +263,7 @@
                     <Button
                         android:id="@+id/btn_xem_them"
                         android:layout_width="wrap_content"
+                        android:padding="10dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/rec_danh_gia"
                         android:background="@color/red"

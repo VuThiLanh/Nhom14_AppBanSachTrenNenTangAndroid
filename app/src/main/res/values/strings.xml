@@ -62,6 +62,8 @@
     <string name="nhan">Đã nhận được hàng</string>
     <string name="ban">Bạn hài lòng với sản phẩm đã nhận? nếu có, chọn "Đã nhận được hàng" nha. Nếu không, vui lòng chọn "Trả hàng/ Hoàn tiền" nha.</string>
     <string name="timkiem">Nhập tên sách cần tìm</string>
+    <string name="Danhgia">Đánh giá</string>
+    <string name="chuaco">Chưa có đánh giá nào!</string>
 
 
     <!--    QuenMK-->

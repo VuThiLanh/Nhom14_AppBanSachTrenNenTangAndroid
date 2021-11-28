@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
@@ -34,8 +35,7 @@ public class DanhGiaActivity extends AppCompatActivity {
         binding=DataBindingUtil.setContentView(DanhGiaActivity.this, R.layout.activity_danh_gia);
 
         setSupportActionBar(binding.toolbarSp);
-        getSupportActionBar().setTitle("Đánh giá");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
 
         Intent intent=getIntent();
@@ -57,11 +57,22 @@ public class DanhGiaActivity extends AppCompatActivity {
                 }
                 danhGiaAdapter=new DanhGiaAdapter(danhGiaList, getApplicationContext());
                 binding.recDanhGia.setAdapter(danhGiaAdapter);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+
+        binding.imgQl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(DanhGiaActivity.this, ChiTietSPActivity.class);
+                intent1.putExtra("maSP", maSP);
+                startActivity(intent1);
             }
         });
     }

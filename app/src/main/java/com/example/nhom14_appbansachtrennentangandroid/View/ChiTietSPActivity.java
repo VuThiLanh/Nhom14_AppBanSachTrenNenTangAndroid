@@ -40,7 +40,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
     int sl = 0;
     String maSP = "";
     DanhGiaAdapter danhGiaAdapter;
-    List<DanhGia> danhGiaList;
+    List<DanhGia> danhGiaList= new ArrayList<>();
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     List<SanPham> sanPhamList=new ArrayList<>();
@@ -54,7 +54,13 @@ public class ChiTietSPActivity extends AppCompatActivity {
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
 
-        if(maSP.equals("")){
+
+        //load dl
+        display();
+        displayDanhGia();
+
+
+        if(maSP==null){
             AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
             ad.setTitle("Thông báo");
             String msg = String.format("Lỗi");
@@ -68,13 +74,13 @@ public class ChiTietSPActivity extends AppCompatActivity {
             return;
         }
 
+
+
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
 
 
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        danhGiaList = new ArrayList<>();
-        displayDanhGia();
 
 
         binding.btnXemThem.setOnClickListener(new View.OnClickListener() {
@@ -107,38 +113,6 @@ public class ChiTietSPActivity extends AppCompatActivity {
         });
 
 
-        reference.child("giohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                gioHangList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    GioHang gioHang = dataSnapshot.getValue(GioHang.class);
-                    if (gioHang.getIdsp().equals(maSP)) {
-                        gioHangList.add(gioHang);
-                        break;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        reference.child("sanpham").child(maSP).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                sanPhamList.clear();
-                SanPham sanPham=snapshot.getValue(SanPham.class);
-                sanPhamList.add(sanPham);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         binding.btnThem.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -222,7 +196,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        display();
+
 
 
         binding.tvXemthem.setOnClickListener(new View.OnClickListener() {
@@ -245,7 +219,24 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 binding.tvXemthem.setVisibility(View.VISIBLE);
             }
         });
-    }
+
+
+
+        binding.imgQuaylai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+    }//het onCreate
+
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -280,6 +271,40 @@ public class ChiTietSPActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+
+        reference.child("giohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                gioHangList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    GioHang gioHang = dataSnapshot.getValue(GioHang.class);
+                    if (gioHang.getIdsp().equals(maSP)) {
+                        gioHangList.add(gioHang);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        reference.child("sanpham").child(maSP).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanPhamList.clear();
+                SanPham sanPham=snapshot.getValue(SanPham.class);
+                sanPhamList.add(sanPham);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void displayDanhGia() {
@@ -300,6 +325,13 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 }
                 danhGiaAdapter = new DanhGiaAdapter(danhGiaList, getApplicationContext());
                 binding.recDanhGia.setAdapter(danhGiaAdapter);
+                if(danhGiaList.size()<=0){
+                    binding.tvChuaco.setVisibility(View.VISIBLE);
+                    binding.lnDanhgia.setVisibility(View.GONE);
+                }else{
+                    binding.tvChuaco.setVisibility(View.GONE);
+                    binding.lnDanhgia.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
