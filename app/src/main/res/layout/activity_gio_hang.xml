@@ -88,12 +88,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5">
-        <GridView
-            android:id="@+id/lvProduct_GH"
+
+        <ListView
+            android:id="@+id/lvGioHang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ECE9EF">
-        </GridView>
+            android:background="#ECE9EF"></ListView>
 
         <TextView
             android:id="@+id/tvGioHAngTrong"
@@ -109,24 +109,10 @@
         android:layout_height="0dp"
         android:layout_weight="0.15"
         android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/cbChonTatCa"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text=" Tất cả"
-            android:textSize="20dp"
-            android:gravity="center|left"
-            android:textColor="@color/black"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.8"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/tvTest"
