@@ -80,7 +80,7 @@ public class CapNhatTKActivity extends AppCompatActivity {
         }
     };
     private void updateEditText() {
-        binding.tvDisplayNgaysinhCapnhat.setText(fmtDateAndTime.format(myCalendar.getTime()));
+        binding.tvDisplayNgaysinhCapnhat.setText(myCalendar.get(Calendar.DAY_OF_MONTH)+"/"+(myCalendar.get(Calendar.MONTH)+1)+"/"+myCalendar.get(Calendar.YEAR));
     }
 
     final private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {

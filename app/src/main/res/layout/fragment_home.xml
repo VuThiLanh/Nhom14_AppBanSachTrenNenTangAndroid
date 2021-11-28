@@ -102,7 +102,7 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:orientation="vertical"
-            android:background="@color/purple_200"
+            android:background="@color/white"
             android:layout_below="@id/ln_topbanchay">
             <TextView
                 android:layout_width="match_parent"

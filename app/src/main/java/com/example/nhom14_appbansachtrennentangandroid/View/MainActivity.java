@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         i=intent.getIntExtra("trang",0);
         binding.viewpagerMain.setCurrentItem(i);
         binding.bottomNavigation.getMenu().findItem(R.id.nav_chat).setChecked(true);
+        binding.bottomNavigation.getMenu().findItem(R.id.nav_taikhoan).setChecked(true);
     }
 
 

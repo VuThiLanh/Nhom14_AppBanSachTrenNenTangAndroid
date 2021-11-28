@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:background="@color/maunen"
         android:layout_height="match_parent">
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/appbarlayout_login">
@@ -14,8 +14,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbar_login"
                 app:titleTextColor="@color/white"
+                app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
                 android:background="@color/toolbar"/>
-        </com.google.android.material.appbar.AppBarLayout>
+        </LinearLayout>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

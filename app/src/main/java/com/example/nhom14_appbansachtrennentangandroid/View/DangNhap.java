@@ -44,6 +44,16 @@ public class DangNhap extends AppCompatActivity {
                 dangnhap();
             }
         });
+        binding.tvQuenMKDN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chuyensangquenmk();
+            }
+        });
+    }
+    private  void  chuyensangquenmk(){
+        Intent intent = new Intent(DangNhap.this,QuenmkActivity.class);
+        startActivity(intent);
     }
     private  void  chuyensangdangky(){
         Intent intent = new Intent(DangNhap.this,DangKyActivity.class);

@@ -111,8 +111,7 @@ public class DangKyActivity extends AppCompatActivity {
                                             String email= user.getEmail()+"";
                                             String id = user.getUid()+"";
                                             String avt= user.getPhotoUrl()+"";
-                                            String sdt=user.getPhoneNumber()+"";
-                                            TaiKhoan t = new TaiKhoan(avt,"",email,"",id,"01/01/2001",sdt,tenDN);
+                                            TaiKhoan t = new TaiKhoan(avt,"",email,"",id,"","",tenDN);
                                             databaseReference.child("taikhoan").child(id).setValue(t).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
