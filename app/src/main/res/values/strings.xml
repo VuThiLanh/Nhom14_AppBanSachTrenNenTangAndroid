@@ -54,7 +54,6 @@
     <string name="ttt">Truyện-Tiểu thuyết</string>
     <string name="tamly">Tâm lý-Tâm linh-Tôn giáo</string>
     <string name="thieunhi">Thiếu nhi</string>
-<<<<<<< HEAD
 
 
     -- don hang
@@ -62,7 +61,6 @@
     <string name="thanh">Thành Tiền:</string>
     <string name="nhan">Đã nhận được hàng</string>
     <string name="ban">Bạn hài lòng với sản phẩm đã nhận? nếu có, chọn "Đã nhận được hàng" nha. Nếu không, vui lòng chọn "Trả hàng/ Hoàn tiền" nha.</string>
-=======
     <string name="timkiem">Nhập tên sách cần tìm</string>
 
 
@@ -71,5 +69,4 @@
     <string name="nhapemail">Nhập email liên kết với tài khoản của bạn.<br/>Mật khẩu sẽ gửi về email đăng ký.</string>
     <string name="khoiphuc">Khôi Phục Mật khẩu</string>
 
->>>>>>> main
 </resources>

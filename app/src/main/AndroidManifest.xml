@@ -17,6 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
+        <activity android:name=".View.QuenmkActivity"/>
+
         <activity
             android:name=".View.fragment.TimKiemDonActivity"
             android:exported="true" />
@@ -81,14 +83,14 @@
         <activity
             android:name=".View.ChiTietSPActivity"
             android:exported="true"/>
-
+        <activity android:name=".View.DangNhap"
+            android:exported="true"/>
         <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.DangNhap" />
         <activity
             android:name=".View.ChangePassActivity"
             android:exported="true" />

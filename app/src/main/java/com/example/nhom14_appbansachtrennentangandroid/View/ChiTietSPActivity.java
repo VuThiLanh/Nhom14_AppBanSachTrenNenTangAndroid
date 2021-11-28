@@ -51,21 +51,22 @@ public class ChiTietSPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(ChiTietSPActivity.this, R.layout.activity_chi_tiet_spactivity);
 
-//        SanPham sanPham=new SanPham(idSp, nxb, donGia, img, maDanhMuc, moTa, saoDanhGia, slCon, tenSP, tenTacGia);
-//        reference.child("sanpham").child(idSp).setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void o
-//            nComplete(@NonNull Task<Void> task) {
-//
-//            }
-//        });
-
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
-<<<<<<< HEAD
-        maSP = "sp010";
-=======
->>>>>>> main
+
+        if(maSP.equals("")){
+            AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
+            ad.setTitle("Thông báo");
+            String msg = String.format("Lỗi");
+            ad.setMessage(msg);
+            ad.setIcon(android.R.drawable.ic_dialog_info);
+            ad.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            ad.show();
+            return;
+        }
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
