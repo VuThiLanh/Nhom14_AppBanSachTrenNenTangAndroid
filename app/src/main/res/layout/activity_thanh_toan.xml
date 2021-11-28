@@ -81,7 +81,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"/>
             <TextView
-                android:id="@+id/tvPhoneNumber"
+                android:id="@+id/tvSdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
@@ -89,7 +89,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"/>
             <TextView
-                android:id="@+id/tvAddress"
+                android:id="@+id/tvDiaChi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
@@ -161,7 +161,7 @@
                 android:gravity="center|left"
                 android:textSize="20dp"/>
             <ListView
-                android:id="@+id/lvProduct_DH"
+                android:id="@+id/lvSanPham_TT"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3">
