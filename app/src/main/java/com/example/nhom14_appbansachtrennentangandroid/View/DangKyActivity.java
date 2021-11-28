@@ -97,11 +97,7 @@ public class DangKyActivity extends AppCompatActivity {
                                             String id = user.getUid()+"";
                                             String tenDN= binding.edTenDNDangky.getText().toString();
                                             TaiKhoan t = new TaiKhoan("","",email,"",id,"01/01/2001","",tenDN);
-                                            databaseReference.child("taikhoan").child(id).setValue(t).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                }
-                                            });
+                                            databaseReference.child("taikhoan").child(id).setValue(t);
                                             Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
                                             startActivity(intent);
                                         }
