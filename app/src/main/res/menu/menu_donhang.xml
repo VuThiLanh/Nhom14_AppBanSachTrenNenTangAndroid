@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_cho"
+        android:title="Chờ lấy hàng"/>
+    <item android:id="@+id/nav_dang"
+        android:title="Đang giao"/>
+    <item android:id="@+id/nav_da"
+        android:title="Đã giao"/>
+    <item android:id="@+id/nav_huy"
+        android:title="Đã hủy"/>
+</menu>

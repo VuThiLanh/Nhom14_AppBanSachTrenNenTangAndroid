@@ -35,6 +35,7 @@ import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.CapNhatTKActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChangePassActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.DangNhap;
+import com.example.nhom14_appbansachtrennentangandroid.View.DonHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
@@ -89,7 +90,14 @@ public class TaiKhoanFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        tv_thongtindonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DonHangActivity.class));
+            }
+        });
         return  mView;
+
     }
     private void anhxa(){
         tv_capnhattk=mView.findViewById(R.id.tv_capnhattaikhoan);

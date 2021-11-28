@@ -95,7 +95,7 @@ public class GioHangActivity extends AppCompatActivity {
         DecimalFormat formatPrice = new DecimalFormat("###,###,###");
         long tongtien =0;
         for(int i=0 ;i<MainActivity.listGioHang.size(); i++){
-            tongtien += (MainActivity.listGioHang.get(i).getDongia()*MainActivity.listGioHang.get(i).getSoluong());
+            tongtien += (MainActivity.listGioHang.get(i).getDonGia()*MainActivity.listGioHang.get(i).getSoluong());
         }
         tvTongTien.setText(formatPrice.format(tongtien) +"đ");
     }

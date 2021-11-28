@@ -16,20 +16,13 @@ public class GioHang {
     }
     public GioHang() {
     }
-    public int getDongia() {
-        return donGia;
+
+    public String getIdsp() {
+        return idsp;
     }
 
-    public void setDongia(int donGia) {
-        this.donGia = donGia;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setIdsp(String idsp) {
+        this.idsp = idsp;
     }
 
     public String getTenSP() {
@@ -40,16 +33,24 @@ public class GioHang {
         this.tenSP = tenSP;
     }
 
-    public String getIdsp() {
-        return idsp;
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public int getDonGia() {
+        return donGia;
+    }
+
+    public void setDonGia(int donGia) {
+        this.donGia = donGia;
     }
 
     public int getSoluong() {
         return soluong;
-    }
-
-    public void setIdsp(String idsp) {
-        this.idsp = idsp;
     }
 
     public void setSoluong(int soluong) {

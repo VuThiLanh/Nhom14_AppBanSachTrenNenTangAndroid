@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:id="@+id/appbarlayout_main"
+            android:background="@color/maunen"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar_tk"
+                app:titleTextColor="@color/mauchu">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/img_chat"
+                        android:layout_width="100px"
+                        android:layout_height="100px"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:src="@drawable/iconnhantin" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/appbarlayout_main"
+            android:id="@+id/timkiem"
+            android:layout_height="wrap_content">
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ln_chuaDH"
+            android:layout_below="@id/timkiem">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/img_anh"
+                android:src="@drawable/chua"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa có đơn hàng"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@id/img_anh"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timkiem"
+            android:fitsSystemWindows="true"
+            android:layout_marginBottom="10dp"
+            android:scrollbars="none">
+
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+
+</layout>

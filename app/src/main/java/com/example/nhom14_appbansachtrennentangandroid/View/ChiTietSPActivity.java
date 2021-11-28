@@ -54,6 +54,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
 
+<<<<<<< HEAD
 
         //load dl
         display();
@@ -61,6 +62,9 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
 
         if(maSP==null){
+=======
+        if(maSP.equals("")){
+>>>>>>> main
             AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
             ad.setTitle("Thông báo");
             String msg = String.format("Lỗi");
@@ -73,6 +77,12 @@ public class ChiTietSPActivity extends AppCompatActivity {
             ad.show();
             return;
         }
+<<<<<<< HEAD
+=======
+
+        setSupportActionBar(binding.toolbarSp);
+        getSupportActionBar().setTitle("Chi tiết sản phẩm");
+>>>>>>> main
 
 
 
@@ -110,7 +120,42 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
 
+        reference.child("giohang").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                gioHangList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    GioHang gioHang = dataSnapshot.getValue(GioHang.class);
+                    if (gioHang.getIdsp().equals(maSP)) {
+                        gioHangList.add(gioHang);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+>>>>>>> main
+
+        reference.child("sanpham").child(maSP).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanPhamList.clear();
+                SanPham sanPham=snapshot.getValue(SanPham.class);
+                sanPhamList.add(sanPham);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         binding.btnThem.setOnClickListener(new View.OnClickListener() {
 
             @Override
