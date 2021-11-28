@@ -29,15 +29,6 @@
                 android:layout_marginTop="2dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/anhnen" >
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcTopBanChay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/blue"
-                    android:textSize="20sp" />
             </ViewFlipper>
 
             <LinearLayout
@@ -93,11 +84,14 @@
                 android:textStyle="bold"
                 android:textSize="20sp" />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:src="@drawable/khoahoccnkt" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcTopBanChay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -153,7 +147,11 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content">
-
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:src="@drawable/khoahoccnkt" />
                         <TextView
                             android:text="@string/khcnkt"
                             android:gravity="center"
