@@ -54,8 +54,10 @@
     <string name="ttt">Truyện-Tiểu thuyết</string>
     <string name="tamly">Tâm lý-Tâm linh-Tôn giáo</string>
     <string name="thieunhi">Thiếu nhi</string>
+    <string name="timkiem">Nhập tên sách cần tìm</string>
 
-<!--    QuenMK-->
+
+    <!--    QuenMK-->
     <string name="quenmk">Quên Mật Khẩu</string>
     <string name="nhapemail">Nhập email liên kết với tài khoản của bạn.<br/>Mật khẩu sẽ gửi về email đăng ký.</string>
     <string name="khoiphuc">Khôi Phục Mật khẩu</string>
