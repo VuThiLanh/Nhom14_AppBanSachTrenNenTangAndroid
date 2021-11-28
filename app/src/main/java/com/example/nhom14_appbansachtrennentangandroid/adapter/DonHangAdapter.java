@@ -59,7 +59,7 @@ public class DonHangAdapter extends BaseAdapter {
         imgPicture = view.findViewById(R.id.imgPictureProduct_DH);
         GioHang giohang = gioHangList.get(position);
         tvName.setText(giohang.getTenSP());
-        tvDonGia.setText(formatPrice.format(giohang.getDongia()) +"");
+        tvDonGia.setText(formatPrice.format(giohang.getDonGia()) +"");
         Glide.with(context).load(giohang.getImg()).error(R.drawable.avatardefault).into(imgPicture);
         tvSoLuong.setText(giohang.getSoluong()+"");
         return view;

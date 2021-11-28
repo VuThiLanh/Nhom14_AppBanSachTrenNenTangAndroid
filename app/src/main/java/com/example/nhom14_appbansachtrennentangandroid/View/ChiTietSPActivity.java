@@ -75,11 +75,8 @@ public class ChiTietSPActivity extends AppCompatActivity {
         }
 
 
-
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
-
-
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
 
@@ -89,6 +86,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(ChiTietSPActivity.this, DanhGiaActivity.class);
                 intent1.putExtra("maSP", maSP);
                 startActivity(intent1);
+                finish();
             }
         });
 
@@ -99,6 +97,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(ChiTietSPActivity.this, DanhGiaActivity.class);
                 intent1.putExtra("maSP", maSP);
                 startActivity(intent1);
+                finish();
             }
         });
 
@@ -243,7 +242,6 @@ public class ChiTietSPActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_sp_chi_tiet, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();

@@ -73,6 +73,7 @@ public class DanhGiaActivity extends AppCompatActivity {
                 Intent intent1=new Intent(DanhGiaActivity.this, ChiTietSPActivity.class);
                 intent1.putExtra("maSP", maSP);
                 startActivity(intent1);
+                finish();
             }
         });
     }
