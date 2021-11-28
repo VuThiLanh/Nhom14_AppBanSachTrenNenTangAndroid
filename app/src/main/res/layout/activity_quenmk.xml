@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".View.QuenmkActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="@color/maunen"
@@ -12,7 +14,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/toolbar_login"
+                android:id="@+id/toolbar_quenmk"
                 app:titleTextColor="@color/white"
                 app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
                 android:background="@color/toolbar"/>
@@ -33,74 +35,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/dang_ki"
+                    android:text="@string/quenmk"
                     android:textColor="@color/mauchu"
                     android:gravity="center"
                     android:layout_marginTop="20dp"
                     android:textSize="35sp"
                     android:textStyle="bold"/>
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:gravity="center"
+                    android:text="@string/nhapemail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
-                    android:id="@+id/ed_email_dangky"
-                    android:textColor="@color/black"
+                    android:textColor="@color/mauchu"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:paddingLeft="20dp"
                     android:hint="@string/email"
-                    android:paddingLeft="20dp"
+                    android:textColor="@color/black"
                     android:inputType="textEmailAddress"
-                    android:background="@drawable/item_boder_bgwhite"
-                    android:layout_marginHorizontal="10dp"/>
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_tenDN_dangky"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/item_boder_bgwhite"
-                    android:hint="@string/tenDN"
-                    android:textColor="@color/black"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="20dp" />
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:hint="@string/pass"
-                    android:textColor="@color/black"
-                    android:inputType="textPassword"
-                    android:id="@+id/ed_pass_dangky"
-                    android:background="@drawable/item_boder_bgwhite"
-                    android:layout_marginHorizontal="10dp"/>
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:hint="@string/nhaclaiMK"
-                    android:textColor="@color/black"
-                    android:inputType="textPassword"
-                    android:id="@+id/ed_nhaclaiMK"
+                    android:id="@+id/ed_email_quenmk"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/item_boder_bgwhite"
                     android:layout_marginHorizontal="10dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:layout_marginBottom="40dp"
-                    android:orientation="horizontal">
-                </LinearLayout>
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/dang_ki"
+                    android:text="@string/khoiphuc"
                     android:layout_gravity="center"
-                    android:id="@+id/btn_dangky"
+                    android:id="@+id/btn_khoiphuc"
                     android:textSize="20sp"
                     android:padding="5dp"
                     android:textColor="@color/white"

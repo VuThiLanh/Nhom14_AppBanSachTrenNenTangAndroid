@@ -43,7 +43,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickListener{
 
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
@@ -83,8 +83,6 @@ public class HomeFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL );
-        rcTopBanChay.addItemDecoration(dividerItemDecoration);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
@@ -93,8 +91,8 @@ public class HomeFragment extends Fragment {
         listSanPham = new ArrayList<>();
         listSanPhamBanChay= new ArrayList<>();
 
-        sanPhamAdapter = new SanPhamAdapter(listSanPham,getActivity());
-        sanPhamBanChayAdapter = new SanPhamAdapter(listSanPhamBanChay,getActivity());
+        sanPhamAdapter = new SanPhamAdapter(listSanPham,this,getActivity());
+        sanPhamBanChayAdapter = new SanPhamAdapter(listSanPhamBanChay,this,getActivity());
 
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
         rcGoiY.setAdapter(sanPhamAdapter);
@@ -224,5 +222,12 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onItemClick(SanPham sanPham) {
+        Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
+        intent.putExtra("maSP", sanPham.getIdSp()+"");
+        startActivity(intent);
     }
 }

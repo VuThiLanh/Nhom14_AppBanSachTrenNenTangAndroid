@@ -20,8 +20,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.net.URI;
+import java.net.URL;
 
 public class DangKyActivity extends AppCompatActivity {
 
@@ -90,14 +94,37 @@ public class DangKyActivity extends AppCompatActivity {
                                     ad.setButton("OK", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which)
                                         {
+
                                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                             firebaseDatabase=FirebaseDatabase.getInstance();
                                             databaseReference=firebaseDatabase.getReference();
+                                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                    .setDisplayName(tenDN)
+                                                    .build();
+                                            user.updateProfile(profileUpdates)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                        }
+                                                    });
                                             String email= user.getEmail()+"";
                                             String id = user.getUid()+"";
+<<<<<<< HEAD
                                             String tenDN= binding.edTenDNDangky.getText().toString();
                                             TaiKhoan t = new TaiKhoan("","",email,"",id,"01/01/2001","",tenDN);
                                             databaseReference.child("taikhoan").child(id).setValue(t);
+=======
+                                            String avt= user.getPhotoUrl()+"";
+                                            TaiKhoan t = new TaiKhoan(avt,"",email,"",id,"","",tenDN);
+                                            databaseReference.child("taikhoan").child(id).setValue(t).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        databaseReference.child("giohang").child(id).setValue("sanpham");
+                                                    }
+                                                }
+                                            });
+>>>>>>> main
                                             Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
                                             startActivity(intent);
                                         }

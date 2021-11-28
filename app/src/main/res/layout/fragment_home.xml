@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.fragment.HomeFragment">
     <FrameLayout
+        android:background="@color/maunen"
         android:id="@+id/fragmentMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,8 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relativelayout"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white">
+            android:layout_marginBottom="10dp">
 
             <ViewFlipper
                 android:id="@+id/anhquangcao"
@@ -28,8 +28,13 @@
                 android:layout_below="@+id/appbarlayout_main"
                 android:layout_marginTop="2dp"
                 android:scaleType="fitXY"
+                android:background="@color/purple_200"
+<<<<<<< HEAD
+                android:src="@drawable/anhnen" />
+=======
                 android:src="@drawable/anhnen" >
             </ViewFlipper>
+>>>>>>> 975d7175ca2735595e14132de590c801109c4d85
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,28 +45,39 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:gravity="center"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_height="match_parent">
-                        <TextView
-                            android:layout_marginLeft="20dp"
-                            android:id="@+id/editTextSearch"
+                        <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="9"
-                            android:layout_height="40dp"
-                            android:background="@drawable/search_bg"
-                            android:drawableLeft="@drawable/ic_search_black_24dp"
-                            android:drawablePadding="8dp"
-                            android:ems="10"
-                            android:paddingLeft="5dp"
-                            android:gravity="center"
-                            android:hint="Tìm kiếm sách trong musachonline"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            android:layout_weight="15"
+                            android:layout_height="match_parent">
+                            <AutoCompleteTextView
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/editTextSearch"
+                                android:layout_width="0dp"
+                                android:layout_weight="10"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bg_timkiem"
+                                android:drawablePadding="8dp"
+                                android:paddingLeft="5dp"
+                                android:gravity="center"
+                                android:hint="@string/timkiem"
+                                app:layout_constraintStart_toStartOf="parent"/>
+                            <ImageView
+                                android:background="@drawable/bg_nuttk"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_search_white"
+                                android:layout_weight="2"/>
+                        </LinearLayout>
                         <ImageView
                             android:id="@+id/img_gioHang"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="40dp"
-                            android:layout_marginHorizontal="20dp"
+                            android:layout_weight="3"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:layout_height="match_parent"
                             android:src="@drawable/icon_giohanghome" />
                     </LinearLayout>
             </LinearLayout>
@@ -71,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:backgroundTint="@color/purple_200"
             android:id="@+id/ln_topbanchay"
             android:orientation="vertical"
             android:background="@color/white"
@@ -80,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/banchay"
-                android:textColor="@color/black"
+                android:textColor="@color/mauchu"
                 android:textStyle="bold"
                 android:textSize="20sp" />
 
@@ -89,12 +106,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
         </LinearLayout>
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:id="@+id/ln_danhmuc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,8 +124,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/danhmuc"
-                android:textColor="@color/black"
+                android:textColor="@color/mauchu"
                 android:textStyle="bold"
                 android:textSize="20sp" />
             <LinearLayout
@@ -290,24 +308,28 @@
 
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/ln_goiy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:id="@+id/ln_goiy"
+            android:layout_below="@id/ln_danhmuc"
+            android:layout_marginTop="12dp"
+            android:background="@color/purple_200"
             android:orientation="vertical"
-            android:background="@color/white"
-            android:layout_below="@id/ln_danhmuc">
+            android:padding="10dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/goiy"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:textColor="@color/mauchu"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
                 android:id="@+id/rcGoiY"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -316,5 +338,5 @@
         </LinearLayout>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
-    </FrameLayout>
+</FrameLayout>
 </layout>

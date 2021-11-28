@@ -3,11 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".View.ChangePassActivity">
-<!--<<<<<<< HEAD-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
-<!--=======-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,12 +14,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/guide01"
-            android:background="@color/maunen"
+            android:background="@color/toolbar"
             android:id="@+id/appbarlayout_login">
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/toolbar_login"
+                android:id="@+id/toolbar_capnhatmk"
                 app:titleTextColor="@color/white"
                 app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
                 />
@@ -42,6 +38,23 @@
             android:textSize="25sp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/tv_tenDN_changepass"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/doc1"
+            app:layout_constraintEnd_toEndOf="@id/doc2"
+            app:layout_constraintTop_toTopOf="@id/guide02"
+            app:layout_constraintBottom_toBottomOf="@id/guide03"
+            android:gravity="center|top"
+            android:paddingTop="5dp"
+            android:text="Admin"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textStyle="bold"
+            android:textColor="@color/mauchu"
+            android:textSize="25dp" />
+        <TextView
+            android:id="@+id/tv_email_changepass"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/doc1"
@@ -49,19 +62,21 @@
             app:layout_constraintTop_toTopOf="@id/guide02"
             app:layout_constraintBottom_toBottomOf="@id/guide03"
             android:gravity="center"
+            android:paddingTop="25dp"
             android:text="admin@gmail.com"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:textColor="@color/black"
+            android:textColor="@color/mauchu"
             android:textSize="20dp" />
         <EditText
+            android:id="@+id/tv_mkcu_changepass"
             android:layout_margin="15dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/item_boder_bgwhite"
             android:hint="@string/mkcu"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
             app:layout_constraintStart_toStartOf="@id/doc1"
             app:layout_constraintEnd_toEndOf="@id/doc2"
@@ -69,6 +84,7 @@
             app:layout_constraintBottom_toBottomOf="@id/guide04"
             android:textColor="@color/black" />
         <EditText
+            android:id="@+id/tv_mkmoi_changepass"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="15dp"
@@ -83,13 +99,14 @@
             android:paddingLeft="20dp"
             android:textColor="@color/black" />
         <EditText
+            android:id="@+id/tv_nhaclaimk_changepass"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="15dp"
             android:background="@drawable/item_boder_bgwhite"
             android:hint="@string/nhaclaiMK"
             android:imeOptions="actionDone"
-            android:inputType="textPhonetic"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
             app:layout_constraintStart_toStartOf="@id/doc1"
             app:layout_constraintEnd_toEndOf="@id/doc2"
@@ -98,7 +115,7 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/btnCapNhat"
+            android:id="@+id/btnCapNhat_ChangePass"
             android:layout_margin="5dp"
             android:layout_width="150dp"
             android:layout_height="0dp"
@@ -114,7 +131,7 @@
             android:textSize="18sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_update_avatar"
+            android:id="@+id/img_update_avatar_changepass"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_below="@+id/login_title"
