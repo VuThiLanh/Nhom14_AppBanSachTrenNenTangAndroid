@@ -14,13 +14,32 @@ import android.widget.ViewFlipper;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+<<<<<<< HEAD
+=======
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+>>>>>>> main
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+<<<<<<< HEAD
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
+=======
+import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChinhTriPhapLuatActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.GiaoTrinhActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.KhoaHocCongNgheKinhTeActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TamLyTamLinhTonGiaoActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.ThieuNhiActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TruyenTieuThuyetActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.VanHoaXaHoiLichSuActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.VanHocNgheThuatActivity;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
+>>>>>>> main
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +59,7 @@ public class HomeFragment extends Fragment {
     ViewFlipper anhquangcao;
     View view;
     ImageView img_GioHang;
+    LinearLayout ll_ChinhTri_PhapLuat, ll_KhoaHoc_CN_KT, ll_VanHoc_NT, ll_VanHoa_XH_LS, ll_GiaoTrinh, ll_Truyen_TieuThuyet, ll_TamLy_TamLinh, ll_ThieuNhi;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -51,6 +71,7 @@ public class HomeFragment extends Fragment {
         getSanPham();
         getSanPhamBanChay();
         ChuyenDenGioHang();
+        DanhMuc();
         return view;
 
     }
@@ -58,6 +79,14 @@ public class HomeFragment extends Fragment {
         rcTopBanChay = view.findViewById(R.id.rcTopBanChay);
         rcGoiY= view.findViewById(R.id.rcGoiY);
         img_GioHang= view.findViewById(R.id.img_gioHang);
+        ll_ChinhTri_PhapLuat=view.findViewById(R.id.ll_ChinhTri_PhapLuat);
+        ll_KhoaHoc_CN_KT = view.findViewById(R.id.ll_KhoaHoc_CN_KT);
+        ll_VanHoc_NT=view.findViewById(R.id.ll_VanHoc_NT);
+        ll_VanHoa_XH_LS = view.findViewById(R.id.ll_VanHoa_XH_LS);
+        ll_GiaoTrinh = view.findViewById(R.id.ll_GiaoTrinh);
+        ll_Truyen_TieuThuyet = view.findViewById(R.id.ll_Truyen_TieuThuyet);
+        ll_TamLy_TamLinh = view.findViewById(R.id.ll_TamLy_TamLinh);
+        ll_ThieuNhi = view.findViewById(R.id.ll_ThieuNhi);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
@@ -145,5 +174,62 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
+    private void DanhMuc(){
+        ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ChinhTriPhapLuatActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), KhoaHocCongNgheKinhTeActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_VanHoc_NT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VanHocNgheThuatActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_VanHoa_XH_LS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VanHoaXaHoiLichSuActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_GiaoTrinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GiaoTrinhActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_Truyen_TieuThuyet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TruyenTieuThuyetActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_TamLy_TamLinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TamLyTamLinhTonGiaoActivity.class);
+                startActivity(intent);
+            }
+        });
+        ll_ThieuNhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ThieuNhiActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }

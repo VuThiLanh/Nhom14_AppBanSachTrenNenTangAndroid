@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.VanHocNgheThuatActivity"
+    android:orientation="vertical"
+    android:background="@color/maunen">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.07"
+        android:orientation="horizontal"
+        android:background="@color/toolbar">
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:background="@drawable/border_nut"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24"
+            android:layout_gravity="center|left"
+            android:layout_marginHorizontal="5dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Văn học - Nghệ thuật"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:gravity="center|left"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcVanHoc_NgheThuat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.93"
+        android:layout_margin="5dp"/>
+
+</LinearLayout>

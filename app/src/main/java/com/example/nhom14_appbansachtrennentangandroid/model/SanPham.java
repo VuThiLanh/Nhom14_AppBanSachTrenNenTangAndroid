@@ -12,7 +12,6 @@ public class SanPham {
     String tenSP;
     String tenTacGia;
 
-
     public SanPham(String idSp, String nxb, int donGia, String img, String maDanhMuc, String moTa, float saoDanhGia, int slCon, String tenSP, String tenTacGia) {
         this.idSp = idSp;
         this.nxb = nxb;
