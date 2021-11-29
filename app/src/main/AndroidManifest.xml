@@ -31,30 +31,6 @@
             android:name=".View.TimKiemActivity"
             android:exported="false" />
         <activity
-            android:name=".View.ThieuNhiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.TamLyTamLinhTonGiaoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.TruyenTieuThuyetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.GiaoTrinhActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.VanHoaXaHoiLichSuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.VanHocNgheThuatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.KhoaHocCongNgheKinhTeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.ChinhTriPhapLuatActivity"
-            android:exported="false" />
-        <activity
             android:name=".View.DanhGiaActivity"
             android:exported="true"
             android:parentActivityName=".View.ChiTietSPActivity" />
