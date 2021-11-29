@@ -18,12 +18,23 @@ import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietDonHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Holder> {
     List<DonHang> donHangList;
     Context context;
+    DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
     public DSDonHangAdapter(List<DonHang> donHangList, Context context) {
         this.donHangList = donHangList;
@@ -47,14 +58,22 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             holder.tv_sl.setText("x"+ gioHang.getSoluong());
             holder.tv_gia.setText(gioHang.getDonGia()+"đ");
         }
+        int tongsl=0;
+
+        for(GioHang gioHang1: donHang.getGioHangList()){
+            tongsl+=gioHang1.getSoluong();
+        }
+
         holder.tv_ngay.setText(donHang.getNgayTao());
-        holder.tv_tongsl.setText(donHang.getGioHangList().size()+" sản phẩm");
+        holder.tv_tongsl.setText(tongsl+" sản phẩm");
         holder.tv_thanhtien.setText(donHang.getTongTien()+"đ");
         if(donHang.getGioHangList().size()>1){
             holder.tv_xem.setVisibility(View.VISIBLE);
+            holder.gach2.setVisibility(View.VISIBLE);
         }
         else {
             holder.tv_xem.setVisibility(View.GONE);
+            holder.gach2.setVisibility(View.GONE);
         }
         holder.tv_xem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +81,43 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
                 Intent intent=new Intent(context, ChiTietDonHangActivity.class);
                 intent.putExtra("id", donHang.getId());
                 context.startActivity(intent);
+            }
+        });
+        if(donHang.getTrangThai().equals("Chờ xác nhận")){
+            holder.rl_cho.setVisibility(View.VISIBLE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+        }else if(donHang.getTrangThai().equals("Đã nhận")){
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.VISIBLE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+        }else if(donHang.getTrangThai().equals("Đang giao")){
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.VISIBLE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+        }else {
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.VISIBLE);
+        }
+        if(tinhNgay(donHang.getNgayTao())&& donHang.getTrangThai().equals("Chờ xác nhận")){
+            reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đang giao");
+        }
+
+        holder.btn_danhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đã nhận");
+            }
+        });
+        holder.btn_huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đã hủy");
             }
         });
 
@@ -74,16 +130,18 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
 
     public class Holder extends RecyclerView.ViewHolder {
         ImageView img_anh;
+        View gach2;
         TextView tv_tenSP, tv_sl,tv_ngay, tv_gia,tv_xem,tv_tongsl, tv_thanhtien;
         Button btn_danhgia,btn_danhan, btn_mualai, btn_huy;
         RelativeLayout rl_cho, rl_da_huy, rl_da_nhan,rl_dang_giao;
         public Holder(@NonNull View itemView) {
             super(itemView);
             img_anh=itemView.findViewById(R.id.img_anh);
+            gach2=itemView.findViewById(R.id.gach2);
             tv_tenSP=itemView.findViewById(R.id.tv_tenSP);
             tv_sl=itemView.findViewById(R.id.tv_sl);
             tv_thanhtien=itemView.findViewById(R.id.tv_thanhtien);
-            tv_gia=itemView.findViewById(R.id.item_gia);
+            tv_gia=itemView.findViewById(R.id.tv_gia);
             tv_ngay=itemView.findViewById(R.id.tv_ngay);
             tv_xem=itemView.findViewById(R.id.tv_xem);
             tv_tongsl=itemView.findViewById(R.id.tv_tongsl);
@@ -96,5 +154,22 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             rl_da_nhan=itemView.findViewById(R.id.rl_da_nhan);
             rl_dang_giao=itemView.findViewById(R.id.rl_dang_giao);
         }
+    }
+    private boolean tinhNgay(String ngayTao){
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+        try {
+            Calendar calendar = Calendar.getInstance();
+            Date ngay=df.parse(ngayTao);
+            int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
+            calendar.set(ngay.getYear(), ngay.getMonth(),ngay.getDate());
+            int day=calendar.get(Calendar.DAY_OF_YEAR);
+            if(dayOfYear-day>=3){
+                return true;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

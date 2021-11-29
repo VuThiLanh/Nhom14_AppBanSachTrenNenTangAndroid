@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.KhoaHocCongNgheKinhTeActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TamLyTamLinhTonGiaoActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ThieuNhiActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TimKiemActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TruyenTieuThuyetActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.VanHoaXaHoiLichSuActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.VanHocNgheThuatActivity;
@@ -44,16 +47,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickListener{
 
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
+    List<String> listSP;
     SanPhamAdapter sanPhamAdapter,sanPhamBanChayAdapter ;
     RecyclerView rcTopBanChay,rcGoiY;
     ViewFlipper anhquangcao;
     View view;
-    ImageView img_GioHang;
+    ImageView img_GioHang, img_TimKiem;
+    public static AutoCompleteTextView tv_TimKiem;
     LinearLayout ll_ChinhTri_PhapLuat, ll_KhoaHoc_CN_KT, ll_VanHoc_NT, ll_VanHoa_XH_LS, ll_GiaoTrinh, ll_Truyen_TieuThuyet, ll_TamLy_TamLinh, ll_ThieuNhi;
     @Nullable
     @Override
@@ -67,6 +73,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         getSanPhamBanChay();
         ChuyenDenGioHang();
         DanhMuc();
+        TimKiem();
         return view;
 
     }
@@ -82,6 +89,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_Truyen_TieuThuyet = view.findViewById(R.id.ll_Truyen_TieuThuyet);
         ll_TamLy_TamLinh = view.findViewById(R.id.ll_TamLy_TamLinh);
         ll_ThieuNhi = view.findViewById(R.id.ll_ThieuNhi);
+        tv_TimKiem = view.findViewById(R.id.tv_TimKiem);
+        img_TimKiem = view.findViewById(R.id.img_TimKiem);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
@@ -99,6 +108,10 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
         rcGoiY.setAdapter(sanPhamAdapter);
 
+        listSP = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.select_dialog_item, listSP);
+        tv_TimKiem.setAdapter(adapter);
+
         int img[] = {R.drawable.poster1, R.drawable.poster2, R.drawable.poster3, R.drawable.poster4,R.drawable.poster5};
         for (int i = 0; i < img.length; i++) {
             flipperImage(img[i]);
@@ -114,6 +127,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     SanPham sanPham = dataSnapshot.getValue(SanPham.class);
                     listSanPham.add(sanPham);
+                    listSP.add(sanPham.getTenSP());
                 }
                 sanPhamAdapter.notifyDataSetChanged();
             }
@@ -237,5 +251,17 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
         intent.putExtra("maSP", sanPham.getIdSp()+"");
         startActivity(intent);
+    }
+    private void TimKiem(){
+        img_TimKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TimKiemActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    public static String tv_TimKiem(){
+        return tv_TimKiem.getText().toString().trim();
     }
 }

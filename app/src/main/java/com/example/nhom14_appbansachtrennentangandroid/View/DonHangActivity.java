@@ -1,20 +1,24 @@
 package com.example.nhom14_appbansachtrennentangandroid.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.nhom14_appbansachtrennentangandroid.R;
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TimKiemDonActivity;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DonHangViewPager;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDonHangBinding;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class DonHangActivity extends AppCompatActivity {
 
@@ -30,31 +34,48 @@ public class DonHangActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Đơn hàng");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        init();
-
-        binding.bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+        viewPager =new DonHangViewPager(this);
+        binding.viewpagerMain.setAdapter(viewPager);
+        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
-                binding.viewpager.setCurrentItem(position);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if(id==R.id.nav_cho){
+                    binding.viewpagerMain.setCurrentItem(0);
+                }
+                else if(id==R.id.nav_dang){
+                    binding.viewpagerMain.setCurrentItem(1);
+                }
+                else if(id==R.id.nav_da){
+                    binding.viewpagerMain.setCurrentItem(2);
+                }
+                else if(id==R.id.nav_huy){
+                    binding.viewpagerMain.setCurrentItem(3);
+                }
                 return true;
             }
         });
 
 
-        binding.viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+        
+        binding.viewpagerMain.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                binding.bottomNavigation.setCurrentItem(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
+                super.onPageSelected(position);
+                switch (position){
+                    case 0:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_cho).setChecked(true);
+                        break;
+                    case 1:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_dang).setChecked(true);
+                        break;
+                    case 2:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_da).setChecked(true);
+                        break;
+                    case 3:
+                        binding.bottomNavigation.getMenu().findItem(R.id.nav_huy).setChecked(true);
+                        break;
+                }
             }
         });
 
@@ -66,6 +87,7 @@ public class DonHangActivity extends AppCompatActivity {
                 Intent intent = new Intent(DonHangActivity.this, MainActivity.class);
                 intent.putExtra("trang", 1);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -77,27 +99,6 @@ public class DonHangActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-    }
-    private void init(){
-        viewPager=new DonHangViewPager(getSupportFragmentManager());
-        binding.viewpager.setAdapter(viewPager);
-        binding.viewpager.setPagingEnabled(true);
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem("Chờ xử lý",R.drawable.cho, R.color.black);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("Đang giao",R.drawable.ic_giaohang, R.color.black);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem("Đã nhận",R.drawable.dacnhan, R.color.black);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem("Đã hủy",R.drawable.huy, R.color.black);
-
-        binding.bottomNavigation.addItem(item1);
-        binding.bottomNavigation.addItem(item2);
-        binding.bottomNavigation.addItem(item3);
-        binding.bottomNavigation.addItem(item4);
-
-        binding.bottomNavigation.setAccentColor(Color.parseColor("#F80303"));
-//        binding.bottomNavigation.setInactiveColor(Color.parseColor("#F80303"));
 
     }
 

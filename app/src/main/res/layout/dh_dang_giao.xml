@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@drawable/background_white_3"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,8 +15,7 @@
             android:id="@+id/img_anh"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/anhnen" />
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/tv_tenSP"
@@ -151,14 +153,15 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ban"
-                android:textSize="15sp"
                 android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/btn_danhan"
+                android:text="@string/ban"
                 android:textColor="@color/black"
-                android:layout_toLeftOf="@id/btn_danhan"/>
+                android:textSize="15sp" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
