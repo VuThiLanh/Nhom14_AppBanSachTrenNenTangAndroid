@@ -56,6 +56,7 @@
                             </RelativeLayout>
                         </androidx.appcompat.widget.Toolbar>
                     </com.google.android.material.appbar.AppBarLayout>
+
                     <ImageView
                         android:id="@+id/img_anhHang"
                         android:layout_width="match_parent"
@@ -268,6 +269,7 @@
                         android:layout_below="@id/rec_danh_gia"
                         android:background="@color/red"
                         android:text="@string/xemAll"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"/>
@@ -291,6 +293,7 @@
                 android:textStyle="bold"
                 android:background="@color/blue"
                 android:text="@string/chat"
+                android:textAllCaps="false"
                 android:id="@+id/btn_chat"/>
             <Button
                 android:layout_width="0dp"
@@ -300,6 +303,7 @@
                 android:textStyle="bold"
                 android:background="@color/red"
                 android:text="@string/them"
+                android:textAllCaps="false"
                 android:id="@+id/btn_them"/>
         </LinearLayout>
     </RelativeLayout>

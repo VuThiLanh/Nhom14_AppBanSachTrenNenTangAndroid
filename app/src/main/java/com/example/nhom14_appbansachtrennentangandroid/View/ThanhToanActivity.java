@@ -100,8 +100,8 @@ public class ThanhToanActivity extends AppCompatActivity {
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss ");
         String date = df.format(Calendar.getInstance().getTime());
         //Toast.makeText(getApplicationContext(),date,Toast.LENGTH_SHORT).show();
-        DonHang DonHang = new DonHang("DH1",MainActivity.listGioHang,TongTien_1, TongTienHang_1, date, "Chờ xác nhận");
-        databaseReference.child("donhang").child(user.getUid()).child("DH1").setValue(DonHang);
+//        DonHang DonHang = new DonHang("DH1",MainActivity.listGioHang,TongTien_1, TongTienHang_1, date, "Chờ xác nhận");
+//        databaseReference.child("donhang").child(user.getUid()).child("DH1").setValue(DonHang);
         databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("diachi").setValue(GioHangActivity.ThongTinCaNhan.getDiachi());
         databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("username").setValue(GioHangActivity.ThongTinCaNhan.getUsername());
         databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("sdt").setValue(GioHangActivity.ThongTinCaNhan.getSdt());

@@ -7,55 +7,71 @@
         android:layout_width="match_parent"
         android:id="@+id/rl_dau"
         android:layout_height="wrap_content">
+
         <ImageView
+            android:id="@+id/img_anh"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:src="@drawable/anhnen"
             android:scaleType="fitXY"
-            android:id="@+id/img_anh"
-            />
+            android:src="@drawable/anhnen" />
+
         <TextView
+            android:id="@+id/tv_tenSP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="tên spvvvv vvvv vv vvv vvvv vv vvvv vvv vvv vvv "
-            android:layout_toRightOf="@id/img_anh"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toLeftOf="@id/tv_sl"
-            android:id="@+id/tv_tenSP"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="x2"
-            android:textSize="18sp"
-            android:id="@+id/tv_sl"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="100000đ"
-            android:id="@+id/tv_gia"
-            android:layout_margin="10dp"
-            android:textSize="18sp"
-            android:layout_below="@id/tv_tenSP"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/red"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="27/11/2021"
-            android:id="@+id/tv_ngay"
-            android:layout_margin="10dp"
-            android:textSize="15sp"
-            android:layout_below="@id/tv_tenSP"
             android:layout_toRightOf="@id/img_anh"
+            android:text="tên spvvvv vvvv vv vvv vvvv vv vvvv vvv vvv vvv "
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_sl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="x2"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_gia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tenSP"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="100000đ"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_ngay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tenSP"
             android:layout_marginHorizontal="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toLeftOf="@id/tv_gia"
-            android:textColor="@color/black"/>
+            android:layout_toRightOf="@id/img_anh"
+            android:text="27/11/2021"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <View
@@ -88,19 +104,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
+                android:id="@+id/tv_tongsl"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2 sản phẩm"
-                android:id="@+id/tv_tongsl"/>
+                android:text="2 sản phẩm" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/tv_thanhtien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:text="100000đ"
-                android:textSize="18sp"
                 android:textColor="@color/red"
-                android:layout_alignParentRight="true"/>
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,18 +136,21 @@
             android:layout_marginVertical="10dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
+            android:id="@+id/rl_dang_giao"
             android:layout_height="wrap_content">
+
             <Button
+                android:id="@+id/btn_danhan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nhan"
-                android:background="@color/red"
-                android:textSize="15sp"
-                android:padding="5dp"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:id="@+id/btn_danhan"
+                android:background="@color/red"
+                android:padding="5dp"
+                android:text="@string/nhan"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:layout_alignParentRight="true"/>
+                android:textSize="15sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,6 +159,87 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/black"
                 android:layout_toLeftOf="@id/btn_danhan"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl_da_nhan"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Danhgia"
+                android:background="@color/red"
+                android:textSize="15sp"
+                android:textAllCaps="false"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/btn_danhgia"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/haydanhGia"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl_da_huy"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_mualai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/red"
+                android:padding="5dp"
+                android:text="@string/muaLai"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:text="@string/dahuy"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl_cho"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_huy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/red"
+                android:padding="5dp"
+                android:text="@string/huy"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:text="@string/Cho"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </RelativeLayout>
         <View
             android:layout_width="match_parent"

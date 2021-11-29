@@ -17,77 +17,64 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".View.QuenmkActivity"/>
-
+        <activity
+            android:name=".View.ChiTietDonHangActivity"
+            android:exported="true" />
+        <activity android:name=".View.QuenmkActivity" />
         <activity
             android:name=".View.fragment.TimKiemDonActivity"
             android:exported="true" />
         <activity
             android:name=".View.ThieuNhiActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.TamLyTamLinhTonGiaoActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.TruyenTieuThuyetActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.GiaoTrinhActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.VanHoaXaHoiLichSuActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.VanHocNgheThuatActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.KhoaHocCongNgheKinhTeActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.ChinhTriPhapLuatActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.DanhGiaActivity"
             android:exported="true"
             android:parentActivityName=".View.ChiTietSPActivity" />
-
         <activity
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
-
         <activity android:name=".View.GioHangActivity" />
-
         <activity
             android:name=".View.DonHangActivity"
-            android:parentActivityName=".View.MainActivity">
-
-        </activity>
-
+            android:parentActivityName=".View.MainActivity"></activity>
         <activity
             android:name=".View.MainActivity"
             android:exported="true" />
-
         <activity
             android:name=".View.DangKyActivity"
             android:exported="true" />
-
         <activity
             android:name=".View.ChiTietSPActivity"
-            android:exported="true"/>
-        <activity android:name=".View.DangNhap"
-            android:exported="true"/>
+            android:exported="true" />
+        <activity
+            android:name=".View.DangNhap"
+            android:exported="true" />
         <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
