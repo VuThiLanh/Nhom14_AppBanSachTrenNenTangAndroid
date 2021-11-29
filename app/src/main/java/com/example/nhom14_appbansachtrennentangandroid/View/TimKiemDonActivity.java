@@ -1,4 +1,4 @@
-package com.example.nhom14_appbansachtrennentangandroid.View.fragment;
+package com.example.nhom14_appbansachtrennentangandroid.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 

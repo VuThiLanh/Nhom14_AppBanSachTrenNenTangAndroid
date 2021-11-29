@@ -5,19 +5,19 @@ import java.util.List;
 public class DonHang {
     String id;
     ThongTinNhanHang thongTinNhanHang;
-    List<GioHang> GioHangList;
-    long TongTien, TongTienHang;
-    String NgayTao;
-    String TrangThai;
+    List<GioHang> gioHangList;
+    long tongTien, tongTienHang;
+    String ngayTao;
+    String trangThai;
 
     public DonHang(String id, ThongTinNhanHang thongTinNhanHang, List<GioHang> gioHangList, long tongTien, long tongTienHang, String ngayTao, String trangThai) {
         this.id = id;
         this.thongTinNhanHang = thongTinNhanHang;
-        GioHangList = gioHangList;
-        TongTien = tongTien;
-        TongTienHang = tongTienHang;
-        NgayTao = ngayTao;
-        TrangThai = trangThai;
+        this.gioHangList = gioHangList;
+        this.tongTien = tongTien;
+        this.tongTienHang = tongTienHang;
+        this.ngayTao = ngayTao;
+        this.trangThai = trangThai;
     }
 
     public DonHang() {
@@ -40,42 +40,42 @@ public class DonHang {
     }
 
     public List<GioHang> getGioHangList() {
-        return GioHangList;
+        return gioHangList;
     }
 
     public void setGioHangList(List<GioHang> gioHangList) {
-        GioHangList = gioHangList;
+        this.gioHangList = gioHangList;
     }
 
     public long getTongTien() {
-        return TongTien;
+        return tongTien;
     }
 
     public void setTongTien(long tongTien) {
-        TongTien = tongTien;
+        this.tongTien = tongTien;
     }
 
     public long getTongTienHang() {
-        return TongTienHang;
+        return tongTienHang;
     }
 
     public void setTongTienHang(long tongTienHang) {
-        TongTienHang = tongTienHang;
+        this.tongTienHang = tongTienHang;
     }
 
     public String getNgayTao() {
-        return NgayTao;
+        return ngayTao;
     }
 
     public void setNgayTao(String ngayTao) {
-        NgayTao = ngayTao;
+        this.ngayTao = ngayTao;
     }
 
     public String getTrangThai() {
-        return TrangThai;
+        return trangThai;
     }
 
     public void setTrangThai(String trangThai) {
-        TrangThai = trangThai;
+        this.trangThai = trangThai;
     }
 }
