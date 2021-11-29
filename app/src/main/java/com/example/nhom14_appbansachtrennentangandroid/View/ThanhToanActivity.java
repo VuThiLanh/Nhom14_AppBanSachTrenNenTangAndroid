@@ -10,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DonHangAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
+import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
+import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
+import com.example.nhom14_appbansachtrennentangandroid.model.ThongTinNhanHang;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +35,6 @@ import java.util.Calendar;
 import java.util.List;
 
 public class ThanhToanActivity extends AppCompatActivity {
-    private List<DonHang> donHangList;
     ListView lvSanPham_TT;
     TextView tvName, tvSdt, tvDiaChi, tvTongTien;
     TextView tvTongTienHang, tvDatHang;
@@ -40,6 +43,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     FirebaseUser user;
     long TongTien_1, TongTienHang_1;
     RadioButton rdThanhToanKhiNhanHang;
+    private ArrayList<DonHang> listDonHang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +59,9 @@ public class ThanhToanActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
-        if(donHangList == null){
-            donHangList = new ArrayList<>();
+        getDonHang();
+        if(listDonHang == null){
+            listDonHang = new ArrayList<>();
         }
         if(MainActivity.listGioHang.size() > 0) {
             DonHangAdapter adapterProduct = new DonHangAdapter(getApplicationContext(), MainActivity.listGioHang);
@@ -68,8 +73,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                     if(rdThanhToanKhiNhanHang.isChecked()){
                         luuDon();
                         MainActivity.listGioHang.clear();
-                        MainActivity.listGioHang.clear();
-                        //databaseReference.child("GioHang").child(user.getUid()).removeValue();
+                        databaseReference.child("giohang").child(user.getUid()).removeValue();
                         //Intent intent = new Intent(getBaseContext(), DanhSachDonDangGiao.class);
                         //startActivity(intent);
                         //finish();
@@ -99,14 +103,28 @@ public class ThanhToanActivity extends AppCompatActivity {
     private void luuDon(){
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss ");
         String date = df.format(Calendar.getInstance().getTime());
-        //Toast.makeText(getApplicationContext(),date,Toast.LENGTH_SHORT).show();
-//        DonHang DonHang = new DonHang("DH1",MainActivity.listGioHang,TongTien_1, TongTienHang_1, date, "Chờ xác nhận");
-//        databaseReference.child("donhang").child(user.getUid()).child("DH1").setValue(DonHang);
-        databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("diachi").setValue(GioHangActivity.ThongTinCaNhan.getDiachi());
-        databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("username").setValue(GioHangActivity.ThongTinCaNhan.getUsername());
-        databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("sdt").setValue(GioHangActivity.ThongTinCaNhan.getSdt());
-        databaseReference.child("donhang").child(user.getUid()).child("DH1").child("ThongTinNhanHang").child("id_User").setValue(GioHangActivity.ThongTinCaNhan.getId_User());
+        ThongTinNhanHang thongTinNhanHang = new ThongTinNhanHang(tvDiaChi.getText()+"", GioHangActivity.ThongTinCaNhan.getId_User(),GioHangActivity.ThongTinCaNhan.getNgaysinh(),tvSdt.getText()+"", tvName.getText()+"");
+        DonHang DonHang = new DonHang("544768437DH"+(listDonHang.size()+1),thongTinNhanHang,MainActivity.listGioHang,TongTien_1, TongTienHang_1, date, "Chờ xác nhận");
+        databaseReference.child("donhang").child(user.getUid()).child("544768437DH"+(listDonHang.size()+1)).setValue(DonHang);
 
-
+    }
+    private void getDonHang( ){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference myRef = database.getReference("donhang").child(user.getUid());
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listDonHang.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    DonHang donHang = dataSnapshot.getValue(DonHang.class);
+                    listDonHang.add(donHang);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplication(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
