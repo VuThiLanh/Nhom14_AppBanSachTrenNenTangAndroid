@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<!--    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>-->
 
     <application
         android:allowBackup="true"
@@ -19,38 +18,17 @@
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".View.DanhMucActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.ChiTietDonHangActivity"
             android:exported="true" />
         <activity android:name=".View.QuenmkActivity" />
         <activity
-            android:name=".View.TimKiemDonActivity"
+            android:name=".View.fragment.TimKiemDonActivity"
             android:exported="true" />
         <activity
             android:name=".View.TimKiemActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.ThieuNhiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.TamLyTamLinhTonGiaoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.TruyenTieuThuyetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.GiaoTrinhActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.VanHoaXaHoiLichSuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.VanHocNgheThuatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.KhoaHocCongNgheKinhTeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.ChinhTriPhapLuatActivity"
             android:exported="false" />
         <activity
             android:name=".View.DanhGiaActivity"
@@ -62,7 +40,7 @@
         <activity android:name=".View.GioHangActivity" />
         <activity
             android:name=".View.DonHangActivity"
-            android:parentActivityName=".View.MainActivity"/>
+            android:parentActivityName=".View.MainActivity" />
         <activity
             android:name=".View.MainActivity"
             android:exported="true" />
