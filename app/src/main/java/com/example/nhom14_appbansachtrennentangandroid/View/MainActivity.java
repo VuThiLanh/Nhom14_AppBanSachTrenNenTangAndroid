@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         chuyenTrang();
         getSanPham();
         getGioHang();
+        //Toast.makeText(getApplication(),MainActivity.listGioHang.size()+"",Toast.LENGTH_SHORT).show();
     }
 
     private void chuyenTrang(){

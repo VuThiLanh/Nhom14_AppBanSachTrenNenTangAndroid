@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -29,6 +30,7 @@ import com.example.nhom14_appbansachtrennentangandroid.View.ChinhTriPhapLuatActi
 import com.example.nhom14_appbansachtrennentangandroid.View.GiaoTrinhActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.KhoaHocCongNgheKinhTeActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TamLyTamLinhTonGiaoActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ThieuNhiActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TimKiemActivity;
@@ -58,6 +60,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
     RecyclerView rcTopBanChay,rcGoiY;
     ViewFlipper anhquangcao;
     View view;
+    public static TextView tvSoLuongGioHang_home;
     ImageView img_GioHang, img_TimKiem;
     public static AutoCompleteTextView tv_TimKiem;
     LinearLayout ll_ChinhTri_PhapLuat, ll_KhoaHoc_CN_KT, ll_VanHoc_NT, ll_VanHoa_XH_LS, ll_GiaoTrinh, ll_Truyen_TieuThuyet, ll_TamLy_TamLinh, ll_ThieuNhi;
@@ -74,6 +77,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ChuyenDenGioHang();
         DanhMuc();
         TimKiem();
+        getSoLuongGiohang();
+        Toast.makeText(getContext(),MainActivity.listGioHang.size()+"",Toast.LENGTH_SHORT).show();
         return view;
 
     }
@@ -91,7 +96,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_ThieuNhi = view.findViewById(R.id.ll_ThieuNhi);
         tv_TimKiem = view.findViewById(R.id.tv_TimKiem);
         img_TimKiem = view.findViewById(R.id.img_TimKiem);
-
+        tvSoLuongGioHang_home = view.findViewById(R.id.tvSoLuongGioHang_home);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
 
@@ -263,5 +268,13 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
     }
     public static String tv_TimKiem(){
         return tv_TimKiem.getText().toString().trim();
+    }
+
+    public static void getSoLuongGiohang(){
+        int SoLuong = 0;
+        for(int i = 0; i< MainActivity.listGioHang.size(); i++){
+            SoLuong += MainActivity.listGioHang.get(i).getSoluong();
+        }
+        tvSoLuongGioHang_home.setText(SoLuong+"");
     }
 }

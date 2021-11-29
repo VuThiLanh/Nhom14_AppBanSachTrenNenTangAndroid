@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
@@ -39,6 +40,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
     ActivityChiTietSpactivityBinding binding;
     int sl = 0;
     String maSP = "";
+    //public static TextView tvSoLuongGioHang;
     DanhGiaAdapter danhGiaAdapter;
     List<DanhGia> danhGiaList= new ArrayList<>();
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
@@ -50,7 +52,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(ChiTietSPActivity.this, R.layout.activity_chi_tiet_spactivity);
-
+        //tvSoLuongGioHang = findViewById(R.id.tvSoLuongGioHang_CTSP);
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
 
@@ -71,6 +73,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 }
             });
             ad.show();
+            //getSoLuongGiohang();
             return;
         }
 
@@ -338,4 +341,12 @@ public class ChiTietSPActivity extends AppCompatActivity {
             }
         });
     }
+
+   /*public static void getSoLuongGiohang(){
+        int SoLuong = 0;
+        for(int i = 0; i< MainActivity.listGioHang.size(); i++){
+            SoLuong += MainActivity.listGioHang.get(i).getSoluong();
+        }
+        tvSoLuongGioHang.setText(SoLuong+"");
+    }*/
 }
