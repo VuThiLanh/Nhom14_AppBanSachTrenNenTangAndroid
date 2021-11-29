@@ -25,6 +25,9 @@
             android:name=".View.fragment.TimKiemDonActivity"
             android:exported="true" />
         <activity
+            android:name=".View.TimKiemActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.ThieuNhiActivity"
             android:exported="false" />
         <activity
