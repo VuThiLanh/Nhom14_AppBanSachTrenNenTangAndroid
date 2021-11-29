@@ -244,6 +244,24 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl_da_danh_gia"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_mualai2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/red"
+                android:padding="5dp"
+                android:text="@string/muaLai"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="2sp"

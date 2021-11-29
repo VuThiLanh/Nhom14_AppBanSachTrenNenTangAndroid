@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietDonHangActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.PostDanhGiaActivity;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.google.firebase.auth.FirebaseAuth;
@@ -88,21 +90,31 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             holder.rl_dang_giao.setVisibility(View.GONE);
             holder.rl_da_nhan.setVisibility(View.GONE);
             holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
         }else if(donHang.getTrangThai().equals("Đã nhận")){
             holder.rl_cho.setVisibility(View.GONE);
             holder.rl_dang_giao.setVisibility(View.GONE);
             holder.rl_da_nhan.setVisibility(View.VISIBLE);
             holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
         }else if(donHang.getTrangThai().equals("Đang giao")){
             holder.rl_cho.setVisibility(View.GONE);
             holder.rl_dang_giao.setVisibility(View.VISIBLE);
             holder.rl_da_nhan.setVisibility(View.GONE);
             holder.rl_da_huy.setVisibility(View.GONE);
-        }else {
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
+        }else if(donHang.getTrangThai().equals("Đã hủy")){
             holder.rl_cho.setVisibility(View.GONE);
             holder.rl_dang_giao.setVisibility(View.GONE);
             holder.rl_da_nhan.setVisibility(View.GONE);
             holder.rl_da_huy.setVisibility(View.VISIBLE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
+        }else {
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.VISIBLE);
         }
         if(tinhNgay(donHang.getNgayTao())&& donHang.getTrangThai().equals("Chờ xác nhận")){
             reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đang giao");
@@ -121,6 +133,22 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             }
         });
 
+        holder.btn_danhgia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, PostDanhGiaActivity.class));
+            }
+        });
+
+        holder.btn_mualai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(GioHang gioHang1: donHang.getGioHangList()){
+                    reference.child("giohang").child(user.getUid()).child(gioHang1.getIdsp()).setValue(gioHang1);
+                }
+                context.startActivity(new Intent(context, GioHangActivity.class));
+            }
+        });
     }
 
     @Override
@@ -133,7 +161,7 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
         View gach2;
         TextView tv_tenSP, tv_sl,tv_ngay, tv_gia,tv_xem,tv_tongsl, tv_thanhtien;
         Button btn_danhgia,btn_danhan, btn_mualai, btn_huy;
-        RelativeLayout rl_cho, rl_da_huy, rl_da_nhan,rl_dang_giao;
+        RelativeLayout rl_cho, rl_da_huy, rl_da_nhan,rl_dang_giao, rl_da_danh_gia;
         public Holder(@NonNull View itemView) {
             super(itemView);
             img_anh=itemView.findViewById(R.id.img_anh);
@@ -153,6 +181,7 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             rl_da_huy=itemView.findViewById(R.id.rl_da_huy);
             rl_da_nhan=itemView.findViewById(R.id.rl_da_nhan);
             rl_dang_giao=itemView.findViewById(R.id.rl_dang_giao);
+            rl_da_danh_gia=itemView.findViewById(R.id.rl_da_danh_gia);
         }
     }
     private boolean tinhNgay(String ngayTao){

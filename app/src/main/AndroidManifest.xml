@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<!--    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>-->
 
     <application
         android:allowBackup="true"
@@ -18,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".View.PostDanhGiaActivity"
+            android:exported="true" />
         <activity
             android:name=".View.ChiTietDonHangActivity"
             android:exported="true" />
@@ -62,7 +64,7 @@
         <activity android:name=".View.GioHangActivity" />
         <activity
             android:name=".View.DonHangActivity"
-            android:parentActivityName=".View.MainActivity"/>
+            android:parentActivityName=".View.MainActivity" />
         <activity
             android:name=".View.MainActivity"
             android:exported="true" />
