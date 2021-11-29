@@ -79,7 +79,6 @@ public class DanhGiaAdapter extends RecyclerView.Adapter<DanhGiaAdapter.ViewHowe
             default:
                 holder.img_sao2.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override

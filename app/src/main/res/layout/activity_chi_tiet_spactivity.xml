@@ -4,7 +4,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/gray2"
+        android:background="@color/maunen"
         android:layout_height="wrap_content">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -56,6 +56,7 @@
                             </RelativeLayout>
                         </androidx.appcompat.widget.Toolbar>
                     </com.google.android.material.appbar.AppBarLayout>
+
                     <ImageView
                         android:id="@+id/img_anhHang"
                         android:layout_width="match_parent"
@@ -176,7 +177,7 @@
                     <TextView
                         android:id="@+id/tv_mota"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="200dp"
                         android:text="mota"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -203,12 +204,25 @@
                         android:text="@string/anbot"/>
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:text="@string/chuaco"
+                    android:id="@+id/tv_chuaco"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/ln_mta"
+                    android:textSize="18sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical"
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/ln_mta"
+                    android:id="@+id/ln_danhgia"
                     android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -250,10 +264,12 @@
                     <Button
                         android:id="@+id/btn_xem_them"
                         android:layout_width="wrap_content"
+                        android:padding="10dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/rec_danh_gia"
                         android:background="@color/red"
                         android:text="@string/xemAll"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"/>
@@ -277,6 +293,7 @@
                 android:textStyle="bold"
                 android:background="@color/blue"
                 android:text="@string/chat"
+                android:textAllCaps="false"
                 android:id="@+id/btn_chat"/>
             <Button
                 android:layout_width="0dp"
@@ -286,6 +303,7 @@
                 android:textStyle="bold"
                 android:background="@color/red"
                 android:text="@string/them"
+                android:textAllCaps="false"
                 android:id="@+id/btn_them"/>
         </LinearLayout>
     </RelativeLayout>

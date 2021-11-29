@@ -18,9 +18,12 @@
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".View.TimKiemActivity"
-            android:exported="false" />
+            android:name=".View.ChiTietDonHangActivity"
+            android:exported="true" />
         <activity android:name=".View.QuenmkActivity" />
+        <activity
+            android:name=".View.fragment.TimKiemDonActivity"
+            android:exported="true" />
         <activity
             android:name=".View.ThieuNhiActivity"
             android:exported="false" />
@@ -53,7 +56,9 @@
             android:name=".View.ThanhToanActivity"
             android:exported="true" />
         <activity android:name=".View.GioHangActivity" />
-        <activity android:name=".View.DonHangActivity" />
+        <activity
+            android:name=".View.DonHangActivity"
+            android:parentActivityName=".View.MainActivity"></activity>
         <activity
             android:name=".View.MainActivity"
             android:exported="true" />
