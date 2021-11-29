@@ -17,25 +17,15 @@ import android.widget.ViewFlipper;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.View.DanhMucActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.ChinhTriPhapLuatActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.GiaoTrinhActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.KhoaHocCongNgheKinhTeActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.TamLyTamLinhTonGiaoActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.ThieuNhiActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TimKiemActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.TruyenTieuThuyetActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.VanHoaXaHoiLichSuActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.VanHocNgheThuatActivity;
-import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -183,56 +173,64 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ChinhTriPhapLuatActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm03");
                 startActivity(intent);
             }
         });
         ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), KhoaHocCongNgheKinhTeActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm04");
                 startActivity(intent);
             }
         });
         ll_VanHoc_NT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), VanHocNgheThuatActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm05");
                 startActivity(intent);
             }
         });
         ll_VanHoa_XH_LS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), VanHoaXaHoiLichSuActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm06");
                 startActivity(intent);
             }
         });
         ll_GiaoTrinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), GiaoTrinhActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm07");
                 startActivity(intent);
             }
         });
         ll_Truyen_TieuThuyet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), TruyenTieuThuyetActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm02");
                 startActivity(intent);
             }
         });
         ll_TamLy_TamLinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), TamLyTamLinhTonGiaoActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm08");
                 startActivity(intent);
             }
         });
         ll_ThieuNhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ThieuNhiActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm01");
                 startActivity(intent);
             }
         });
