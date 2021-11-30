@@ -13,12 +13,7 @@ import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 
-<<<<<<< HEAD
-import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TaiKhoanFragment;
-import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 
-=======
->>>>>>> 56ef1e73794f5acb618163d0f7792200032e8bac
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
@@ -26,15 +21,7 @@ import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-<<<<<<< HEAD
 
-
-import java.io.IOException;
-
-
-import java.io.IOException;
-=======
->>>>>>> 56ef1e73794f5acb618163d0f7792200032e8bac
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
