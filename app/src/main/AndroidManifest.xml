@@ -19,7 +19,9 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".View.QuenmkActivity"></activity>
 
-
+        <activity
+            android:name=".View.DanhMucActivity"
+            android:exported="true" />
         <activity
             android:name=".View.PostDanhGiaActivity"
             android:exported="true" />
