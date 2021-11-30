@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -15,31 +17,19 @@ import android.widget.ViewFlipper;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
-import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.ChinhTriPhapLuatActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.GiaoTrinhActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.DanhMucActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.KhoaHocCongNgheKinhTeActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.TamLyTamLinhTonGiaoActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.ThieuNhiActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.TruyenTieuThuyetActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.VanHoaXaHoiLichSuActivity;
-import com.example.nhom14_appbansachtrennentangandroid.View.VanHocNgheThuatActivity;
-import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TimKiemActivity;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
-import com.example.nhom14_appbansachtrennentangandroid.model.Anh;
-import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
-import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,16 +37,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickListener{
 
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
+    List<String> listSP;
     SanPhamAdapter sanPhamAdapter,sanPhamBanChayAdapter ;
     RecyclerView rcTopBanChay,rcGoiY;
     ViewFlipper anhquangcao;
     View view;
-    ImageView img_GioHang;
+    ImageView img_GioHang, img_TimKiem;
+    public static AutoCompleteTextView tv_TimKiem;
     LinearLayout ll_ChinhTri_PhapLuat, ll_KhoaHoc_CN_KT, ll_VanHoc_NT, ll_VanHoa_XH_LS, ll_GiaoTrinh, ll_Truyen_TieuThuyet, ll_TamLy_TamLinh, ll_ThieuNhi;
     @Nullable
     @Override
@@ -70,6 +63,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         getSanPhamBanChay();
         ChuyenDenGioHang();
         DanhMuc();
+        TimKiem();
         return view;
 
     }
@@ -85,6 +79,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_Truyen_TieuThuyet = view.findViewById(R.id.ll_Truyen_TieuThuyet);
         ll_TamLy_TamLinh = view.findViewById(R.id.ll_TamLy_TamLinh);
         ll_ThieuNhi = view.findViewById(R.id.ll_ThieuNhi);
+        tv_TimKiem = view.findViewById(R.id.tv_TimKiem);
+        img_TimKiem = view.findViewById(R.id.img_TimKiem);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
@@ -102,6 +98,10 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
         rcGoiY.setAdapter(sanPhamAdapter);
 
+        listSP = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.select_dialog_item, listSP);
+        tv_TimKiem.setAdapter(adapter);
+
         int img[] = {R.drawable.poster1, R.drawable.poster2, R.drawable.poster3, R.drawable.poster4,R.drawable.poster5};
         for (int i = 0; i < img.length; i++) {
             flipperImage(img[i]);
@@ -117,6 +117,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     SanPham sanPham = dataSnapshot.getValue(SanPham.class);
                     listSanPham.add(sanPham);
+                    listSP.add(sanPham.getTenSP());
                 }
                 sanPhamAdapter.notifyDataSetChanged();
             }
@@ -164,6 +165,12 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         img_GioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                if(user == null){
+                    Toast.makeText(getContext(),"Vui lòng đăng nhập để xem giỏ hàng",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(getContext(), GioHangActivity.class);
                 startActivity(intent);
             }
@@ -174,56 +181,64 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_ChinhTri_PhapLuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ChinhTriPhapLuatActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm03");
                 startActivity(intent);
             }
         });
         ll_KhoaHoc_CN_KT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), KhoaHocCongNgheKinhTeActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm04");
                 startActivity(intent);
             }
         });
         ll_VanHoc_NT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), VanHocNgheThuatActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm05");
                 startActivity(intent);
             }
         });
         ll_VanHoa_XH_LS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), VanHoaXaHoiLichSuActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm06");
                 startActivity(intent);
             }
         });
         ll_GiaoTrinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), GiaoTrinhActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm07");
                 startActivity(intent);
             }
         });
         ll_Truyen_TieuThuyet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), TruyenTieuThuyetActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm02");
                 startActivity(intent);
             }
         });
         ll_TamLy_TamLinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), TamLyTamLinhTonGiaoActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm08");
                 startActivity(intent);
             }
         });
         ll_ThieuNhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ThieuNhiActivity.class);
+                Intent intent = new Intent(getContext(), DanhMucActivity.class);
+                intent.putExtra("maDanhMuc", "dm01");
                 startActivity(intent);
             }
         });
@@ -234,5 +249,17 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
         intent.putExtra("maSP", sanPham.getIdSp()+"");
         startActivity(intent);
+    }
+    private void TimKiem(){
+        img_TimKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TimKiemActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    public static String tv_TimKiem(){
+        return tv_TimKiem.getText().toString().trim();
     }
 }

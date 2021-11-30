@@ -69,7 +69,7 @@ public class GioHangAdapter extends BaseAdapter {
         imgPicture = view.findViewById(R.id.imgPictureProduct_GH);
         GioHang gioHang = gioHangList.get(position);
         tvName.setText(gioHang.getTenSP());
-        tvPrice.setText(gioHang.getDongia()+"");
+        tvPrice.setText(gioHang.getDonGia()+"");
         Glide.with(context).load(gioHang.getImg()).error(R.drawable.avatardefault).into(imgPicture);
         tvSoLuong.setText(gioHang.getSoluong()+"");
         firebaseDatabase = FirebaseDatabase.getInstance();

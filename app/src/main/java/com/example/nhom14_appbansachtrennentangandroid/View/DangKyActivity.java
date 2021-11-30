@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangKyBinding;
-import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangNhapBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -110,18 +109,9 @@ public class DangKyActivity extends AppCompatActivity {
                                                     });
                                             String email= user.getEmail()+"";
                                             String id = user.getUid()+"";
-                                            String avt= user.getPhotoUrl()+"";
-                                            TaiKhoan t = new TaiKhoan(avt,"",email,"",id,"","",tenDN);
-                                            databaseReference.child("taikhoan").child(id).setValue(t).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if(task.isSuccessful()){
-                                                        databaseReference.child("giohang").child(id).setValue("sanpham");
-                                                    }
-                                                }
-                                            });
-                                            Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
-                                            startActivity(intent);
+                                            String tenDN= binding.edTenDNDangky.getText().toString();
+                                            TaiKhoan t = new TaiKhoan("","",email,"",id,"01/01/2001","",tenDN);
+                                            databaseReference.child("taikhoan").child(id).setValue(t);
                                         }
                                     });
                                     ad.show();
