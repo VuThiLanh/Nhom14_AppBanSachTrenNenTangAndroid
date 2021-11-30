@@ -17,13 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom14_AppBanSachTrenNenTangAndroid"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
         <activity android:name=".View.QuenmkActivity"></activity>
-=======
-<!--<<<<<<< HEAD-->
-        <activity android:name=".View.QuenmkActivity"></activity>
-<!--=======-->
->>>>>>> 975d7175ca2735595e14132de590c801109c4d85
+
         <activity
             android:name=".View.ThieuNhiActivity"
             android:exported="false" />
@@ -65,23 +60,18 @@
             android:exported="true" />
         <activity
             android:name=".View.ChiTietSPActivity"
-<<<<<<< HEAD
             android:exported="true"></activity>
-        <activity android:name=".View.DangNhap">
-=======
-            android:exported="true"/>
-<!--=======-->
-<!--            android:exported="true" />-->
-<!--&gt;>>>>>> main-->
+        <activity android:name=".View.DangNhap"
+            android:exported="true"></activity>
+
         <activity android:name=".View.SplashActivity">
->>>>>>> 975d7175ca2735595e14132de590c801109c4d85
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SplashActivity" />
+
         <activity
             android:name=".View.ChangePassActivity"
             android:exported="true" />
