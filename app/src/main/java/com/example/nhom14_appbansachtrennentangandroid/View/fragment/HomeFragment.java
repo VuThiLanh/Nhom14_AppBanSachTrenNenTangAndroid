@@ -2,6 +2,7 @@ package com.example.nhom14_appbansachtrennentangandroid.View.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,6 +100,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         rcGoiY.setAdapter(sanPhamAdapter);
 
         listSP = new ArrayList<>();
+//        tv_TimKiem.setMaxLines(1);
+//        tv_TimKiem.setEllipsize(TextUtils.TruncateAt.END);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.select_dialog_item, listSP);
         tv_TimKiem.setAdapter(adapter);
 
