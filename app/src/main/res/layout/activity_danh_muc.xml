@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.VanHocNgheThuatActivity"
+    tools:context=".View.DanhMucActivity"
     android:orientation="vertical"
     android:background="@color/maunen">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,17 +23,18 @@
             android:layout_gravity="center|left"
             android:layout_marginHorizontal="5dp"/>
         <TextView
+            android:id="@+id/tv_TenDM"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Văn học - Nghệ thuật"
+            android:text=""
             android:textStyle="bold"
             android:textSize="30dp"
             android:gravity="center|left"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcVanHoc_NgheThuat"
+        android:id="@+id/rcDanhMuc"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.93"

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,6 +48,8 @@ public class TimKiemActivity extends AppCompatActivity {
         listTimKiem = new ArrayList<>();
         sanPhamDanhMucAdapter = new SanPhamDanhMucAdapter(listTimKiem, this::onItemClick, getApplication());
         rcTimKiem.setAdapter(sanPhamDanhMucAdapter);
+        tv_TK.setMaxLines(1);
+        tv_TK.setEllipsize(TextUtils.TruncateAt.END);
         tv_TK.setText(dataTimKiem);
         getTimKiem();
 
