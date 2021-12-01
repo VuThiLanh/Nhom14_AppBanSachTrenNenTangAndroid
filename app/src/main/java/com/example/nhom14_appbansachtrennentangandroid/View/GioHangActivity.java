@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -45,12 +46,11 @@ public class GioHangActivity extends AppCompatActivity {
         tvSoLuong = findViewById(R.id.tvSoLuongGioHang);
         tvGioHangTrong=findViewById(R.id.tvGioHAngTrong);
         getThongTinCaNhan();
+
         tvMuaHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //firebaseDatabase = FirebaseDatabase.getInstance();
-                //db = firebaseDatabase.getReference();
-                if(ThongTinCaNhan == null || ThongTinCaNhan.getUsername() == null || ThongTinCaNhan.getDiachi() == null || ThongTinCaNhan.getEmail() == null|| ThongTinCaNhan.getSdt() == null){
+                if(TextUtils.isEmpty(MainActivity.ThongTinCaNhan.getDiachi()) || TextUtils.isEmpty(MainActivity.ThongTinCaNhan.getSdt())){
                     Toast.makeText(getApplication(),"Vui lòng cập nhật đủ thông tin tài khoản để mua hàng",Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -103,7 +103,9 @@ public class GioHangActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                //onBackPressed();
+                Intent intent = new Intent(GioHangActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

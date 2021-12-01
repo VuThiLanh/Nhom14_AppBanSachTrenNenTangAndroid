@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
+import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,11 +29,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-    public static ArrayList<SanPham> listSanPham;
-    public static ArrayList<GioHang> listGioHang;
+    public static List<GioHang> listGioHang;
+    public static List<GioHang> mangGioHang;
+    public static TaiKhoan ThongTinCaNhan;
     int i=0;
 
 
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         binding= DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
         ViewPagerAdapTer viewPagerAdapTer = new ViewPagerAdapTer(this);
         binding.viewpagerMain.setAdapter(viewPagerAdapTer);
+        getGioHang();
+        getThongTinCaNhan();
         binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -80,17 +86,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        if(listSanPham == null){
-            listSanPham = new ArrayList<>();
-        }
         if(listGioHang == null){
             listGioHang = new ArrayList<>();
         }
+        if(mangGioHang == null){
+            mangGioHang = new ArrayList<>();
+        }
         chuyenTrang();
-        getSanPham();
-        getGioHang();
-        //Toast.makeText(getApplication(),MainActivity.listGioHang.size()+"",Toast.LENGTH_SHORT).show();
     }
+
 
     private void chuyenTrang(){
         int i =0;
@@ -100,26 +104,8 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigation.getMenu().findItem(R.id.nav_chat).setChecked(true);
         binding.bottomNavigation.getMenu().findItem(R.id.nav_taikhoan).setChecked(true);
     }
-    private void getSanPham( ){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("sanpham");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listSanPham.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    SanPham sanPham = dataSnapshot.getValue(SanPham.class);
-                    listSanPham.add(sanPham);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplication(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    private void getGioHang( ) {
+    /*private void getGioHang( ) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -138,9 +124,54 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplication(), "Get Book Fail!", Toast.LENGTH_SHORT).show();
                 }
             });
+
         }
         else {
             listGioHang.clear(); ;
         }
+    }*/
+    private List<GioHang> getGioHang(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user !=null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("giohang").child(user.getUid());
+
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    listGioHang.clear();
+                    for (DataSnapshot data : snapshot.getChildren()) {
+                        GioHang gioHang = data.getValue(GioHang.class);
+                        listGioHang.add(gioHang);
+                    }
+                    HomeFragment.getSoLuongGiohang();
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+        else {
+            listGioHang.clear();
+        }
+        return listGioHang;
+    }
+    private TaiKhoan getThongTinCaNhan() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("taikhoan").child(user.getUid());
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ThongTinCaNhan = new TaiKhoan();
+                    ThongTinCaNhan = snapshot.getValue(TaiKhoan.class);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+        return ThongTinCaNhan;
     }
 }

@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         DanhMuc();
         TimKiem();
         getSoLuongGiohang();
-        Toast.makeText(getContext(),MainActivity.listGioHang.size()+"",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),listSanPham.size()+"",Toast.LENGTH_SHORT).show();
         return view;
 
     }
