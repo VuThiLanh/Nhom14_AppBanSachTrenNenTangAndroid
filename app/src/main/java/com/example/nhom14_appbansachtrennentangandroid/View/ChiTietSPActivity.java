@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -77,7 +78,12 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
+
+
+        danhGiaAdapter = new DanhGiaAdapter(danhGiaList, getApplicationContext());
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        binding.recDanhGia.setAdapter(danhGiaAdapter);
+
 
 
         binding.btnXemThem.setOnClickListener(new View.OnClickListener() {
@@ -321,8 +327,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                danhGiaAdapter = new DanhGiaAdapter(danhGiaList, getApplicationContext());
-                binding.recDanhGia.setAdapter(danhGiaAdapter);
+                danhGiaAdapter.notifyDataSetChanged();
                 if(danhGiaList.size()<=0){
                     binding.tvChuaco.setVisibility(View.VISIBLE);
                     binding.lnDanhgia.setVisibility(View.GONE);

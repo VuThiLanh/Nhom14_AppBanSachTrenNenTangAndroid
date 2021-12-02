@@ -5,11 +5,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="@color/maunen"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/lv_chon"
+            android:layout_alignParentTop="true"
             android:fitsSystemWindows="true"
             android:layout_marginBottom="10dp"
             android:scrollbars="none">
@@ -17,23 +18,26 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <RelativeLayout
+                    android:id="@+id/relativelayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/relativelayout"
                     android:layout_marginBottom="10dp"
                     android:background="@color/white">
+
                     <com.google.android.material.appbar.AppBarLayout
-                        android:layout_width="match_parent"
                         android:id="@+id/appbarlayout_main"
-                        android:background="@android:color/transparent"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent">
 
                         <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar_sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/toolbar_sp"
                             app:titleTextColor="@color/mauchu">
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -63,24 +67,25 @@
                         android:layout_height="wrap_content"
                         android:scaleType="centerInside"
                         android:src="@drawable/ic_baseline_hide_image_24" />
+
                     <TextView
+                        android:id="@+id/tv_tenSP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:id="@+id/tv_tenSP"
-                        android:text="Tên sản phẩm"
-                        android:textStyle="bold"
                         android:layout_below="@id/img_anhHang"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
-                        />
-                    <RelativeLayout
                         android:layout_margin="10dp"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_below="@id/tv_tenSP"
+                        android:text="Tên sản phẩm"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
                         android:id="@+id/ll"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_tenSP"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/tv_gia_goc"
@@ -90,79 +95,88 @@
                             android:text="giá"
                             android:textColor="@color/red"
                             android:textSize="18sp" />
+
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_height="match_parent">
-                            <Button
-                                android:layout_width="100px"
-                                android:layout_height="wrap_content"
-                                android:text="@string/tru"
-                                android:textSize="30sp"
-                                android:textColor="@color/white"
-                                android:background="@color/gray"
-                                android:id="@+id/btn_tru"/>
-                            <EditText
-                                android:background="@drawable/border"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:text="@string/sl"
-                                android:layout_marginHorizontal="5dp"
-                                android:gravity="center"
-                                android:id="@+id/ed_sl"/>
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true">
 
                             <Button
+                                android:id="@+id/btn_tru"
                                 android:layout_width="100px"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cong"
-                                android:textSize="30sp"
-                                android:textColor="@color/white"
                                 android:background="@color/gray"
-                                android:id="@+id/btn_cong"/>
+                                android:text="@string/tru"
+                                android:textColor="@color/white"
+                                android:textSize="30sp" />
+
+                            <EditText
+                                android:id="@+id/ed_sl"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/border"
+                                android:gravity="center"
+                                android:text="@string/sl" />
+
+                            <Button
+                                android:id="@+id/btn_cong"
+                                android:layout_width="100px"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray"
+                                android:text="@string/cong"
+                                android:textColor="@color/white"
+                                android:textSize="30sp" />
                         </LinearLayout>
 
                     </RelativeLayout>
+
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_below="@id/ll"
                         android:id="@+id/nn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18sp"
+                            android:text="@string/tacgia"
                             android:textColor="@color/black"
-                            android:text="@string/tacgia"/>
+                            android:textSize="18sp" />
+
                         <TextView
+                            android:id="@+id/tv_tacgia"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tv_tacgia"
-                            android:textSize="18sp"
                             android:layout_marginLeft="5dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/nn"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18sp"
+                            android:text="@string/nhaxb"
                             android:textColor="@color/black"
-                            android:text="@string/nhaxb"/>
+                            android:textSize="18sp" />
+
                         <TextView
+                            android:id="@+id/tv_nxb"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tv_nxb"
-                            android:textSize="18sp"
                             android:layout_marginLeft="5dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </RelativeLayout>
 
