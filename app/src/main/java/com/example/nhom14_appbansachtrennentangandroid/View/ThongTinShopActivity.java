@@ -3,6 +3,8 @@ package com.example.nhom14_appbansachtrennentangandroid.View;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityThongTinShopBinding;
@@ -17,6 +19,7 @@ public class ThongTinShopActivity extends FragmentActivity implements OnMapReady
 
     private GoogleMap mMap;
     private ActivityThongTinShopBinding binding;
+    ImageView img_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,13 @@ public class ThongTinShopActivity extends FragmentActivity implements OnMapReady
 
         binding = ActivityThongTinShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        img_back = findViewById(R.id.img_back);
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

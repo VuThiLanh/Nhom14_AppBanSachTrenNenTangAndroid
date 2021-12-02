@@ -12,14 +12,33 @@
     android:layout_height="0dp"
     android:layout_weight="0.4"
     android:orientation="vertical">
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:text="THÔNG TIN SHOP"
-        android:textSize="25dp"
-        android:gravity="center"
-        android:textStyle="bold"/>
+        android:orientation="horizontal"
+        android:background="@color/toolbar">
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:background="@drawable/border_nut"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24"
+            android:layout_gravity="center|left"
+            android:layout_marginHorizontal="5dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="THÔNG TIN SHOP"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
