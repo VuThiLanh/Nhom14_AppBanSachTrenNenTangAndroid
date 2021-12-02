@@ -77,10 +77,10 @@
     <string name="ngaytao">Ngày tạo</string>
 
 
-
     <!--    QuenMK-->
     <string name="quenmk">Quên Mật Khẩu</string>
     <string name="nhapemail">Nhập email liên kết với tài khoản của bạn.<br />Mật khẩu sẽ gửi về email đăng ký.</string>
     <string name="khoiphuc">Khôi Phục Mật khẩu</string>
+    <string name="title_activity_thong_tin_shop">ThongTinShopActivity</string>
 
 </resources>
