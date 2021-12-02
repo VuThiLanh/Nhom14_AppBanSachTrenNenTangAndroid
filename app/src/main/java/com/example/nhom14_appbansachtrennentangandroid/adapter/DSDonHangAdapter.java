@@ -53,69 +53,14 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         DonHang donHang=donHangList.get(position);
-        GioHang gioHang=donHang.getGioHangList().get(0);
-        if(gioHang!=null){
-            Glide.with(context).load(gioHang.getImg()).error(R.drawable.ic_baseline_hide_image_24).into(holder.img_anh);
-            holder.tv_tenSP.setText(gioHang.getTenSP());
-            holder.tv_sl.setText("x"+ gioHang.getSoluong());
-            holder.tv_gia.setText(gioHang.getDonGia()+"đ");
-        }
-        int tongsl=0;
-
-        for(GioHang gioHang1: donHang.getGioHangList()){
-            tongsl+=gioHang1.getSoluong();
-        }
-
-        holder.tv_ngay.setText(donHang.getNgayTao());
-        holder.tv_tongsl.setText(tongsl+" sản phẩm");
-        holder.tv_thanhtien.setText(donHang.getTongTien()+"đ");
-        if(donHang.getGioHangList().size()>1){
-            holder.tv_xem.setVisibility(View.VISIBLE);
-            holder.gach2.setVisibility(View.VISIBLE);
-        }
-        else {
-            holder.tv_xem.setVisibility(View.GONE);
-            holder.gach2.setVisibility(View.GONE);
-        }
+        init(donHang, holder);
         holder.tv_xem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, ChiTietDonHangActivity.class);
-                intent.putExtra("id", donHang.getId());
-                context.startActivity(intent);
+               chitiet(donHang.getId());
             }
         });
-        if(donHang.getTrangThai().equals("Chờ xác nhận")){
-            holder.rl_cho.setVisibility(View.VISIBLE);
-            holder.rl_dang_giao.setVisibility(View.GONE);
-            holder.rl_da_nhan.setVisibility(View.GONE);
-            holder.rl_da_huy.setVisibility(View.GONE);
-            holder.rl_da_danh_gia.setVisibility(View.GONE);
-        }else if(donHang.getTrangThai().equals("Đã nhận")){
-            holder.rl_cho.setVisibility(View.GONE);
-            holder.rl_dang_giao.setVisibility(View.GONE);
-            holder.rl_da_nhan.setVisibility(View.VISIBLE);
-            holder.rl_da_huy.setVisibility(View.GONE);
-            holder.rl_da_danh_gia.setVisibility(View.GONE);
-        }else if(donHang.getTrangThai().equals("Đang giao")){
-            holder.rl_cho.setVisibility(View.GONE);
-            holder.rl_dang_giao.setVisibility(View.VISIBLE);
-            holder.rl_da_nhan.setVisibility(View.GONE);
-            holder.rl_da_huy.setVisibility(View.GONE);
-            holder.rl_da_danh_gia.setVisibility(View.GONE);
-        }else if(donHang.getTrangThai().equals("Đã hủy")){
-            holder.rl_cho.setVisibility(View.GONE);
-            holder.rl_dang_giao.setVisibility(View.GONE);
-            holder.rl_da_nhan.setVisibility(View.GONE);
-            holder.rl_da_huy.setVisibility(View.VISIBLE);
-            holder.rl_da_danh_gia.setVisibility(View.GONE);
-        }else {
-            holder.rl_cho.setVisibility(View.GONE);
-            holder.rl_dang_giao.setVisibility(View.GONE);
-            holder.rl_da_nhan.setVisibility(View.GONE);
-            holder.rl_da_huy.setVisibility(View.GONE);
-            holder.rl_da_danh_gia.setVisibility(View.VISIBLE);
-        }
+
         if(tinhNgay(donHang.getNgayTao())&& donHang.getTrangThai().equals("Chờ xác nhận")){
             reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đang giao");
         }
@@ -143,13 +88,19 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
         holder.btn_mualai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(GioHang gioHang1: donHang.getGioHangList()){
-                    reference.child("giohang").child(user.getUid()).child(gioHang1.getIdsp()).setValue(gioHang1);
-                }
-                context.startActivity(new Intent(context, GioHangActivity.class));
+                muaLai(donHang.getGioHangList());
+
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chitiet(donHang.getId());
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -184,6 +135,13 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             rl_da_danh_gia=itemView.findViewById(R.id.rl_da_danh_gia);
         }
     }
+
+
+
+
+
+
+
     private boolean tinhNgay(String ngayTao){
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -200,5 +158,81 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
             e.printStackTrace();
         }
         return false;
+    }
+
+
+    private void chitiet(String id){
+        Intent intent=new Intent(context, ChiTietDonHangActivity.class);
+        intent.putExtra("id",id);
+        context.startActivity(intent);
+    }
+
+
+    private void muaLai(List<GioHang> gioHangList) {
+        for(GioHang gioHang1: gioHangList){
+            reference.child("giohang").child(user.getUid()).child(gioHang1.getIdsp()).setValue(gioHang1);
+        }
+        context.startActivity(new Intent(context, GioHangActivity.class));
+    }
+
+
+
+    private void init(DonHang donHang, Holder holder){
+        GioHang gioHang=donHang.getGioHangList().get(0);
+        if(gioHang!=null){
+            Glide.with(context).load(gioHang.getImg()).error(R.drawable.ic_baseline_hide_image_24).into(holder.img_anh);
+            holder.tv_tenSP.setText(gioHang.getTenSP());
+            holder.tv_sl.setText("x"+ gioHang.getSoluong());
+            holder.tv_gia.setText(gioHang.getDonGia()+"đ");
+        }
+        int tongsl=0;
+
+        for(GioHang gioHang1: donHang.getGioHangList()){
+            tongsl+=gioHang1.getSoluong();
+        }
+
+        holder.tv_ngay.setText(donHang.getNgayTao());
+        holder.tv_tongsl.setText(tongsl+" sản phẩm");
+        holder.tv_thanhtien.setText(donHang.getTongTien()+"đ");
+        if(donHang.getGioHangList().size()>1){
+            holder.tv_xem.setVisibility(View.VISIBLE);
+            holder.gach2.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.tv_xem.setVisibility(View.GONE);
+            holder.gach2.setVisibility(View.GONE);
+        }
+
+        if(donHang.getTrangThai().equals("Chờ xác nhận")){
+            holder.rl_cho.setVisibility(View.VISIBLE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
+        }else if(donHang.getTrangThai().equals("Đã nhận")){
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.VISIBLE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
+        }else if(donHang.getTrangThai().equals("Đang giao")){
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.VISIBLE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
+        }else if(donHang.getTrangThai().equals("Đã hủy")){
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.VISIBLE);
+            holder.rl_da_danh_gia.setVisibility(View.GONE);
+        }else {
+            holder.rl_cho.setVisibility(View.GONE);
+            holder.rl_dang_giao.setVisibility(View.GONE);
+            holder.rl_da_nhan.setVisibility(View.GONE);
+            holder.rl_da_huy.setVisibility(View.GONE);
+            holder.rl_da_danh_gia.setVisibility(View.VISIBLE);
+        }
     }
 }
