@@ -81,7 +81,10 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
         holder.btn_danhgia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, PostDanhGiaActivity.class));
+                Intent intent1=new Intent(context, PostDanhGiaActivity.class);
+                intent1.putExtra("id", donHang.getId());
+                context.startActivity(intent1);
+
             }
         });
 

@@ -144,7 +144,9 @@ public class ChiTietDonHangActivity extends AppCompatActivity {
         binding.btnDanhGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChiTietDonHangActivity.this, PostDanhGiaActivity.class));
+                Intent intent1=new Intent(ChiTietDonHangActivity.this, PostDanhGiaActivity.class);
+                intent1.putExtra("id", id);
+                startActivity(intent1);
             }
         });
 

@@ -111,7 +111,6 @@ public class GioHangAdapter extends BaseAdapter {
                 db.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).child("soluong").setValue(soluongmoi);
                 GioHangActivity.tongtien();
                 GioHangActivity.SoLuongGioHang();
-                ChiTietSPActivity.getSoLuongGiohang();
                 HomeFragment.getSoLuongGiohang();
             }
         });
@@ -125,7 +124,6 @@ public class GioHangAdapter extends BaseAdapter {
                 db.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).child("soluong").setValue(soluongmoi);
                 GioHangActivity.tongtien();
                 GioHangActivity.SoLuongGioHang();
-                ChiTietSPActivity.getSoLuongGiohang();
                 HomeFragment.getSoLuongGiohang();
             }
         });
