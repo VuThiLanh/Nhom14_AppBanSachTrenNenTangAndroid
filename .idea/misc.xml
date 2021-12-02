@@ -3,13 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/drawable/ic_baseline_home_work_24.xml" value="0.19583333333333333" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_change_pass.xml" value="0.1" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_chi_tiet_spactivity.xml" value="0.22" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_danh_muc.xml" value="0.1" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_don_hang.xml" value="0.10914855072463768" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_tam_ly_tam_linh_ton_giao.xml" value="0.1" />
-        <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_thong_tin_shop.xml" value="0.16666666666666666" />
+        <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_thong_tin_shop.xml" value="0.3333333333333333" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/activity_tim_kiem.xml" value="0.16666666666666666" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/danh_gia.xml" value="0.10729166666666666" />
         <entry key="..\:/BTL_PhamMemMaNguonMo/Nhom14_AppBanSachTrenNenTangAndroid/app/src/main/res/layout/dh_dang_giao.xml" value="0.10666666666666667" />
