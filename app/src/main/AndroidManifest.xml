@@ -42,14 +42,14 @@
             android:value="@string/google_maps_key" />
 
         <activity
-<<<<<<< HEAD
-            android:name=".View.SplashActivity"
+
+            android:name=".View.DiaChiActivity"
             android:label="@string/title_activity_dia_chi"></activity>
-=======
+        <activity
             android:name=".View.ThongTinShopActivity"
             android:exported="false"
             android:label="@string/title_activity_thong_tin_shop" />
->>>>>>> main
+
         <activity android:name=".View.QuenmkActivity" />
         <activity
             android:name=".View.DanhMucActivity"
@@ -84,18 +84,15 @@
             android:exported="true" />
         <activity
             android:name=".View.DangKyActivity"
-            android:exported="true" />0
+            android:exported="true" />
         <activity
             android:name=".View.ChiTietSPActivity"
             android:exported="true" />
         <activity
             android:name=".View.DangNhap"
             android:exported="true" />
-<<<<<<< HEAD
-        <activity android:name=".View.DiaChiActivity">
-=======
+
         <activity android:name=".View.SplashActivity">
->>>>>>> main
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -82,64 +82,12 @@ public class ChangePassActivity extends AppCompatActivity {
             ad.show();
         }
         else{
-            if(mkmoi.equals(nhaclaimk)){
-                AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),mkcu);
+            if(mkmoi.equals(mkcu)){
                 progressDialog.show();
-                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        progressDialog.dismiss();
-                        if(task.isSuccessful()){
-                            user.updatePassword(mkmoi).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
-                                        ad.setTitle("Thông báo");
-                                        String msg = String.format("Cập nhật thành công!");
-                                        ad.setMessage(msg);
-                                        ad.setIcon(android.R.drawable.ic_dialog_info);
-                                        ad.setButton("OK", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which)
-                                            {
-                                            }
-                                        });
-                                        ad.show();
-                                    }else {
-                                        AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
-                                        ad.setTitle("Thông báo");
-                                        String msg = String.format("Cập nhật thất bại!");
-                                        ad.setMessage(msg);
-                                        ad.setIcon(android.R.drawable.ic_dialog_info);
-                                        ad.setButton("OK", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which)
-                                            {
-                                            }
-                                        });
-                                        ad.show();
-                                    }
-                                }
-                            });
-                        }else {
-                            AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
-                            ad.setTitle("Thông báo");
-                            String msg = String.format("Mật khẩu cũ không đúng!");
-                            ad.setMessage(msg);
-                            ad.setIcon(android.R.drawable.ic_dialog_info);
-                            ad.setButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which)
-                                {
-                                }
-                            });
-                            ad.show();
-                        }
-                    }
-                });
-            }
-            else{
+                progressDialog.dismiss();
                 AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
                 ad.setTitle("Thông báo");
-                String msg = String.format("Nhắc lại mật khẩu sai!");
+                String msg = String.format("Mật khẩu mới không được trùng với mật khẩu cũ!");
                 ad.setMessage(msg);
                 ad.setIcon(android.R.drawable.ic_dialog_info);
                 ad.setButton("OK", new DialogInterface.OnClickListener() {
@@ -149,10 +97,85 @@ public class ChangePassActivity extends AppCompatActivity {
                 });
                 ad.show();
             }
+            else{
+                if(mkmoi.equals(nhaclaimk)){
+                    AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),mkcu);
+                    progressDialog.show();
+                    user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressDialog.dismiss();
+                            if(task.isSuccessful()){
+                                user.updatePassword(mkmoi).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
+                                            ad.setTitle("Thông báo");
+                                            String msg = String.format("Cập nhật thành công!");
+                                            ad.setMessage(msg);
+                                            ad.setIcon(android.R.drawable.ic_dialog_info);
+                                            ad.setButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which)
+                                                {
+                                                }
+                                            });
+                                            ad.show();
+                                        }else {
+                                            AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
+                                            ad.setTitle("Thông báo");
+                                            String msg = String.format("Cập nhật thất bại!");
+                                            ad.setMessage(msg);
+                                            ad.setIcon(android.R.drawable.ic_dialog_info);
+                                            ad.setButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which)
+                                                {
+                                                }
+                                            });
+                                            ad.show();
+                                        }
+                                    }
+                                });
+                            }else {
+                                AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
+                                ad.setTitle("Thông báo");
+                                String msg = String.format("Mật khẩu cũ không đúng!");
+                                ad.setMessage(msg);
+                                ad.setIcon(android.R.drawable.ic_dialog_info);
+                                ad.setButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which)
+                                    {
+                                    }
+                                });
+                                ad.show();
+                            }
+                        }
+                    });
+                }
+                else{
+                    AlertDialog ad = new AlertDialog.Builder(ChangePassActivity.this).create();
+                    ad.setTitle("Thông báo");
+                    String msg = String.format("Nhắc lại mật khẩu sai!");
+                    ad.setMessage(msg);
+                    ad.setIcon(android.R.drawable.ic_dialog_info);
+                    ad.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                        }
+                    });
+                    ad.show();
+                }
+                setText();
+            }
+
         }
 
     }
-
+ public void setText(){
+        binding.tvMkcuChangepass.setText("");
+        binding.tvMkmoiChangepass.setText("");
+        binding.tvNhaclaimkChangepass.setText("");
+ }
     public   void setUserInformation(){
         if(user==null){
             return;

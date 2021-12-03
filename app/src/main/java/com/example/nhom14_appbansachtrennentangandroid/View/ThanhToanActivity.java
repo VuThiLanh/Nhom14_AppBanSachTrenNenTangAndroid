@@ -18,6 +18,7 @@ import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
+import com.example.nhom14_appbansachtrennentangandroid.model.ThongBao;
 import com.example.nhom14_appbansachtrennentangandroid.model.ThongTinNhanHang;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -106,6 +107,8 @@ public class ThanhToanActivity extends AppCompatActivity {
         ThongTinNhanHang thongTinNhanHang = new ThongTinNhanHang(tvDiaChi.getText()+"", GioHangActivity.ThongTinCaNhan.getId_User(),GioHangActivity.ThongTinCaNhan.getNgaysinh(),tvSdt.getText()+"", tvName.getText()+"");
         DonHang DonHang = new DonHang("544768437DH"+(listDonHang.size()+1),thongTinNhanHang,MainActivity.listGioHang,TongTien_1, TongTienHang_1, date, "Chờ xác nhận");
         databaseReference.child("donhang").child(user.getUid()).child("544768437DH"+(listDonHang.size()+1)).setValue(DonHang);
+//        ThongBao thongBao = new ThongBao("CXN"+"544768437DH"+(listDonHang.size()+1), DonHang.getId(),DonHang.getTrangThai(),DonHang.getNgayTao());
+//        databaseReference.child("thongbao").child(user.getUid()).child("CLH"+"544768437DH"+(listDonHang.size()+1)).setValue(thongBao);
 
     }
     private void getDonHang( ){

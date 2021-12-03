@@ -92,7 +92,6 @@ public class GioHangAdapter extends BaseAdapter {
                                     notifyDataSetChanged();
                                     GioHangActivity.tongtien();
                                     GioHangActivity.SoLuongGioHang();
-                                    ChiTietSPActivity.getSoLuongGiohang();
                                     HomeFragment.getSoLuongGiohang();
                                 }
                             })
