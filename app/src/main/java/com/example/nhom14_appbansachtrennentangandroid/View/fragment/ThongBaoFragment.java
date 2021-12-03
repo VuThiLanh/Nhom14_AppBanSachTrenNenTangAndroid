@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ThongBaoFragment extends Fragment  {
@@ -71,6 +72,7 @@ public class ThongBaoFragment extends Fragment  {
                     DonHang donHang=dataSnapshot.getValue(DonHang.class);
                         donHangList.add(donHang);
                 }
+                Collections.reverse(donHangList);
                 if(donHangList.size()>0){
                     thongBaoAdapter.notifyDataSetChanged();
                     rcThongBao.setVisibility(View.VISIBLE);
