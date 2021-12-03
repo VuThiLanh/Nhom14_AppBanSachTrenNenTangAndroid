@@ -13,8 +13,10 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.auth.FirebaseAuth;
@@ -90,6 +92,8 @@ public class GioHangAdapter extends BaseAdapter {
                                     notifyDataSetChanged();
                                     GioHangActivity.tongtien();
                                     GioHangActivity.SoLuongGioHang();
+                                    ChiTietSPActivity.getSoLuongGiohang();
+                                    HomeFragment.getSoLuongGiohang();
                                 }
                             })
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -107,6 +111,8 @@ public class GioHangAdapter extends BaseAdapter {
                 db.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).child("soluong").setValue(soluongmoi);
                 GioHangActivity.tongtien();
                 GioHangActivity.SoLuongGioHang();
+                ChiTietSPActivity.getSoLuongGiohang();
+                HomeFragment.getSoLuongGiohang();
             }
         });
         tvTangSL.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +125,8 @@ public class GioHangAdapter extends BaseAdapter {
                 db.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).child("soluong").setValue(soluongmoi);
                 GioHangActivity.tongtien();
                 GioHangActivity.SoLuongGioHang();
+                ChiTietSPActivity.getSoLuongGiohang();
+                HomeFragment.getSoLuongGiohang();
             }
         });
         return view;

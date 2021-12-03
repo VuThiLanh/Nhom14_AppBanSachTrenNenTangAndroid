@@ -56,7 +56,8 @@
                                 android:background="@drawable/bg_timkiem"
                                 android:drawablePadding="8dp"
                                 android:paddingLeft="5dp"
-                                android:gravity="center|left"
+                                android:gravity="left|center_vertical"
+                                android:inputType="textImeMultiLine"
                                 android:hint="@string/timkiem"
                                 app:layout_constraintStart_toStartOf="parent"/>
                             <ImageView
@@ -67,14 +68,35 @@
                                 android:src="@drawable/ic_search_white"
                                 android:layout_weight="2"/>
                         </LinearLayout>
-                        <ImageView
-                            android:id="@+id/img_gioHang"
+                        <RelativeLayout
                             android:layout_width="0dp"
-                            android:layout_weight="3"
+                            android:layout_weight="2.7"
                             android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
+                            android:paddingRight="20dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/icon_giohanghome" />
+                            android:gravity="right">
+                            <RelativeLayout
+                                android:layout_width="37dp"
+                                android:layout_height="37dp"
+                                android:layout_alignParentBottom="true">
+
+                                <ImageView
+                                    android:id="@+id/img_gioHang"
+                                    android:layout_width="37dp"
+                                    android:layout_height="37dp"
+                                    android:background="@drawable/icon_giohanghome" />
+                            </RelativeLayout>
+                            <TextView
+                                android:id="@+id/tvSoLuongGioHang_home"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="12dp"
+                                android:background="@drawable/red_background"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
                     </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

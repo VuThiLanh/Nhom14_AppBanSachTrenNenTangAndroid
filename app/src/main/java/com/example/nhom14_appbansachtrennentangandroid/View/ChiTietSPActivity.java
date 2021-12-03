@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,9 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietSpactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
@@ -39,6 +43,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
     ActivityChiTietSpactivityBinding binding;
     int sl = 0;
     String maSP = "";
+    public static TextView tvSoLuongGioHang;
     DanhGiaAdapter danhGiaAdapter;
     List<DanhGia> danhGiaList= new ArrayList<>();
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
@@ -50,15 +55,14 @@ public class ChiTietSPActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(ChiTietSPActivity.this, R.layout.activity_chi_tiet_spactivity);
-
+        tvSoLuongGioHang = findViewById(R.id.tvSoLuongGioHang_CTSP);
         Intent intent = getIntent();
         maSP = intent.getStringExtra("maSP");
-
 
         //load dl
         display();
         displayDanhGia();
-
+        getSoLuongGiohang();
 
         if(maSP==null){
             AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
@@ -71,13 +75,19 @@ public class ChiTietSPActivity extends AppCompatActivity {
                 }
             });
             ad.show();
+
             return;
         }
 
 
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("Chi tiết sản phẩm");
+
+
+        danhGiaAdapter = new DanhGiaAdapter(danhGiaList, getApplicationContext());
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        binding.recDanhGia.setAdapter(danhGiaAdapter);
+
 
 
         binding.btnXemThem.setOnClickListener(new View.OnClickListener() {
@@ -116,18 +126,37 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user == null){
+                    Toast.makeText(getApplication(),"Đăng nhập để thêm giỏ hàng",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (sl > 0) {
+                    boolean exists = false;
+
                     if(sanPhamList.size()>0){
                         SanPham sanPham=sanPhamList.get(0);
                         if (gioHangList.size() > 0) {
                             GioHang gioHang1 = new GioHang(maSP,sanPham.getTenSP(), sanPham.getImg(), sanPham.getDonGia(), gioHangList.get(0).getSoluong()+sl );
+                            for(int i=0;i<MainActivity.listGioHang.size();i++){
+                                if(MainActivity.listGioHang.get(i).getIdsp().equals(gioHang1.getIdsp())){
+                                    MainActivity.listGioHang.remove(i);
+                                    MainActivity.listGioHang.add(gioHang1);
+                                    exists = true;
+                                }
+                            }
+                            if(exists == false){
+                                MainActivity.listGioHang.add(gioHang1);
+                            }
                             reference.child("giohang").child(user.getUid()).child(gioHang1.getIdsp()).setValue(gioHang1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                 }
                             });
+
                         } else {
                             GioHang gioHang = new GioHang(maSP,sanPham.getTenSP(), sanPham.getImg(), sanPham.getDonGia(), sl);
+                            MainActivity.listGioHang.add(gioHang);
                             reference.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).setValue(gioHang);
                         }
                         AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
@@ -140,8 +169,10 @@ public class ChiTietSPActivity extends AppCompatActivity {
                             }
                         });
                         ad.show();
-                    }
 
+                    }
+                    getSoLuongGiohang();
+                    HomeFragment.getSoLuongGiohang();
                 } else {
                     AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
                     ad.setTitle("Thông báo");
@@ -321,8 +352,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                danhGiaAdapter = new DanhGiaAdapter(danhGiaList, getApplicationContext());
-                binding.recDanhGia.setAdapter(danhGiaAdapter);
+                danhGiaAdapter.notifyDataSetChanged();
                 if(danhGiaList.size()<=0){
                     binding.tvChuaco.setVisibility(View.VISIBLE);
                     binding.lnDanhgia.setVisibility(View.GONE);
@@ -337,5 +367,13 @@ public class ChiTietSPActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+   public static void getSoLuongGiohang(){
+        int SoLuong = 0;
+        for(int i = 0; i< MainActivity.listGioHang.size(); i++){
+            SoLuong += MainActivity.listGioHang.get(i).getSoluong();
+        }
+        tvSoLuongGioHang.setText(SoLuong+"");
     }
 }

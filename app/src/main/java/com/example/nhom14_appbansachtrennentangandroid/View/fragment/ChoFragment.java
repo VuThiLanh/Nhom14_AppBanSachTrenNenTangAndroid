@@ -44,6 +44,8 @@ public class ChoFragment extends Fragment {
         donHangList=new ArrayList<>();
 
         rec_donhang.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter=new DSDonHangAdapter(donHangList, getContext());
+        rec_donhang.setAdapter(adapter);
         layDonHang();
 
         return view;
@@ -61,8 +63,7 @@ public class ChoFragment extends Fragment {
                     }
                 }
                 if(donHangList.size()>0){
-                    adapter=new DSDonHangAdapter(donHangList, getContext());
-                    rec_donhang.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                     rec_donhang.setVisibility(View.VISIBLE);
                     ln_chuaDH.setVisibility(View.GONE);
                 }else{

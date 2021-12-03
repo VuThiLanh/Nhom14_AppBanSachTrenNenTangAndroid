@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.DSDonHangAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamDanhMucAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +34,7 @@ public class TimKiemActivity extends AppCompatActivity {
     ImageView img_back;
     String dataTimKiem;
     TextView tv_TK;
+    RelativeLayout ln_khongTimThay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class TimKiemActivity extends AppCompatActivity {
         img_back = findViewById(R.id.img_back);
         dataTimKiem = HomeFragment.tv_TimKiem();
         tv_TK = findViewById(R.id.tv_TK);
+        ln_khongTimThay = findViewById(R.id.ln_khongTimThay);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplication(), 2);
         gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
@@ -71,10 +75,14 @@ public class TimKiemActivity extends AppCompatActivity {
                     SanPham sanPham = dataSnapshot.getValue(SanPham.class);
                     if(sanPham.getTenSP().toLowerCase().contains(dataTimKiem.toLowerCase())){
                         listTimKiem.add(sanPham);
-                        if(listTimKiem == null){
-                            Toast.makeText(getApplication(),"Không có sách!",Toast.LENGTH_SHORT).show();
-                        }
                     }
+                }
+                if(listTimKiem.size()>0){
+                    rcTimKiem.setVisibility(View.VISIBLE);
+                    ln_khongTimThay.setVisibility(View.GONE);
+                }else{
+                    rcTimKiem.setVisibility(View.GONE);
+                    ln_khongTimThay.setVisibility(View.VISIBLE);
                 }
             }
 

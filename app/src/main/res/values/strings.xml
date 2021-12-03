@@ -29,6 +29,7 @@
     <!--    TaiKhoan-->
     <string name="capnhat">Cập nhật tài khoản</string>
     <string name="thongtindonhang">Thông tin đơn hàng</string>
+    <string name="pttt">Phương thức thanh toán</string>
     <string name="thongtinshop">Thông tin shop</string>
     <string name="trogiup">Trợ giúp và phản hồi</string>
     <string name="dangxuat">Đăng xuất</string>
@@ -65,19 +66,28 @@
     <string name="Cho">Nguời bán đang chuẩn bị hàng!</string>
     <string name="haydanhGia">Bạn hãy đánh giá sản phẩm!</string>
     <string name="dahuy">Đơn hàng đã hủy bởi bạn!</string>
+    <string name="timkiem2">Bạn có thể tìm kiếm theo tên sản phẩm</string>
     <string name="muaLai">Mua lại</string>
     <string name="timkiem">Nhập tên sách cần tìm</string>
     <string name="Danhgia">Đánh giá</string>
     <string name="chuaco">Chưa có đánh giá nào!</string>
+    <string name="vanChuyen">Thông tin vận chuyển</string>
+    <string name="nhanhang">Địa chỉ nhận hàng</string>
+    <string name="madh">Mã đơn hàng</string>
+    <string name="ngaytao">Ngày tạo</string>
 
 
     <!--    QuenMK-->
     <string name="quenmk">Quên Mật Khẩu</string>
     <string name="nhapemail">Nhập email liên kết với tài khoản của bạn.<br />Mật khẩu sẽ gửi về email đăng ký.</string>
     <string name="khoiphuc">Khôi Phục Mật khẩu</string>
+<<<<<<< HEAD
     <string name="title_activity_dia_chi">Map</string>
 
 <!--    DiaCHi-->
     <string name="diachihientai">Địa chỉ hiện tại</string>
+=======
+    <string name="title_activity_thong_tin_shop">ThongTinShopActivity</string>
+>>>>>>> main
 
 </resources>

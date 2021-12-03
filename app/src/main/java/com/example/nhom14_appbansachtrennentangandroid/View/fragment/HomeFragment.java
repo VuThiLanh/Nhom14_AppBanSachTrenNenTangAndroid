@@ -2,7 +2,6 @@ package com.example.nhom14_appbansachtrennentangandroid.View.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +27,10 @@ import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.DanhMucActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietSPActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TimKiemActivity;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,6 +53,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
     RecyclerView rcTopBanChay,rcGoiY;
     ViewFlipper anhquangcao;
     View view;
+    public static TextView tvSoLuongGioHang_home;
     ImageView img_GioHang, img_TimKiem;
     public static AutoCompleteTextView tv_TimKiem;
     LinearLayout ll_ChinhTri_PhapLuat, ll_KhoaHoc_CN_KT, ll_VanHoc_NT, ll_VanHoa_XH_LS, ll_GiaoTrinh, ll_Truyen_TieuThuyet, ll_TamLy_TamLinh, ll_ThieuNhi;
@@ -65,6 +70,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ChuyenDenGioHang();
         DanhMuc();
         TimKiem();
+        getSoLuongGiohang();
+        //Toast.makeText(getContext(),listSanPham.size()+"",Toast.LENGTH_SHORT).show();
         return view;
 
     }
@@ -82,7 +89,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         ll_ThieuNhi = view.findViewById(R.id.ll_ThieuNhi);
         tv_TimKiem = view.findViewById(R.id.tv_TimKiem);
         img_TimKiem = view.findViewById(R.id.img_TimKiem);
-
+        tvSoLuongGioHang_home = view.findViewById(R.id.tvSoLuongGioHang_home);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
 
@@ -101,8 +108,6 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         rcGoiY.setHasFixedSize(true);
 
         listSP = new ArrayList<>();
-//        tv_TimKiem.setMaxLines(1);
-//        tv_TimKiem.setEllipsize(TextUtils.TruncateAt.END);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.select_dialog_item, listSP);
         tv_TimKiem.setAdapter(adapter);
 
@@ -265,5 +270,13 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
     }
     public static String tv_TimKiem(){
         return tv_TimKiem.getText().toString().trim();
+    }
+
+    public static void getSoLuongGiohang(){
+        int SoLuong = 0;
+        for(int i = 0; i< MainActivity.listGioHang.size(); i++){
+            SoLuong += MainActivity.listGioHang.get(i).getSoluong();
+        }
+        tvSoLuongGioHang_home.setText(SoLuong+"");
     }
 }
