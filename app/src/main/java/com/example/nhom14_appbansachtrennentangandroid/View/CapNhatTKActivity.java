@@ -20,6 +20,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,7 +67,8 @@ public class CapNhatTKActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     private ArrayList<TaiKhoan> listTaiKhoan = new ArrayList<>();
-
+    private LocationManager locationManager;
+    private int PEMISSION_CODE =1;
 
 
 
@@ -127,6 +129,14 @@ public class CapNhatTKActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.imgLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CapNhatTKActivity.this, DiaChiActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     private void initListener() {
         binding.imgUpdateAvatarCapnhat.setOnClickListener(new View.OnClickListener() {

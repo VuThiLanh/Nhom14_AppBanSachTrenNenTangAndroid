@@ -80,6 +80,17 @@
             android:inputType="text"
             android:paddingLeft="20dp"
             android:textColor="@color/black" />
+        <ImageView
+            android:id="@+id/img_location"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="15dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="@id/doc3"
+            app:layout_constraintEnd_toEndOf="@id/doc2"
+            app:layout_constraintTop_toTopOf="@id/guide04"
+            app:layout_constraintBottom_toBottomOf="@id/guide05"
+            />
         <EditText
             android:id="@+id/tv_display_sdt_capnhat"
             android:layout_width="0dp"
@@ -188,6 +199,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.95" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/doc3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide01"
             android:layout_width="wrap_content"

@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         rcTopBanChay.setLayoutManager(linearLayoutManager);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
         rcGoiY.setLayoutManager(gridLayoutManager);
 
@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
 
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
         rcGoiY.setAdapter(sanPhamAdapter);
+        rcGoiY.setHasFixedSize(true);
 
         listSP = new ArrayList<>();
 //        tv_TimKiem.setMaxLines(1);
