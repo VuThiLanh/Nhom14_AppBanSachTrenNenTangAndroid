@@ -2,6 +2,7 @@ package com.example.nhom14_appbansachtrennentangandroid.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,8 @@ public class GioHangAdapter extends BaseAdapter {
         tvGiamSL = view.findViewById(R.id.tvGiamSL_GH);
         tvSoLuong = view.findViewById(R.id.tvSoLuong_GH);
         imgPicture = view.findViewById(R.id.imgPictureProduct_GH);
+        tvName.setMaxLines(2);
+        tvName.setEllipsize(TextUtils.TruncateAt.END);
         GioHang gioHang = gioHangList.get(position);
         tvName.setText(gioHang.getTenSP());
         tvPrice.setText(gioHang.getDonGia()+"");
@@ -110,7 +113,6 @@ public class GioHangAdapter extends BaseAdapter {
                 db.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).child("soluong").setValue(soluongmoi);
                 GioHangActivity.tongtien();
                 GioHangActivity.SoLuongGioHang();
-                ChiTietSPActivity.getSoLuongGiohang();
                 HomeFragment.getSoLuongGiohang();
             }
         });
@@ -124,7 +126,6 @@ public class GioHangAdapter extends BaseAdapter {
                 db.child("giohang").child(user.getUid()).child(gioHang.getIdsp()).child("soluong").setValue(soluongmoi);
                 GioHangActivity.tongtien();
                 GioHangActivity.SoLuongGioHang();
-                ChiTietSPActivity.getSoLuongGiohang();
                 HomeFragment.getSoLuongGiohang();
             }
         });

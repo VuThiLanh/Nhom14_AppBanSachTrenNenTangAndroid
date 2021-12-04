@@ -1,7 +1,10 @@
 package com.example.nhom14_appbansachtrennentangandroid.View;
 
+import static com.google.android.gms.common.api.internal.LifecycleCallback.getFragment;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThongBaoFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DonHangAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
@@ -75,13 +79,13 @@ public class ThanhToanActivity extends AppCompatActivity {
                         luuDon();
                         MainActivity.listGioHang.clear();
                         databaseReference.child("giohang").child(user.getUid()).removeValue();
-                        //Intent intent = new Intent(getBaseContext(), DanhSachDonDangGiao.class);
+                        //Intent intent = new Intent(ThanhToanActivity.this, DonHangActivity.class);
                         //startActivity(intent);
-                        //finish();
+                        finish();
                         GioHangActivity.setGioHang();
                         GioHangActivity.SoLuongGioHang();
+                        GioHangActivity.tongtien();
                     }
-
                 }
             });
         }

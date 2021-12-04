@@ -103,9 +103,7 @@ public class GioHangActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onBackPressed();
-                Intent intent = new Intent(GioHangActivity.this, MainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
     }
