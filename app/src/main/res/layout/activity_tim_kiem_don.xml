@@ -52,7 +52,8 @@
                 android:background="@drawable/bg_timkiem"
                 android:drawablePadding="8dp"
                 android:paddingLeft="5dp"
-                android:gravity="center"
+                android:gravity="left|center_vertical"
+                android:inputType="textImeMultiLine"
                 android:hint="@string/timkiem2"
                 app:layout_constraintStart_toStartOf="parent"/>
             <ImageView
