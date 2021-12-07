@@ -14,6 +14,7 @@ import android.view.View;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.PostDanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityPostDanhGiaBinding;
+import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,7 @@ public class PostDanhGiaActivity extends AppCompatActivity {
         binding= DataBindingUtil.setContentView(PostDanhGiaActivity.this, R.layout.activity_post_danh_gia);
 
 
+        binding.recDanhGia.getAdapter();
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("");
 
@@ -73,7 +75,7 @@ public class PostDanhGiaActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DonHang donHang=snapshot.getValue(DonHang.class);
                 gioHangList=donHang.getGioHangList();
-                adapter=new PostDanhGiaAdapter(gioHangList,getApplicationContext());
+                adapter=new PostDanhGiaAdapter(gioHangList,getApplicationContext(), id);
                 binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                 binding.recDanhGia.setAdapter(adapter);
             }
@@ -81,6 +83,21 @@ public class PostDanhGiaActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        binding.btnDang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (adapter.getDanhGiaList().size()>0){
+                    for(DanhGia danhGia: adapter.getDanhGiaList()){
+                        if(danhGia.getSao()>0){
+                            reference.child("danhgia").child(danhGia.getIddanggia()).setValue(danhGia);
+                            reference.child("donhang").child(user.getUid()).child(id).child("trangThai").setValue("Đã đánh giá");
+                            startActivity(new Intent(PostDanhGiaActivity.this, DonHangActivity.class));
+                        }
+                    }
+                }
             }
         });
     }
