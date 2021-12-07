@@ -1,6 +1,7 @@
 package com.example.nhom14_appbansachtrennentangandroid.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,8 +20,12 @@ import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.ChiTietDonHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.GioHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.PostDanhGiaActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
+import com.example.nhom14_appbansachtrennentangandroid.model.ThongBao;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -62,19 +68,71 @@ public class DSDonHangAdapter extends RecyclerView.Adapter<DSDonHangAdapter.Hold
         });
 
         if(tinhNgay(donHang.getNgayTao())&& donHang.getTrangThai().equals("Chờ xác nhận")){
-            reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đang giao");
+            reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai")
+                    .setValue("Đang giao").addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        String idTb= reference.child("thongbao").child(user.getUid()).push().getKey();
+                        DateFormat df = new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss ");
+                        String date = df.format(Calendar.getInstance().getTime());
+                        ThongBao thongBao=new ThongBao(idTb, donHang.getId(), "Đang giao",date );
+                        reference.child("thongbao").child(user.getUid()).child(thongBao.getIdTB()).setValue(thongBao);
+                    }
+                }
+            });
         }
 
         holder.btn_danhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đã nhận");
+                reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai")
+                        .setValue("Đã nhận").addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            String idTb= reference.child("thongbao").child(user.getUid()).push().getKey();
+                            DateFormat df = new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss ");
+                            String date = df.format(Calendar.getInstance().getTime());
+                            ThongBao thongBao=new ThongBao(idTb, donHang.getId(), "Đã nhận",date );
+                            reference.child("thongbao").child(user.getUid()).child(thongBao.getIdTB()).setValue(thongBao);
+                        }
+                    }
+                });
             }
         });
         holder.btn_huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai").setValue("Đã hủy");
+                androidx.appcompat.app.AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
+                        .setTitle("")
+                        .setMessage("Bạn có chắc chắc chắn muốn hủy đơn hàng này không!")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                reference.child("donhang").child(user.getUid()).child(donHang.getId()).child("trangThai")
+                                        .setValue("Đã hủy").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            String idTb= reference.child("thongbao").child(user.getUid()).push().getKey();
+                                            DateFormat df = new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss ");
+                                            String date = df.format(Calendar.getInstance().getTime());
+                                            ThongBao thongBao=new ThongBao(idTb, donHang.getId(), "Đã hủy",date );
+                                            reference.child("thongbao").child(user.getUid()).child(thongBao.getIdTB()).setValue(thongBao);
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .create();
+                alertDialog.show();
+
             }
         });
 

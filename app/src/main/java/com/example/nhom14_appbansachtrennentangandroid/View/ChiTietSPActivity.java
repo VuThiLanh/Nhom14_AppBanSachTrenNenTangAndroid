@@ -67,7 +67,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
         if(maSP==null){
             AlertDialog ad = new AlertDialog.Builder(ChiTietSPActivity.this).create();
             ad.setTitle("Thông báo");
-            String msg = String.format("Lỗi");
+            String msg = String.format("Sản phẩm này không tồn tại!");
             ad.setMessage(msg);
             ad.setIcon(android.R.drawable.ic_dialog_info);
             ad.setButton("OK", new DialogInterface.OnClickListener() {

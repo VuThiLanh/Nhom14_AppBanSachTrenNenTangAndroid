@@ -88,7 +88,6 @@ public class PostDanhGiaActivity extends AppCompatActivity {
         binding.btnDang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (adapter.getDanhGiaList().size()>0){
                     for(DanhGia danhGia: adapter.getDanhGiaList()){
                         if(danhGia.getSao()>0){
@@ -97,6 +96,17 @@ public class PostDanhGiaActivity extends AppCompatActivity {
                             startActivity(new Intent(PostDanhGiaActivity.this, DonHangActivity.class));
                         }
                     }
+                }else{
+                    AlertDialog ad = new AlertDialog.Builder(PostDanhGiaActivity.this).create();
+                    ad.setTitle("Thông báo");
+                    String msg = String.format("Bạn chưa đánh giá!");
+                    ad.setMessage(msg);
+                    ad.setIcon(android.R.drawable.ic_dialog_info);
+                    ad.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    ad.show();
                 }
             }
         });
