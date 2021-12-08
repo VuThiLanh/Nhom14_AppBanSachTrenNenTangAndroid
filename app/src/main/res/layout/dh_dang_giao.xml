@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@color/red"
+                android:background="@color/toolbar"
                 android:padding="5dp"
                 android:text="@string/nhan"
                 android:textAllCaps="false"
@@ -167,18 +167,19 @@
             android:layout_width="match_parent"
             android:id="@+id/rl_da_nhan"
             android:layout_height="wrap_content">
+
             <Button
+                android:id="@+id/btn_danhgia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Danhgia"
-                android:background="@color/red"
-                android:textSize="15sp"
-                android:textAllCaps="false"
-                android:padding="5dp"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:id="@+id/btn_danhgia"
+                android:background="@color/toolbar"
+                android:padding="5dp"
+                android:text="@string/Danhgia"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:layout_alignParentRight="true"/>
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -201,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@color/red"
+                android:background="@color/toolbar"
                 android:padding="5dp"
                 android:text="@string/muaLai"
                 android:textAllCaps="false"
@@ -228,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@color/red"
+                android:background="@color/toolbar"
                 android:padding="5dp"
                 android:text="@string/huy"
                 android:textAllCaps="false"
@@ -255,7 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@color/red"
+                android:background="@color/toolbar"
                 android:padding="5dp"
                 android:text="@string/muaLai"
                 android:textAllCaps="false"

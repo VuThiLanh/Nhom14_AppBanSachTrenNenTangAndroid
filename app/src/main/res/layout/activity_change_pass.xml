@@ -51,7 +51,6 @@
             android:imeOptions="actionNext"
             android:inputType="text"
             android:textStyle="bold"
-            android:textColor="@color/mauchu"
             android:textSize="25dp" />
         <TextView
             android:id="@+id/tv_email_changepass"
@@ -66,7 +65,6 @@
             android:text="admin@gmail.com"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:textColor="@color/mauchu"
             android:textSize="20dp" />
         <EditText
             android:id="@+id/tv_mkcu_changepass"

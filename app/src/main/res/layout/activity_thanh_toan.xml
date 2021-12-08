@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.2"
         android:orientation="horizontal"
-        android:background="#CC3535">
+        android:background="@color/toolbar">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -253,6 +253,6 @@
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:background="#CC3535"/>
+            android:background="@color/toolbar"/>
     </LinearLayout>
 </LinearLayout>

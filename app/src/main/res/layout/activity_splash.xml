@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maunen"
+    android:background="@color/toolbar"
     tools:context=".View.SplashActivity">
     <ImageView
         android:src="@drawable/logobansach"
@@ -22,7 +22,7 @@
         android:gravity="center"
         android:textAlignment="center"
         android:text="Chào mừng bạn tới với muasachonline !"
-        android:textColor="@color/black"
+        android:textColor="@color/mauchu"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/leduoi"

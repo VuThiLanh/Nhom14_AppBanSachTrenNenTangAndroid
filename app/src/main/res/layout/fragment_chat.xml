@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.05"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/toolbar">
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -23,7 +24,7 @@
             android:text="Nhà sách online"
             android:textSize="25dp"
             android:paddingLeft="10dp"
-            android:background="@color/white"
+            android:textColor="@color/mauchu"
             android:gravity="center_vertical"/>
     </LinearLayout>
     <RelativeLayout

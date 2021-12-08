@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/quenmk"
-                    android:textColor="@color/mauchu"
+                    android:textColor="@color/toolbar"
                     android:gravity="center"
                     android:layout_marginTop="20dp"
                     android:textSize="35sp"
@@ -47,7 +47,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
-                    android:textColor="@color/mauchu"
                     android:layout_marginHorizontal="10dp"/>
 
                 <EditText

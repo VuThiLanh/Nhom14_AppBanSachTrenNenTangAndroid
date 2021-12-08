@@ -19,7 +19,6 @@
             android:id="@+id/img_back"
             android:layout_width="70px"
             android:layout_height="70px"
-            android:background="@drawable/border_nut"
             android:src="@drawable/ic_baseline_keyboard_backspace_24"
             android:layout_gravity="center|left"
             android:layout_marginHorizontal="5dp"/>
@@ -31,7 +30,8 @@
             android:text=""
             android:textStyle="bold"
             android:textSize="30dp"
-            android:gravity="center|left"/>
+            android:gravity="center|left"
+            android:textColor="@color/mauchu"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -39,6 +39,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tool"
-        android:layout_margin="5dp"/>
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp" />
 
 </RelativeLayout>
