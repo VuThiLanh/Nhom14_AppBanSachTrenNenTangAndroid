@@ -10,8 +10,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TaiKhoanFragment;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChangePassBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,6 +45,7 @@ public class ChangePassActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private ArrayList<TaiKhoan> listTaiKhoan = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +210,18 @@ public class ChangePassActivity extends AppCompatActivity {
 
         }
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 
 
 }

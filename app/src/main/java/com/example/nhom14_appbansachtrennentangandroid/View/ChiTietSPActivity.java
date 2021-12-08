@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietSpactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
@@ -43,6 +46,7 @@ public class ChiTietSPActivity extends AppCompatActivity {
     ActivityChiTietSpactivityBinding binding;
     int sl = 0;
     String maSP = "";
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     public static TextView tvSoLuongGioHang;
     DanhGiaAdapter danhGiaAdapter;
     List<DanhGia> danhGiaList= new ArrayList<>();
@@ -375,5 +379,17 @@ public class ChiTietSPActivity extends AppCompatActivity {
             SoLuong += MainActivity.listGioHang.get(i).getSoluong();
         }
         tvSoLuongGioHang.setText(SoLuong+"");
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

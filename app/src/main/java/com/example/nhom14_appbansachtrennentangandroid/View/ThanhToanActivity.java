@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.ThongBaoFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DonHangAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
@@ -48,6 +51,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseUser user;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     long TongTien_1, TongTienHang_1;
     RadioButton rdThanhToanKhiNhanHang;
@@ -136,5 +140,17 @@ public class ThanhToanActivity extends AppCompatActivity {
                 Toast.makeText(getApplication(),"Get Book Fail!",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

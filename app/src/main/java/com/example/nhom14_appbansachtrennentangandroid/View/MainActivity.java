@@ -7,6 +7,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.ViewPagerAdapTer;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityMainBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<GioHang> mangGioHang;
     public static TaiKhoan ThongTinCaNhan;
     int i=0;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
 
     @Override
@@ -173,5 +177,17 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         return ThongTinCaNhan;
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

@@ -8,15 +8,18 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDiaChiBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,6 +34,7 @@ public class DiaChiActivity extends FragmentActivity implements OnMapReadyCallba
     private ActivityDiaChiBinding binding;
     private static final int REQUEST_CODE_GPS_PERMISSION = 100;
     LocationManager locationManager;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     double lat=0;
     double lon =0;
 
@@ -112,5 +116,17 @@ public class DiaChiActivity extends FragmentActivity implements OnMapReadyCallba
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

@@ -2,11 +2,14 @@ package com.example.nhom14_appbansachtrennentangandroid.View;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityThongTinShopBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,7 +23,7 @@ public class ThongTinShopActivity extends FragmentActivity implements OnMapReady
     private GoogleMap mMap;
     private ActivityThongTinShopBinding binding;
     ImageView img_back;
-
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,5 +61,17 @@ public class ThongTinShopActivity extends FragmentActivity implements OnMapReady
         LatLng diachishop = new LatLng(21.030031298887256, 105.83734869657181);
         mMap.addMarker(new MarkerOptions().position(diachishop).title("muasachonline"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(diachishop,18));
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

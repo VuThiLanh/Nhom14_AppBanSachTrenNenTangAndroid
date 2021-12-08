@@ -32,6 +32,7 @@ import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.TimKiemActivity;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamDanhMucAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,7 +50,8 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
     private ArrayList<SanPham> listSanPham;
     private ArrayList<SanPham> listSanPhamBanChay;
     List<String> listSP;
-    SanPhamAdapter sanPhamAdapter,sanPhamBanChayAdapter ;
+    SanPhamAdapter sanPhamBanChayAdapter ;
+    SanPhamDanhMucAdapter sanPhamAdapter;
     RecyclerView rcTopBanChay,rcGoiY;
     ViewFlipper anhquangcao;
     View view;
@@ -100,7 +102,7 @@ public class HomeFragment extends Fragment implements SanPhamAdapter.ItemClickLi
         listSanPham = new ArrayList<>();
         listSanPhamBanChay= new ArrayList<>();
 
-        sanPhamAdapter = new SanPhamAdapter(listSanPham,this,getActivity());
+        sanPhamAdapter = new SanPhamDanhMucAdapter(listSanPham, this::onItemClick,getActivity());
         sanPhamBanChayAdapter = new SanPhamAdapter(listSanPhamBanChay,this,getActivity());
 
         rcTopBanChay.setAdapter(sanPhamBanChayAdapter);
