@@ -93,16 +93,33 @@
             android:id="@+id/lvGioHang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ECE9EF"></ListView>
-
-        <TextView
-            android:id="@+id/tvGioHAngTrong"
+            android:background="#ECE9EF"/>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="không có sản phẩm nào"
-            android:textSize="25dp"
-            android:visibility="invisible" />
+            android:orientation="horizontal"
+            android:layout_margin="20dp">
+            <ImageView
+                android:id="@+id/imgGioHangTrong"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:text="Không có đơn hàng"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:src="@drawable/checklist"/>
+            <TextView
+                android:id="@+id/tvGioHAngTrong"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="không có sản phẩm nào"
+                android:textSize="25dp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"

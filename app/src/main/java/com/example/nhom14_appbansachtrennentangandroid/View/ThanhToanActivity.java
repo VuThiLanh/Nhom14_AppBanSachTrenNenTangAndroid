@@ -24,6 +24,8 @@ import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.example.nhom14_appbansachtrennentangandroid.model.ThongBao;
 import com.example.nhom14_appbansachtrennentangandroid.model.ThongTinNhanHang;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +48,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseUser user;
+
     long TongTien_1, TongTienHang_1;
     RadioButton rdThanhToanKhiNhanHang;
     private ArrayList<DonHang> listDonHang;
@@ -79,8 +82,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                         luuDon();
                         MainActivity.listGioHang.clear();
                         databaseReference.child("giohang").child(user.getUid()).removeValue();
-                        //Intent intent = new Intent(ThanhToanActivity.this, DonHangActivity.class);
-                        //startActivity(intent);
+                        Toast.makeText(getApplication(),"Đặt hàng thành công",Toast.LENGTH_SHORT).show();
                         finish();
                         GioHangActivity.setGioHang();
                         GioHangActivity.SoLuongGioHang();
@@ -111,8 +113,9 @@ public class ThanhToanActivity extends AppCompatActivity {
         ThongTinNhanHang thongTinNhanHang = new ThongTinNhanHang(tvDiaChi.getText()+"", GioHangActivity.ThongTinCaNhan.getId_User(),GioHangActivity.ThongTinCaNhan.getNgaysinh(),tvSdt.getText()+"", tvName.getText()+"");
         DonHang DonHang = new DonHang("544768437DH"+(listDonHang.size()+1),thongTinNhanHang,MainActivity.listGioHang,TongTien_1, TongTienHang_1, date, "Chờ xác nhận");
         databaseReference.child("donhang").child(user.getUid()).child("544768437DH"+(listDonHang.size()+1)).setValue(DonHang);
-//        ThongBao thongBao = new ThongBao("CXN"+"544768437DH"+(listDonHang.size()+1), DonHang.getId(),DonHang.getTrangThai(),DonHang.getNgayTao());
-//        databaseReference.child("thongbao").child(user.getUid()).child("CLH"+"544768437DH"+(listDonHang.size()+1)).setValue(thongBao);
+        //String idTb= databaseReference.child("thongbao").child(user.getUid()).push().getKey();
+        //ThongBao thongBao=new ThongBao(idTb, DonHang.getId(), "Chờ xác nhận",date );
+        //databaseReference.child("thongbao").child(user.getUid()).child(thongBao.getIdTB()).setValue(thongBao);
 
     }
     private void getDonHang( ){

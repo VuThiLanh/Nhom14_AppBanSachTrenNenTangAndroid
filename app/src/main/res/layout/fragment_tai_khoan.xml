@@ -188,15 +188,17 @@
                 android:layout_weight="2"
                 android:src="@drawable/icon_help"
                 android:layout_height="match_parent"/>
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:text="@string/trogiup"
-                android:textSize="20dp"
                 android:gravity="left|center"
                 android:paddingLeft="20dp"
+                android:text="@string/trogiup"
                 android:textColor="@color/mauchu"
-                android:layout_height="match_parent"/>
+                android:textSize="20dp" />
+
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"

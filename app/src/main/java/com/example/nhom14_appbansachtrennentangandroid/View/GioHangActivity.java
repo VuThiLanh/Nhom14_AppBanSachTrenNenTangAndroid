@@ -34,6 +34,7 @@ public class GioHangActivity extends AppCompatActivity {
     static TextView tvSoLuong;
     static TextView tvTongTien;
     ImageView imgBack;
+    static ImageView imgGioHangTrong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,7 @@ public class GioHangActivity extends AppCompatActivity {
         imgBack = findViewById(R.id.imgBack_GH);
         tvSoLuong = findViewById(R.id.tvSoLuongGioHang);
         tvGioHangTrong=findViewById(R.id.tvGioHAngTrong);
+        imgGioHangTrong = findViewById(R.id.imgGioHangTrong);
         getThongTinCaNhan();
 
         tvMuaHang.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +80,12 @@ public class GioHangActivity extends AppCompatActivity {
             GioHangAdapter adapterProduct = new GioHangAdapter(lv_GioHang.getContext(), MainActivity.listGioHang);
             lv_GioHang.setAdapter(adapterProduct);
             tvGioHangTrong.setVisibility(View.GONE);
+            imgGioHangTrong.setVisibility(View.GONE);
         }
         else{
             lv_GioHang.setVisibility(View.GONE);
             tvGioHangTrong.setVisibility(View.VISIBLE);
+            imgGioHangTrong.setVisibility(View.VISIBLE);
         }
     }
     public static void SoLuongGioHang(){

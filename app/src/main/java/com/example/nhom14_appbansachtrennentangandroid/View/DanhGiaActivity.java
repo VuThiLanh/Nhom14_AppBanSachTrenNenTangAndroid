@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DanhGiaActivity extends AppCompatActivity {
-
     ActivityDanhGiaBinding binding;
     String maSP="";
     DanhGiaAdapter danhGiaAdapter;
@@ -37,11 +36,8 @@ public class DanhGiaActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbarSp);
         getSupportActionBar().setTitle("");
 
-
         Intent intent=getIntent();
         maSP=intent.getStringExtra("maSP");
-
-
 
         binding.recDanhGia.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         danhGiaList=new ArrayList<>();

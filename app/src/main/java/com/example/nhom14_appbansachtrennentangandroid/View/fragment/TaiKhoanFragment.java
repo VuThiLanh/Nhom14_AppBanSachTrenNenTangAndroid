@@ -38,6 +38,7 @@ import com.example.nhom14_appbansachtrennentangandroid.View.DangNhap;
 import com.example.nhom14_appbansachtrennentangandroid.View.DonHangActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.MainActivity;
 import com.example.nhom14_appbansachtrennentangandroid.View.ThongTinShopActivity;
+import com.example.nhom14_appbansachtrennentangandroid.View.TroGiupVaPhanHoiActivity;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -101,6 +102,12 @@ public class TaiKhoanFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ThongTinShopActivity.class));
+            }
+        });
+        tv_trogiup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), TroGiupVaPhanHoiActivity.class));
             }
         });
         return  mView;
