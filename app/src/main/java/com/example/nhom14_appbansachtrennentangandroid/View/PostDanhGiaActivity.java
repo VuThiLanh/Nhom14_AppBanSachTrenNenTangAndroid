@@ -8,10 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.PostDanhGiaAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityPostDanhGiaBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
@@ -34,6 +37,7 @@ public class PostDanhGiaActivity extends AppCompatActivity {
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     PostDanhGiaAdapter adapter;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     List<GioHang> gioHangList=new LinkedList<>();
     String id="";
     @Override
@@ -110,5 +114,17 @@ public class PostDanhGiaActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

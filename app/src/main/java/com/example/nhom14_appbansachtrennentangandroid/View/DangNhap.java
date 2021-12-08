@@ -8,11 +8,14 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Paint;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangNhapBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +26,7 @@ public class DangNhap extends AppCompatActivity {
 
     ActivityDangNhapBinding binding;
     ProgressDialog progressDialog;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
 
     @Override
@@ -105,4 +109,16 @@ public class DangNhap extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }

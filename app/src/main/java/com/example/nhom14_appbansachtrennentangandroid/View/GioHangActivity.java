@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.GioHangAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,6 +36,7 @@ public class GioHangActivity extends AppCompatActivity {
     static TextView tvGioHangTrong;
     static TextView tvSoLuong;
     static TextView tvTongTien;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     ImageView imgBack;
     static ImageView imgGioHangTrong;
     @Override
@@ -128,5 +132,18 @@ public class GioHangActivity extends AppCompatActivity {
             });
         }
         return ThongTinCaNhan;
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

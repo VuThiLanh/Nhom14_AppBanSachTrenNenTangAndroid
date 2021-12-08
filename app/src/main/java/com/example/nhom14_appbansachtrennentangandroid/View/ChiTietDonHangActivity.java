@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DonHangAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.GioHangDHAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietDonHangBinding;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChiTietDonHangBindingImpl;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
@@ -38,6 +41,7 @@ public class ChiTietDonHangActivity extends AppCompatActivity {
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     String id="";
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     List<GioHang> gioHangList=new ArrayList<>();
     GioHangDHAdapter adapter;
     ThongTinNhanHang thongTinNhanHang=new ThongTinNhanHang();
@@ -170,5 +174,16 @@ public class ChiTietDonHangActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.HomeFragment;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DSDonHangAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.SanPhamDanhMucAdapter;
 import com.example.nhom14_appbansachtrennentangandroid.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +38,7 @@ public class TimKiemActivity extends AppCompatActivity {
     String dataTimKiem;
     TextView tv_TK;
     RelativeLayout ln_khongTimThay;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,5 +102,18 @@ public class TimKiemActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplication(), ChiTietSPActivity.class);
         intent.putExtra("maSP", sanPham.getIdSp()+"");
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

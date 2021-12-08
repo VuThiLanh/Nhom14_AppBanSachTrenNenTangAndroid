@@ -9,11 +9,14 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityChangePassBinding;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityQuenmkBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +34,7 @@ public class QuenmkActivity extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     ProgressDialog progressDialog;
     String email;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,5 +111,16 @@ public class QuenmkActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }

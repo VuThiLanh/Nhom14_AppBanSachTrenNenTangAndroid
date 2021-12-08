@@ -113,4 +113,12 @@
     <string name="answer8">Hiện cửa hàng không hỗ trợ hoàn trả 1 phần đơn hàng.</string>
     <string name="answer9">Bạn có thể xem tại mục địa chỉ cửa hàng hoặc gọi cho hotline theo số 0333897200.</string>
     <string name="answer10">Gọi cho đường dây nóng dịch vụ khách hàng của chúng tôi theo số 0333 897 200 (từ 9:00 đến 18:00).</string>
+
+
+    --check_internet---
+    <string name="op">OOPS!</string>
+    <string name="no">No Internet connection</string>
+    <string name="pl">Please check your connection</string>
+    <string name="retry">Retry</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

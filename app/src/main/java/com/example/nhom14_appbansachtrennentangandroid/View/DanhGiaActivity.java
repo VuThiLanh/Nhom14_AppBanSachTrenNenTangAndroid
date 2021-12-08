@@ -6,11 +6,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DanhGiaAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDanhGiaBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DanhGia;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +30,7 @@ public class DanhGiaActivity extends AppCompatActivity {
     String maSP="";
     DanhGiaAdapter danhGiaAdapter;
     List<DanhGia> danhGiaList;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,5 +76,17 @@ public class DanhGiaActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

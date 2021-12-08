@@ -18,9 +18,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +39,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.View.fragment.TaiKhoanFragment;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityCapNhatTkactivityBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
@@ -60,6 +63,7 @@ import java.util.Calendar;
 public class CapNhatTKActivity extends AppCompatActivity {
     ActivityCapNhatTkactivityBinding binding;
     ProgressDialog progressDialog;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     private  Uri mUri ;
     DateFormat fmtDateAndTime = DateFormat.getDateInstance();
     Calendar myCalendar = Calendar.getInstance();
@@ -290,5 +294,16 @@ public class CapNhatTKActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         mActivityResultLauncher.launch(Intent.createChooser(intent,"Chọn ảnh"));
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }

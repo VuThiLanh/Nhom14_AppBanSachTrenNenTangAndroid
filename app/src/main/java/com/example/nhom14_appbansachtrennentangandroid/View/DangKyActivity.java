@@ -8,10 +8,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityDangKyBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.TaiKhoan;
@@ -32,6 +35,7 @@ public class DangKyActivity extends AppCompatActivity {
     ActivityDangKyBinding binding;
     ProgressDialog progressDialog;
     FirebaseDatabase firebaseDatabase;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     DatabaseReference databaseReference;
 
     @Override
@@ -147,5 +151,17 @@ public class DangKyActivity extends AppCompatActivity {
                 ad.show();
             }
         }
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

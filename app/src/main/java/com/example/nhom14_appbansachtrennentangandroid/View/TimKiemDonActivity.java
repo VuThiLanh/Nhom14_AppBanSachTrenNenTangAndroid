@@ -6,6 +6,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.nhom14_appbansachtrennentangandroid.R;
 import com.example.nhom14_appbansachtrennentangandroid.adapter.DSDonHangAdapter;
+import com.example.nhom14_appbansachtrennentangandroid.adapter.NetworkChangeListener;
 import com.example.nhom14_appbansachtrennentangandroid.databinding.ActivityTimKiemDonBinding;
 import com.example.nhom14_appbansachtrennentangandroid.model.DonHang;
 import com.example.nhom14_appbansachtrennentangandroid.model.GioHang;
@@ -34,6 +37,7 @@ public class TimKiemDonActivity extends AppCompatActivity {
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
     List<String> sanPhamList=new ArrayList<>();
     List<DonHang> donHangList=new ArrayList<>();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     DSDonHangAdapter adapter;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     @Override
@@ -130,5 +134,16 @@ public class TimKiemDonActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }
