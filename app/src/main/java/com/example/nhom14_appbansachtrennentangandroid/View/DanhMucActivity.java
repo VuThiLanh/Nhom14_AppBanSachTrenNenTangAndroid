@@ -72,6 +72,7 @@ public class DanhMucActivity extends AppCompatActivity {
                         listDM.add(sanPham);
                     }
                 }
+                sanPhamDanhMucAdapter.notifyDataSetChanged();
             }
 
             @Override
