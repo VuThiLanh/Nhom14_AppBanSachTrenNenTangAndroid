@@ -27,8 +27,8 @@
                 android:layout_height="600px"
                 android:layout_below="@+id/appbarlayout_main"
                 android:layout_marginTop="2dp"
-                android:scaleType="fitXY"
                 android:background="@color/purple_200"
+                android:scaleType="fitXY"
                 android:src="@drawable/anhnen" />
 
             <LinearLayout
