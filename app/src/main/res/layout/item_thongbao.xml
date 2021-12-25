@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_marginBottom="5dp"
                     android:textSize="18sp"
-                    android:textColor="@color/mauchu"
+                    android:textColor="@color/toolbar"
                     android:text="Đơn hàng:"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -42,7 +42,7 @@
                     android:layout_marginBottom="5dp"
                     android:id="@+id/tv_tendonhang"
                     android:textSize="18sp"
-                    android:textColor="@color/mauchu"
+                    android:textColor="@color/toolbar"
                     android:text="DH01"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -59,7 +59,7 @@
                 <TextView
 
                     android:textSize="18sp"
-                    android:textColor="@color/mauchu"
+                    android:textColor="@color/toolbar"
                     android:text="Trạng thái đơn hàng:"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -67,7 +67,7 @@
                 <TextView
                     android:id="@+id/tv_thongbaofragment"
                     android:textSize="18sp"
-                    android:textColor="@color/mauchu"
+                    android:textColor="@color/toolbar"
                     android:layout_weight="1"
                     android:text="Người bán đang chuẩn bị hàng"
                     android:layout_width="0dp"
@@ -78,7 +78,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/ln_tt"
                 android:textSize="15sp"
-                android:textColor="@color/mauchu"
+                android:textColor="@color/toolbar"
                 android:text="23:58:22"
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"

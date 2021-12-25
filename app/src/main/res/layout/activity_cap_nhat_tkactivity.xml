@@ -31,8 +31,8 @@
                 android:gravity="center"
                 android:text="@string/capnhat"
                 android:imeOptions="actionNext"
-                android:inputType="text"
                 android:textColor="@color/white"
+                android:inputType="text"
                 android:textStyle="bold"
                 android:textSize="25sp" />
         </LinearLayout>
@@ -48,7 +48,6 @@
             android:gravity="center"
             android:text="admin@gmail.com"
             android:imeOptions="actionNext"
-            android:textColor="@color/mauchu"
             android:textSize="20dp" />
         <EditText
             android:id="@+id/tv_display_tenDN_capnhat"
@@ -125,7 +124,6 @@
         <TextView
             android:gravity="left|center"
             android:paddingLeft="20dp"
-            android:textColor="@color/mauchu"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/doc1"
@@ -147,14 +145,12 @@
             <RadioButton
                 android:id="@+id/rdb_nam"
                 android:layout_marginRight="20dp"
-                android:textColor="@color/mauchu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nam" />
 
             <RadioButton
                 android:id="@+id/rdb_nu"
-                android:textColor="@color/mauchu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nữ" />

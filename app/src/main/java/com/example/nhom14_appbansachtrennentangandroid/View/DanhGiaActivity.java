@@ -57,6 +57,7 @@ public class DanhGiaActivity extends AppCompatActivity {
                 }
                 danhGiaAdapter=new DanhGiaAdapter(danhGiaList, getApplicationContext());
                 binding.recDanhGia.setAdapter(danhGiaAdapter);
+                danhGiaAdapter.notifyDataSetChanged();
 
             }
 
@@ -65,7 +66,6 @@ public class DanhGiaActivity extends AppCompatActivity {
 
             }
         });
-
 
         binding.imgQl.setOnClickListener(new View.OnClickListener() {
             @Override

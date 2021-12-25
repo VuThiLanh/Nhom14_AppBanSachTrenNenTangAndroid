@@ -116,6 +116,8 @@ public class DangKyActivity extends AppCompatActivity {
                                             String tenDN= binding.edTenDNDangky.getText().toString();
                                             TaiKhoan t = new TaiKhoan("","",email,"",id,"01/01/2001","",tenDN);
                                             databaseReference.child("taikhoan").child(id).setValue(t);
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
                                         }
                                     });
                                     ad.show();

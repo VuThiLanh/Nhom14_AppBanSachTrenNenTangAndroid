@@ -90,6 +90,7 @@ public class TaiKhoanFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), DangNhap.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         tv_thongtindonhang.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +152,7 @@ public class TaiKhoanFragment extends Fragment {
                         tv_display_name.setText(listTaiKhoan.get(listTaiKhoan.size()-1).getUsername());
                     }
                     tv_display_email.setText(listTaiKhoan.get(listTaiKhoan.size()-1).getEmail());
-                    Glide.with(TaiKhoanFragment.this).load(listTaiKhoan.get(listTaiKhoan.size()-1).getAvt()).error(R.drawable.avatardefault).into(imgAvatar);
+                    Glide.with(getContext()).load(listTaiKhoan.get(listTaiKhoan.size()-1).getAvt()).error(R.drawable.avatardefault).into(imgAvatar);
                 }
 
                 @Override

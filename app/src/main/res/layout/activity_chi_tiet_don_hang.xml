@@ -252,12 +252,12 @@
                     />
 
                 <Button
+                    android:id="@+id/btn_mualai2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/gach1"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/red"
-                    android:id="@+id/btn_mualai2"
+                    android:background="@color/toolbar"
                     android:text="@string/muaLai"
                     android:textAllCaps="false"
                     android:textColor="@color/white" />
@@ -312,7 +312,7 @@
             android:layout_weight="1"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:background="@color/red"
+            android:background="@color/toolbar"
             android:text="@string/nhan"
             android:textSize="20sp"
             android:textAllCaps="false"

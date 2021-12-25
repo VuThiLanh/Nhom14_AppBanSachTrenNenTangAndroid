@@ -88,7 +88,7 @@
             android:exported="true" />
         <activity
             android:name=".View.DangKyActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".View.ChiTietSPActivity"
             android:exported="true" />
